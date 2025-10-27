@@ -5,7 +5,7 @@ function updateWeekNumber() {
     const weeks = Math.floor((today - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
     const remaining = 104 - weeks;
     
-    document.querySelectorAll('.week-number').forEach(el => el.textContent = weeks);
+    document.querySelectorAll('.week-number').forEach(el => el.textContent = ` ${weeks} `);
     document.querySelectorAll('.weeks-remaining').forEach(el => el.textContent = remaining);
 }
 
