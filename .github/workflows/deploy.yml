@@ -1,0 +1,31 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to DigitalOcean
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DO_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.DO_HOST }}
+          REMOTE_USER: ${{ secrets.DO_USERNAME }}
+          TARGET: "/var/www/html" # ⚠️ UPDATE THIS to your actual web root path (e.g., /var/www/html/portfolio)
+          REMOTE_PORT: 33342
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p $REMOTE_PORT -H $REMOTE_HOST >> ~/.ssh/known_hosts
+          
+          # Sync files using rsync
+          # --delete: removes files on destination that are not in source
+          # --exclude: skips .git folder and github workflows
+          rsync -avz -e "ssh -p $REMOTE_PORT" --delete --exclude '.git*' --exclude '.github' ./ $REMOTE_USER@$REMOTE_HOST:$TARGET
