@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>CarbonShift | Project Details</title>
+    <title>Carbon Shift | Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,7 +42,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
                 Back to Portfolio
             </a>
-            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;CarbonShift /&gt;</span>
+            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;Carbon Shift /&gt;</span>
         </div>
     </nav>
 
@@ -59,7 +59,7 @@
                     <span class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-mono">Nov 2025</span>
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    CarbonShift: <br>
+                    Carbon Shift: <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">Sustainable Cloud Computing</span>
                 </h1>
                 <p class="text-xl text-slate-400 leading-relaxed">
@@ -73,21 +73,66 @@
                 <!-- Left Column: Details -->
                 <div class="lg:col-span-2 space-y-12 animate-fade-in" style="animation-delay: 0.1s;">
                     
-                    <!-- Main Image -->
-                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
-                        <img src="assets/carbon-shift-1.jpeg" alt="CarbonShift Dashboard" class="w-full h-auto">
+                    <!-- Main Image Slider -->
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video group">
+                        <!-- Slide 1 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                            <img src="assets/carbon-shift-1.jpeg" alt="Carbon Shift Dashboard" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                            <img src="assets/carbon-shift-2.jpeg" alt="Carbon Shift Interface" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                            <img src="assets/carbon-shift-3.jpeg" alt="Carbon Shift Analytics" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Indicators -->
+                        <div class="absolute bottom-4 right-4 flex gap-2 z-10">
+                            <button class="w-2 h-2 rounded-full bg-white transition-all project-indicator" onclick="setProjectSlide(0)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all project-indicator" onclick="setProjectSlide(1)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all project-indicator" onclick="setProjectSlide(2)"></button>
+                        </div>
                     </div>
 
                     <!-- The Problem & Solution -->
                     <div class="prose prose-invert prose-lg max-w-none">
                         <h3 class="text-2xl font-bold text-white mb-4">The Challenge</h3>
                         <p class="text-slate-400 mb-8">
-                            Cloud computing accounts for a significant portion of global carbon emissions. DevOps teams often lack visibility into the environmental impact of their infrastructure choices, making it difficult to optimize for sustainability without sacrificing performance.
+                            The core goal of most companies is to reduce costs, but lowering the carbon footprint is quickly climbing the priority list. We found that companies often aren't fully aware of where their servers are hosted, leading to unnecessary costs and untracked emissions. Generally, decisions are based on server performance and cost efficiency, while often ignoring sustainability.
                         </p>
 
                         <h3 class="text-2xl font-bold text-white mb-4">The Solution</h3>
+                        <p class="text-slate-400 mb-8">
+                            Carbon Shift helps companies identify which cloud regions are cheaper and more emission-efficient. By tracking carbon dioxide emissions and electricity costs for servers (AWS/Azure), we empower teams to save money, boost performance, and shrink their carbon footprint simultaneously.
+                        </p>
+                        <p class="text-slate-400 mb-8 border-l-4 border-cyan-500 pl-4 italic">
+                            "Our analysis revealed that migrating a cluster of 100 m6g.xlarge instances from Germany to Sweden could result in yearly savings of over <strong>10,000 kg of CO2</strong> and <strong>$17,500</strong>. This highlights how location-aware deployment strategies can drive significant environmental and financial impact."
+                        </p>
+
+                        <div class="my-8 rounded-xl overflow-hidden border border-white/10 shadow-lg bg-slate-900">
+                            <img src="assets/yearly-saving.png" alt="Yearly CO2 and Cost Savings Dashboard" class="w-full h-auto">
+                            <p class="text-sm text-slate-500 p-3 text-center bg-slate-950/50">Germany vs. Sweden: Dashboard showing potential savings by optimizing server location</p>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">Future Roadmap</h3>
+                        <p class="text-slate-400 mb-8">
+                            Even though we implemented many features, we have ideas for future development:
+                        </p>
+                        <ul class="text-slate-400 list-disc pl-6 mb-8 space-y-2">
+                            <li><strong>AI Insights:</strong> Deploying an AI model to a Grafana panel that automatically gives a report with feedback and insights based on dashboard data.</li>
+                            <li><strong>Carbon Budgeting:</strong> Implementing a company carbon budget & alerting system that tracks total emissions and shows a burndown chart against the budget.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">Team & Event</h3>
+                        <p class="text-slate-400 mb-4">
+                            Built by <strong>Team Chaos</strong> from Chas Academy. We are a group of DevOps and Fullstack .NET students exploring the power of Grafana and AI.
+                            <br>
+                            <span class="text-cyan-400">Team Members:</span> Anton, Theo, Vincent, Victoria, and Mika.
+                        </p>
                         <p class="text-slate-400">
-                            CarbonShift bridges this gap by integrating real-time carbon intensity data directly into the observability stack. By leveraging <strong>Amazon Bedrock</strong> for AI analysis and <strong>Grafana</strong> for visualization, we provide actionable insights that help teams reduce their carbon footprint.
+                            This project was developed during a hackathon hosted at <strong>HiQ HQ</strong> in Stockholm. The event was sponsored by <strong>AWS</strong> and <strong>Grafana</strong>, providing the perfect environment to innovate with sustainable cloud technologies.
                         </p>
                     </div>
 
@@ -99,25 +144,25 @@
                                 <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                                 </div>
-                                <img src="assets/carbon-shift-1.jpeg" alt="CarbonShift Dashboard" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="assets/carbon-shift-1.jpeg" alt="Carbon Shift Dashboard" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative" onclick="openLightbox(1)">
                                 <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                                 </div>
-                                <img src="assets/carbon-shift-2.jpeg" alt="CarbonShift Interface" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="assets/carbon-shift-2.jpeg" alt="Carbon Shift Interface" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative" onclick="openLightbox(2)">
                                 <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                                 </div>
-                                <img src="assets/carbon-shift-3.jpeg" alt="CarbonShift Analytics" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="assets/carbon-shift-3.jpeg" alt="Carbon Shift Analytics" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                             <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative" onclick="openLightbox(3)">
                                 <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                                 </div>
-                                <img src="assets/carbon-shift-4.jpg" alt="CarbonShift Team" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="assets/carbon-shift-4.jpg" alt="Carbon Shift Team" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                             </div>
                         </div>
                     </div>
@@ -275,6 +320,58 @@
             if (e.key === 'ArrowRight') nextImage();
             if (e.key === 'ArrowLeft') prevImage();
         });
+
+        // Project Slider Logic
+        let currentProjectSlide = 0;
+        const projectSlides = document.querySelectorAll('.project-slide');
+        const projectIndicators = document.querySelectorAll('.project-indicator');
+        let projectSliderInterval;
+
+        function showProjectSlide(index) {
+            if (projectSlides.length === 0) return;
+            
+            projectSlides.forEach(slide => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+            });
+            
+            projectIndicators.forEach(ind => {
+                ind.classList.remove('bg-white');
+                ind.classList.add('bg-white/50');
+            });
+            
+            projectSlides[index].classList.remove('opacity-0');
+            projectSlides[index].classList.add('opacity-100');
+            
+            projectIndicators[index].classList.remove('bg-white/50');
+            projectIndicators[index].classList.add('bg-white');
+            
+            currentProjectSlide = index;
+        }
+
+        function nextProjectSlide() {
+            let next = (currentProjectSlide + 1) % projectSlides.length;
+            showProjectSlide(next);
+        }
+
+        function setProjectSlide(index) {
+            showProjectSlide(index);
+            resetProjectTimer();
+        }
+
+        function startProjectSlider() {
+            if(projectSlides.length > 0) {
+                projectSliderInterval = setInterval(nextProjectSlide, 5000);
+            }
+        }
+
+        function resetProjectTimer() {
+            clearInterval(projectSliderInterval);
+            startProjectSlider();
+        }
+
+        // Initialize slider
+        startProjectSlider();
     </script>
 </body>
 </html>
