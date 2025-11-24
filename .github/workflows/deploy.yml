@@ -17,7 +17,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.DO_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.DO_HOST }}
           REMOTE_USER: ${{ secrets.DO_USERNAME }}
-          TARGET: "/var/www/html" # ⚠️ UPDATE THIS to your actual web root path (e.g., /var/www/html/portfolio)
+          TARGET: "/var/www/html" 
           REMOTE_PORT: 33342
         run: |
           mkdir -p ~/.ssh
