@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>Anton Sätterkvist | DevOps Engineer</title>
-    <meta name="description" content="Anton Sätterkvist - DevOps Engineering student based in Stockholm, Sweden. Specializing in cloud infrastructure, automation, and CI/CD." />
+    <meta name="description"
+        content="Anton Sätterkvist - DevOps Engineering student based in Stockholm, Sweden. Specializing in cloud infrastructure, automation, and CI/CD." />
     <meta name="author" content="Anton Sätterkvist" />
-    <meta name="keywords" content="Anton Sätterkvist, DevOps, DevOps Engineer, Stockholm, AWS, Docker, Kubernetes, Cloud Infrastructure, CI/CD" />
-    
+    <meta name="keywords"
+        content="Anton Sätterkvist, DevOps, DevOps Engineer, Stockholm, AWS, Docker, Kubernetes, Cloud Infrastructure, CI/CD" />
+
     <meta property="og:title" content="Anton Sätterkvist | DevOps Engineer" />
-    <meta property="og:description" content="DevOps Engineering student passionate about cloud infrastructure and automation. Based in Stockholm, Sweden." />
+    <meta property="og:description"
+        content="DevOps Engineering student passionate about cloud infrastructure and automation. Based in Stockholm, Sweden." />
     <meta property="og:type" content="website" />
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,29 +48,39 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/30">
-    
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
         <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
         <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-cyan-400 transition-colors font-mono">&lt;AntonS /&gt;</a>
+            <a href="#"
+                class="text-xl font-bold tracking-tight text-white hover:text-cyan-400 transition-colors font-mono">&lt;AntonS
+                /&gt;</a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
                 <a href="#projects" class="hover:text-white transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </div>
-            <a href="#contact" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-slate-950 bg-white rounded-full hover:bg-cyan-50 transition-colors">
+            <a href="#contact"
+                class="hidden md:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-slate-950 bg-white rounded-full hover:bg-cyan-50 transition-colors">
                 Let's Talk
             </a>
             <!-- Mobile Menu Button -->
             <button class="md:hidden text-white" id="mobile-menu-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-slate-950 border-b border-white/5 absolute top-full left-0 w-full" id="mobile-menu">
+        <div class="md:hidden hidden bg-slate-950 border-b border-white/5 absolute top-full left-0 w-full"
+            id="mobile-menu">
             <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-slate-400">
                 <a href="#about" class="hover:text-white transition-colors">About</a>
                 <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
@@ -77,71 +93,118 @@
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden">
         <!-- Background Elements -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
-        <div class="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] -z-10 opacity-30"></div>
-        
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px] -z-10 opacity-50">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] -z-10 opacity-30">
+        </div>
+
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-8 fade-in-up">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-sm flex-wrap justify-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-sm flex-wrap justify-center">
                     <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span class="text-xs font-medium text-slate-300 text-center">Open to Freelance & Internships (Summer/Nov '26)</span>
+                    <span class="text-xs font-medium text-slate-300 text-center">Open to Freelance & Internships
+                        (Summer/Nov '26)</span>
                     <span class="hidden sm:inline text-slate-600">|</span>
                     <span class="text-xs font-medium text-slate-300">Stockholm, SE 🇸🇪</span>
                 </div>
-                
+
                 <div class="space-y-4">
                     <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
-                        Anton <br/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Sätterkvist</span>
+                        Anton <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Sätterkvist</span>
                     </h1>
                     <div class="h-8 md:h-10">
                         <p class="text-xl md:text-2xl text-slate-400 font-mono" id="typewriter"></p>
                     </div>
                 </div>
-                
+
                 <p class="text-lg text-slate-400 max-w-lg leading-relaxed">
-                    DevOps Engineering student passionate about building resilient cloud infrastructure, automating chaos, and optimizing delivery pipelines.
+                    DevOps Engineering student passionate about building resilient cloud infrastructure, automating
+                    chaos, and optimizing delivery pipelines.
                 </p>
-                
+
                 <div class="flex flex-wrap gap-4">
-                    <button onclick="scrollToProjects()" class="px-8 py-3 bg-white text-slate-950 rounded-full font-semibold hover:bg-cyan-50 transition-all transform hover:scale-105 flex items-center gap-2">
+                    <button onclick="scrollToProjects()"
+                        class="px-8 py-3 bg-white text-slate-950 rounded-full font-semibold hover:bg-cyan-50 transition-all transform hover:scale-105 flex items-center gap-2">
                         View Projects
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
                     </button>
-                    <a href="#contact" class="px-8 py-3 bg-transparent border border-white/20 text-white rounded-full font-semibold hover:bg-white/5 transition-all flex items-center gap-2">
+                    <a href="#contact"
+                        class="px-8 py-3 bg-transparent border border-white/20 text-white rounded-full font-semibold hover:bg-white/5 transition-all flex items-center gap-2">
                         Contact Me
                     </a>
                 </div>
 
                 <div class="flex gap-6 pt-4">
-                    <a href="https://github.com/antonsatt" target="_blank" class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    <a href="https://github.com/antonsatt" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
+                        class="text-slate-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
                     </a>
                     <a href="mailto:anton.satt@pm.me" class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
                     </a>
                 </div>
             </div>
-            
+
             <div class="relative flex justify-center fade-in-up delay-200">
                 <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-spin-slow"></div>
-                    <div class="absolute inset-4 rounded-full border-2 border-dashed border-blue-500/30 animate-spin-reverse-slow"></div>
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-b from-slate-800 to-slate-950 p-2 shadow-2xl">
-                        <img src="assets/me.png" alt="Anton Sätterkvist" class="w-full h-full object-cover rounded-full border-4 border-slate-900">
+                    <div
+                        class="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-spin-slow">
+                    </div>
+                    <div
+                        class="absolute inset-4 rounded-full border-2 border-dashed border-blue-500/30 animate-spin-reverse-slow">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-full bg-gradient-to-b from-slate-800 to-slate-950 p-2 shadow-2xl">
+                        <img src="assets/me.png" alt="Anton Sätterkvist"
+                            class="w-full h-full object-cover rounded-full border-4 border-slate-900">
                     </div>
                     <!-- Floating Tech Icons -->
-                    <div class="absolute -top-4 -right-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float">
-                        <svg class="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    <div
+                        class="absolute -top-4 -right-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float">
+                        <svg class="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                        </svg>
                     </div>
-                    <div class="absolute -bottom-4 -left-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float delay-1000">
-                        <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    <div
+                        class="absolute -bottom-4 -left-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float delay-1000">
+                        <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                            <line x1="12" y1="22.08" x2="12" y2="12" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -153,82 +216,128 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="relative group fade-in-on-scroll" id="about-slider">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900 h-64 md:h-96 lg:h-[500px]">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                    </div>
+                    <div
+                        class="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900 h-64 md:h-96 lg:h-[500px]">
                         <!-- Slide 1 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100" data-duration="7000">
-                            <img src="assets/winning-grafana.png" alt="Hackathon Winner" class="w-full h-full object-cover object-top">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
+                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100"
+                            data-duration="7000">
+                            <img src="assets/winning-grafana.png" alt="Hackathon Winner"
+                                class="w-full h-full object-cover object-top">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
                                 <p class="text-white font-medium">🏆 Grafana Hackathon Winner at HiQ HQ</p>
                             </div>
                         </div>
                         <!-- Slide 2 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0" data-duration="4000">
-                            <img src="assets/me-google.png" alt="Anton at Google" class="w-full h-full object-cover object-top">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
+                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+                            data-duration="4000">
+                            <img src="assets/me-google.png" alt="Anton at Google"
+                                class="w-full h-full object-cover object-top">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
                                 <p class="text-white font-medium">📍 Google Office Visit</p>
                             </div>
                         </div>
                         <!-- Slide 3 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0" data-duration="4000">
-                            <img src="assets/me_at_AWS_HQ_small.jpg" alt="Anton at AWS HQ" class="w-full h-full object-cover object-top">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
+                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+                            data-duration="4000">
+                            <img src="assets/me_at_AWS_HQ_small.jpg" alt="Anton at AWS HQ"
+                                class="w-full h-full object-cover object-top">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
                                 <p class="text-white font-medium">📍 AWS HQ Visit</p>
                             </div>
                         </div>
-                        
+
                         <!-- Indicators -->
                         <div class="absolute bottom-4 right-4 flex gap-2 z-10">
-                            <button class="w-2 h-2 rounded-full bg-white transition-all indicator" onclick="setSlide(0)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator" onclick="setSlide(1)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator" onclick="setSlide(2)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white transition-all indicator"
+                                onclick="setSlide(0)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator"
+                                onclick="setSlide(1)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator"
+                                onclick="setSlide(2)"></button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="space-y-8 fade-in-on-scroll">
                     <div>
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
                         <div class="h-1 w-20 bg-cyan-500 rounded-full"></div>
                     </div>
-                    
+
                     <div class="prose prose-invert text-slate-400">
                         <p class="text-lg">
-                            I'm <span class="text-white font-semibold">Anton Sätterkvist</span>, a DevOps Engineering student at <a href="https://chasacademy.se/program/devops-engineer" target="_blank" class="text-cyan-400 hover:underline">Chas Academy</a> who believes in learning by doing.
+                            I'm <span class="text-white font-semibold">Anton Sätterkvist</span>, a DevOps Engineering
+                            student at <a href="https://chasacademy.se/program/devops-engineer" target="_blank"
+                                class="text-cyan-400 hover:underline">Chas Academy</a> who believes in learning by
+                            doing.
                         </p>
                         <p>
-                            Currently <span class="week-number text-cyan-400 font-mono font-bold"></span> weeks into my program, I am already applying my skills in the real world. I work as a <strong>freelance developer</strong> building a Taxi application for the Spanish market and have proven my ability to deliver under pressure by securing <strong>two Hackathon podium finishes</strong> (1st & 3rd place).
+                            Currently <span class="week-number text-cyan-400 font-mono font-bold"></span> weeks into my
+                            program, I am already applying my skills in the real world. I work as a <strong>freelance
+                                developer</strong> building a Taxi application for the Spanish market and have proven my
+                            ability to deliver under pressure by securing <strong>two Hackathon podium finishes</strong>
+                            (1st & 3rd place).
                         </p>
                         <p>
-                            I am actively seeking <strong>internship opportunities</strong> (Summer/Nov '26) where I can contribute my skills in Cloud Infrastructure, Automation, and AI-driven DevOps.
+                            I am actively seeking <strong>internship opportunities</strong> (Summer/Nov '26) where I can
+                            contribute my skills in Cloud Infrastructure, Automation, and AI-driven DevOps.
                         </p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                        <div
+                            class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
                             <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 0 0-2-2v6a2 2 0 0 0 2-2m0 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11H5m14 0a2 2 0 0 0-2-2v6a2 2 0 0 0 2-2m0 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                    </path>
+                                </svg>
                                 Infrastructure
                             </h3>
                             <p class="text-sm text-slate-400">AWS, Terraform, Linux, Docker</p>
                         </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                        <div
+                            class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
                             <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
                                 Automation & AI
                             </h3>
                             <p class="text-sm text-slate-400">Python, Bash, GitHub Actions, Bedrock</p>
                         </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                        <div
+                            class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
                             <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
                                 Monitoring
                             </h3>
                             <p class="text-sm text-slate-400">Grafana, Prometheus</p>
                         </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                        <div
+                            class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
                             <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                                    </path>
+                                </svg>
                                 Tools
                             </h3>
                             <p class="text-sm text-slate-400">Git, VS Code</p>
@@ -246,7 +355,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">My Journey</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
                     Tracking my progress through the 2-year DevOps program. <br>
-                    <span class="text-cyan-400 font-mono">Week <span class="week-number">8</span> of 104</span>
+                    <span class="text-cyan-400 font-mono">Week <span class="week-number">15</span> of 104</span>
                 </p>
             </div>
 
@@ -257,13 +366,19 @@
                 <!-- Item 1 -->
                 <div class="relative flex flex-col md:flex-row gap-8 mb-12 fade-in-on-scroll">
                     <div class="md:w-1/2 md:text-right pt-2 pl-16 md:pl-0 md:pr-16">
-                        <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20 mb-2">Weeks 1-4</span>
+                        <span
+                            class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20 mb-2">Weeks
+                            1-4</span>
                         <h3 class="text-xl font-bold text-white">Foundations & Containerization</h3>
                     </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10"></div>
+                    <div
+                        class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10">
+                    </div>
                     <div class="md:w-1/2 pl-16 md:pl-0 md:pl-16 pt-2">
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            Started the journey with Git/GitHub mastery and Linux fundamentals. Quickly moved into containerization with Docker, learning to build, ship, and run applications consistently across environments.
+                            Started the journey with Git/GitHub mastery and Linux fundamentals. Quickly moved into
+                            containerization with Docker, learning to build, ship, and run applications consistently
+                            across environments.
                         </p>
                     </div>
                 </div>
@@ -271,13 +386,18 @@
                 <!-- Item 2 -->
                 <div class="relative flex flex-col md:flex-row gap-8 mb-12 fade-in-on-scroll">
                     <div class="md:w-1/2 pt-2 pl-16 md:pl-16 md:order-1 md:text-left">
-                        <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono border border-cyan-500/20 mb-2">Weeks 4-8</span>
-                        <h3 class="text-xl font-bold text-white">Cloud & Automation</h3>
+                        <span
+                            class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono border border-cyan-500/20 mb-2">Weeks
+                            4-12</span>
+                        <h3 class="text-xl font-bold text-white">Cloud, Automation & Hackathon Win</h3>
                     </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10"></div>
+                    <div
+                        class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10">
+                    </div>
                     <div class="md:w-1/2 pl-16 md:pl-0 md:pr-16 pt-2 md:order-0 md:text-right">
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            Deep dive into Python scripting for automation. Explored AWS core services and set up monitoring stacks with Grafana & Prometheus. Built my first CI/CD pipelines and <span class="text-white font-semibold">won 1st place</span> in an AWS Hackathon.
+                            Deep dive into Python scripting for automation. Explored AWS core services and set up
+                            monitoring stacks with Grafana & Prometheus. Built my first CI/CD pipelines. <span class="text-white font-semibold">Won 1st place</span> at AWS, HiQ, and Grafana hosted hackathon with Carbon Shift.
                         </p>
                     </div>
                 </div>
@@ -285,15 +405,19 @@
                 <!-- Item 3 (Current) -->
                 <div class="relative flex flex-col md:flex-row gap-8 mb-12 fade-in-on-scroll">
                     <div class="md:w-1/2 md:text-right pt-2 pl-16 md:pl-0 md:pr-16">
-                        <span class="inline-block px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-mono border border-green-500/20 mb-2">Current Focus</span>
-                        <h3 class="text-xl font-bold text-white">Linux, Bash & Freelancing</h3>
+                        <span
+                            class="inline-block px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-mono border border-green-500/20 mb-2">Current
+                            Focus</span>
+                        <h3 class="text-xl font-bold text-white">Linux, Bash & AWS Certification</h3>
                     </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-green-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <div
+                        class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-green-500 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     </div>
                     <div class="md:w-1/2 pl-16 md:pl-0 md:pl-16 pt-2">
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            Currently deepening my knowledge in Linux administration and Bash scripting at Chas Academy. Simultaneously working as a freelance developer building a Taxi application for drivers in Spain.
+                            Mastering Linux administration and Bash scripting (until mid-January). Preparing for <span class="text-white font-semibold">AWS Certified Cloud Practitioner</span> exam (end of December). Rebuilt Carbon Shift as a full-stack application with React and Python, deployed live on Digital Ocean. Working as a freelance developer on a Taxi application for the Spanish market.
                         </p>
                     </div>
                 </div>
@@ -301,13 +425,18 @@
                 <!-- Item 4 (Future) -->
                 <div class="relative flex flex-col md:flex-row gap-8 fade-in-on-scroll">
                     <div class="md:w-1/2 pt-2 pl-16 md:pl-16 md:order-1 md:text-left">
-                        <span class="inline-block px-3 py-1 rounded-full bg-slate-700/30 text-slate-400 text-xs font-mono border border-slate-700/50 mb-2">Future</span>
+                        <span
+                            class="inline-block px-3 py-1 rounded-full bg-slate-700/30 text-slate-400 text-xs font-mono border border-slate-700/50 mb-2">Future</span>
                         <h3 class="text-xl font-bold text-slate-300">The Road Ahead</h3>
                     </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10"></div>
+                    <div
+                        class="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 -translate-x-[9px] md:-translate-x-1/2 mt-3 z-10">
+                    </div>
                     <div class="md:w-1/2 pl-16 md:pl-0 md:pr-16 pt-2 md:order-0 md:text-right">
                         <p class="text-slate-500 text-sm leading-relaxed">
-                            Upcoming modules: Kubernetes orchestration, Infrastructure as Code (Terraform/Ansible), and advanced cloud architecture. <span class="weeks-remaining font-mono text-slate-400">96</span> weeks of learning remaining!
+                            Upcoming modules: Kubernetes orchestration, Infrastructure as Code (Terraform/Ansible), and
+                            advanced cloud architecture. <span
+                                class="weeks-remaining font-mono text-slate-400">89</span> weeks of learning remaining!
                         </p>
                     </div>
                 </div>
@@ -326,19 +455,101 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: CarbonShift (Winner) -->
-                <div class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
+                <!-- Project 1: Carbon Shift v2 - Live Demo -->
+                <div
+                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-green-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
                     <div class="aspect-video overflow-hidden relative">
-                        <a href="carbon-shift.html" class="block w-full h-full cursor-pointer">
-                            <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                        <a href="https://carbonshift.antonsatt.com/" target="_blank"
+                            class="block w-full h-full cursor-pointer">
+                            <div
+                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
+                                <span
+                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-green-500/20 backdrop-blur-md border border-green-500/30 rounded-full text-green-400 text-sm font-medium flex items-center gap-2">
+                                    Try Live Demo
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polygon points="10 8 16 12 10 16 10 8" />
+                                    </svg>
                                 </span>
                             </div>
-                            <img src="assets/carbon-shift-1.jpeg" alt="Carbon Shift" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-4 right-4 bg-yellow-500/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                            <img src="assets/carbonshift.png" alt="Carbon Shift v2"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-green-500/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polygon points="10 8 16 12 10 16 10 8" />
+                                </svg>
+                                Live Demo
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                                    CarbonShift Live Website</h3>
+                                <p class="text-xs text-slate-500 font-mono mt-1">December 2025</p>
+                            </div>
+                            <a href="https://carbonshift.antonsatt.com/" target="_blank"
+                                class="text-slate-400 hover:text-green-500 transition-colors" title="Visit Live Site">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="text-slate-400 text-sm line-clamp-3">
+                            Full-stack rebuild of the hackathon winner. Built with React frontend and Python backend,
+                            leveraging AWS services for data processing and hosted on Digital Ocean for reliable deployment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">React</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Python</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">AWS</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">Digital Ocean</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: CarbonShift Hackathon (Winner) -->
+                <div
+                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-100">
+                    <div class="aspect-video overflow-hidden relative">
+                        <a href="carbon-shift.html" class="block w-full h-full cursor-pointer">
+                            <div
+                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
+                                <span
+                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
+                                    View Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <img src="assets/carbon-shift-1.jpeg" alt="Carbon Shift"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-yellow-500/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="7" />
+                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                                </svg>
                                 1st Place Winner
                             </div>
                         </a>
@@ -346,122 +557,224 @@
                     <div class="p-6 space-y-4">
                         <div class="flex justify-between items-start">
                             <a href="carbon-shift.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Carbon Shift</h3>
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                    Carbon Shift</h3>
                                 <p class="text-xs text-slate-500 font-mono mt-1">November 2025</p>
                             </a>
                             <div class="flex gap-3">
-                                <a href="https://github.com/AntonSatt/carbonswift" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="View Code">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                <a href="https://carbonshift.antonsatt.com/" target="_blank"
+                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Try Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polygon points="10 8 16 12 10 16 10 8" />
+                                    </svg>
                                 </a>
-                                <a href="https://www.youtube.com/watch?v=okWQFswGp1A" target="_blank" class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                                <a href="https://github.com/AntonSatt/carbonswift" target="_blank"
+                                    class="text-slate-400 hover:text-white transition-colors" title="View Code">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                        <path d="M9 18c-4.51 2-5-2-7-2" />
+                                    </svg>
                                 </a>
-                                <a href="https://www.linkedin.com/posts/anton-satterkvist_grafana-aws-stockholm-activity-7397530767989305344-KSw9" target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors" title="View Post">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                <a href="https://www.youtube.com/watch?v=okWQFswGp1A" target="_blank"
+                                    class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7" />
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                                    </svg>
+                                </a>
+                                <a href="https://www.linkedin.com/posts/anton-satterkvist_grafana-aws-stockholm-activity-7397530767989305344-KSw9"
+                                    target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors"
+                                    title="View Post">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
                         <p class="text-slate-400 text-sm line-clamp-3">
-                            <strong>Team Chaos (1st Place).</strong> A Grafana Dashboard that tracks CO2 emissions and electricity costs for cloud servers. Helps companies identify cheaper and more emission-efficient regions to save money and the planet.
+                            <strong>Team Chaos (1st Place).</strong> A Grafana Dashboard that tracks CO2 emissions and
+                            electricity costs for cloud servers. Helps companies identify cheaper and more
+                            emission-efficient regions to save money and the planet.
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Grafana</span>
-                            <span class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">AWS Bedrock</span>
-                            <span class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">Terraform</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Grafana</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">AWS
+                                Bedrock</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">Terraform</span>
                         </div>
-                        
+
                         <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="carbon-shift.html" class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/link">
+                            <a href="carbon-shift.html"
+                                class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/link">
                                 View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/link:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="group-hover/link:translate-x-1 transition-transform">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-100">
+                <!-- Project 3: Theodor AI -->
+                <div
+                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-100">
                     <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10"></div>
-                        <img src="assets/hackathon-start.png" alt="Theodor AI" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                        <div class="absolute top-4 right-4 bg-amber-700/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg backdrop-blur-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
+                        </div>
+                        <img src="assets/hackathon-start.png" alt="Theodor AI"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute top-4 right-4 bg-amber-700/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7" />
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                            </svg>
                             3rd Place Winner
                         </div>
                     </div>
                     <div class="p-6 space-y-4">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Theodor - AI Onboarding</h3>
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                    Theodor - AI Onboarding</h3>
                                 <p class="text-xs text-slate-500 font-mono mt-1">October 2025</p>
                             </div>
                             <div class="flex gap-3">
-                                <a href="https://www.youtube.com/watch?v=1GaqWt-A5fk" target="_blank" class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                                <a href="https://www.youtube.com/watch?v=1GaqWt-A5fk" target="_blank"
+                                    class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7" />
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                                    </svg>
                                 </a>
-                                <a href="https://www.linkedin.com/posts/anton-satterkvist_hackathon-teamchaos-chasacademy-activity-7385940401699913729-muiW" target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors" title="View Post">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                <a href="https://www.linkedin.com/posts/anton-satterkvist_hackathon-teamchaos-chasacademy-activity-7385940401699913729-muiW"
+                                    target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors"
+                                    title="View Post">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
                         <p class="text-slate-400 text-sm line-clamp-3">
-                            <strong>Team Chaos (3rd Place).</strong> Chat-based AI assistant designed to onboard new employees. Built at the Cillers Hackathon (AWS HQ).
+                            <strong>Team Chaos (3rd Place).</strong> Chat-based AI assistant designed to onboard new
+                            employees. Built at the Cillers Hackathon (AWS HQ).
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">AI</span>
-                            <span class="px-2 py-1 text-xs font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded">Team Chaos</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">AI</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded">Team
+                                Chaos</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-200">
+                <div
+                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-200">
                     <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10"></div>
-                        <img src="assets/discord-bot.png" alt="Discord Bot CI/CD" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
+                        </div>
+                        <img src="assets/discord-bot.png" alt="Discord Bot CI/CD"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="p-6 space-y-4">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">CI/CD Discord Bot</h3>
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                    CI/CD Discord Bot</h3>
                                 <p class="text-xs text-slate-500 font-mono mt-1">October 2025 - Present</p>
                             </div>
-                            <a href="https://github.com/AntonSatt/discord-botty-doe25" target="_blank" class="text-slate-400 hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            <a href="https://github.com/AntonSatt/discord-botty-doe25" target="_blank"
+                                class="text-slate-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
                         </div>
                         <p class="text-slate-400 text-sm line-clamp-3">
-                            Full DevOps pipeline implementation for a Discord bot. Automated testing, building, and deployment using GitHub Actions.
+                            Full DevOps pipeline implementation for a Discord bot. Automated testing, building, and
+                            deployment using GitHub Actions.
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">GitHub Actions</span>
-                            <span class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Python</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">GitHub
+                                Actions</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Python</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-300">
+                <div
+                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-300">
                     <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10"></div>
-                        <img src="assets/NextCloud.jpg" alt="NextCloud Docker" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
+                        </div>
+                        <img src="assets/NextCloud.jpg" alt="NextCloud Docker"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="p-6 space-y-4">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">NextCloud Docker</h3>
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                    NextCloud Docker</h3>
                                 <p class="text-xs text-slate-500 font-mono mt-1">October 2025</p>
                             </div>
-                            <a href="https://github.com/AntonSatt/nextcloud-guide" target="_blank" class="text-slate-400 hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            <a href="https://github.com/AntonSatt/nextcloud-guide" target="_blank"
+                                class="text-slate-400 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
                         </div>
                         <p class="text-slate-400 text-sm line-clamp-3">
-                            Self-hosted cloud storage solution using Docker Compose. Focus on data persistence, networking, and ease of deployment.
+                            Self-hosted cloud storage solution using Docker Compose. Focus on data persistence,
+                            networking, and ease of deployment.
                         </p>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Docker</span>
-                            <span class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Compose</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Docker</span>
+                            <span
+                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Compose</span>
                         </div>
                     </div>
                 </div>
@@ -472,7 +785,8 @@
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-slate-900/30">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl fade-in-on-scroll">
+            <div
+                class="max-w-4xl mx-auto bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl fade-in-on-scroll">
                 <div class="grid md:grid-cols-2">
                     <div class="p-10 space-y-8">
                         <div>
@@ -481,25 +795,38 @@
                                 Have a question or want to discuss a project? I'm always open to new opportunities.
                             </p>
                         </div>
-                        
+
                         <div class="space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
                                 </div>
                                 <div>
                                     <p class="text-sm text-slate-500">Location</p>
                                     <p class="text-white font-medium">Stockholm, Sweden</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                    </svg>
                                 </div>
                                 <div>
                                     <p class="text-sm text-slate-500">Email</p>
-                                    <a href="mailto:anton.satt@pm.me" class="text-white font-medium hover:text-cyan-400 transition-colors">anton.satt@pm.me</a>
+                                    <a href="mailto:anton.satt@pm.me"
+                                        class="text-white font-medium hover:text-cyan-400 transition-colors">anton.satt@pm.me</a>
                                 </div>
                             </div>
                         </div>
@@ -507,31 +834,53 @@
                         <div class="pt-8 border-t border-white/5">
                             <p class="text-sm text-slate-500 mb-4">Connect with me</p>
                             <div class="flex gap-4">
-                                <a href="https://github.com/antonsatt" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                <a href="https://github.com/antonsatt" target="_blank"
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                        <path d="M9 18c-4.51 2-5-2-7-2" />
+                                    </svg>
                                 </a>
-                                <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-slate-800/50 p-10">
                         <form id="contactForm" class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-slate-400 mb-1">Name</label>
-                                <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors" placeholder="Your Name">
+                                <input type="text" name="name" required
+                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors"
+                                    placeholder="Your Name">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-slate-400 mb-1">Email</label>
-                                <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors" placeholder="your.email@example.com">
+                                <input type="email" name="email" required
+                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors"
+                                    placeholder="your.email@example.com">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-slate-400 mb-1">Message</label>
-                                <textarea name="message" required rows="4" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors resize-none" placeholder="What would you like to discuss?"></textarea>
+                                <textarea name="message" required rows="4"
+                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors resize-none"
+                                    placeholder="What would you like to discuss?"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
+                            <button type="submit"
+                                class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
                                 Send Message
                             </button>
                         </form>
@@ -545,11 +894,15 @@
         <p>&copy; 2025 Anton Sätterkvist. Built with code & chaos.</p>
     </footer>
 
-    <div id="toast" class="fixed bottom-8 right-8 px-6 py-4 bg-slate-800 border border-cyan-500/50 text-white rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
-        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <div id="toast"
+        class="fixed bottom-8 right-8 px-6 py-4 bg-slate-800 border border-cyan-500/50 text-white rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
         <span id="toast-message">Message sent successfully!</span>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
