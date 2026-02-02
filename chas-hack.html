@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Chas Hack | Event Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
+        <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
+            <a href="index.html"
+                class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="group-hover:-translate-x-1 transition-transform">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
+                Back to Portfolio
+            </a>
+            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;Chas Hack /&gt;</span>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6">
+
+            <!-- Header -->
+            <div class="max-w-4xl mx-auto mb-16 animate-fade-in">
+                <div class="flex flex-wrap items-center gap-4 mb-6">
+                    <span
+                        class="px-4 py-1.5 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-full text-sm font-bold flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        Event Organizer
+                    </span>
+                    <span
+                        class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-mono">Jan
+                        30, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Chas Hack: <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">The First Student Hackathon</span>
+                </h1>
+                <p class="text-xl text-slate-400 leading-relaxed">
+                    The premiere hackathon at Chas Academy, organized by students for students. A day of creativity, 
+                    collaboration, and innovation with the theme "Simplify" — turning chaos into clarity.
+                </p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto mb-24">
+
+                <!-- Left Column: Details -->
+                <div class="lg:col-span-2 space-y-12 animate-fade-in" style="animation-delay: 0.1s;">
+
+                    <!-- Main Image Slider -->
+                    <div
+                        class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video group">
+                        <!-- Slide 1 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                            <img src="assets/chas_hack/group_photo.jpg" alt="Chas Hack Group Photo"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                            <img src="assets/chas_hack/winner_1.jpg" alt="Chas Hack Winners - Creativity & Technical Excellence"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="project-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                            <img src="assets/chas_hack/winner_2.jpg" alt="Chas Hack Winners - Innovation"
+                                class="w-full h-full object-contain">
+                        </div>
+
+                        <!-- Indicators -->
+                        <div class="absolute bottom-4 right-4 flex gap-2 z-10">
+                            <button class="w-2 h-2 rounded-full bg-white transition-all project-indicator"
+                                onclick="setProjectSlide(0)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all project-indicator"
+                                onclick="setProjectSlide(1)"></button>
+                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all project-indicator"
+                                onclick="setProjectSlide(2)"></button>
+                        </div>
+                    </div>
+
+                    <!-- The Event Story -->
+                    <div class="prose prose-invert prose-lg max-w-none">
+                        <h3 class="text-2xl font-bold text-white mb-4">The Vision</h3>
+                        <p class="text-slate-400 mb-8">
+                            Chas Hack was born from a simple idea: students inspiring students. As first-year students at Chas Academy, 
+                            we knew firsthand how powerful hackathons can be for learning, networking, and pushing creative boundaries. 
+                            We wanted to create a welcoming space where everyone could participate — no prior experience required.
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">Theme: Simplify</h3>
+                        <p class="text-slate-400 mb-8">
+                            <span class="text-purple-400 font-semibold">From chaos to clarity.</span> The challenge was to take something 
+                            complicated, boring, or messy in school or everyday life and build a solution that makes it simple and efficient. 
+                            Teams had freedom to choose any tech stack — from console apps to full web applications — with AI tools encouraged.
+                        </p>
+                        <p class="text-slate-400 mb-8 border-l-4 border-purple-500 pl-4 italic">
+                            "The expectation wasn't to build an enterprise-grade product. The goal was to get as far as possible, 
+                            present an MVP demo, and explain how the project could evolve. Creativity and innovation over perfection."
+                        </p>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">The Winners 🏆</h3>
+                        <div class="space-y-6 mb-8">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20">
+                                <h4 class="text-lg font-bold text-yellow-400 mb-2">🎨 Creativity & 🔧 Technical Excellence</h4>
+                                <p class="text-slate-300 mb-2"><strong>Axel Wallström & Fabian Yousif</strong></p>
+                                <p class="text-slate-400 text-sm">Created a fully functional movie streaming website! An impressive technical achievement that wowed the judges. 🤯</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+                                <h4 class="text-lg font-bold text-cyan-400 mb-2">💡 Innovation</h4>
+                                <p class="text-slate-300 mb-2"><strong>Elina Jonsson, Sebastian Enerstrand, Andrea Bleckert & Daniel Hultmark</strong></p>
+                                <p class="text-slate-400 text-sm">Built a revolutionary parking app that simplifies the chaotic experience of finding and paying for parking!</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">The Day's Schedule</h3>
+                        <div class="space-y-2 mb-8 font-mono text-sm">
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">09:00</span>
+                                <span class="text-slate-300">Kick off - Sal 11 (AW-rummet)</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">09:30</span>
+                                <span class="text-slate-300">Hackathon del 1</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">12:00</span>
+                                <span class="text-slate-300">Lunch - PAUSE för hacking! ⚠️</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">13:00</span>
+                                <span class="text-slate-300">Hackathon del 2</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">15:00</span>
+                                <span class="text-slate-300">Fika ☕🍪</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-red-400 w-20">17:29</span>
+                                <span class="text-slate-300">SLUTA HACKA ‼️</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">17:30</span>
+                                <span class="text-slate-300">Review - Presentations</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-slate-900/50 border border-white/5">
+                                <span class="text-purple-400 w-20">18:30</span>
+                                <span class="text-slate-300">Retro</span>
+                            </div>
+                            <div class="flex gap-4 p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+                                <span class="text-pink-400 w-20">19:00</span>
+                                <span class="text-slate-300">🎮 LAN PARTY!</span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-4">The Organizing Team</h3>
+                        <p class="text-slate-400 mb-4">
+                            This event wouldn't have been possible without an amazing team of organizers. We started planning back in 
+                            December 2025 and worked together to make sure everything ran smoothly.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 hover:text-purple-200 transition-colors">Anton Sätterkvist</a>
+                            <a href="https://www.linkedin.com/in/theolillieskold/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 hover:text-purple-200 transition-colors">Theo Lilliesköld</a>
+                            <a href="https://www.linkedin.com/in/moises-leon/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 hover:text-purple-200 transition-colors">Moises Leon</a>
+                            <a href="https://www.linkedin.com/in/victoria-linden/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 hover:text-purple-200 transition-colors">Victoria Lindén</a>
+                            <a href="https://www.linkedin.com/in/siriprydz/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 hover:text-purple-200 transition-colors">Siri Prydz</a>
+                        </div>
+
+                        <p class="text-slate-400">
+                            I'm incredibly proud of all the teams that participated. The talent at Chas Academy is truly impressive, 
+                            and I can't wait for the next Chas Hack! ❤️
+                        </p>
+                    </div>
+
+                    <!-- Gallery -->
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-white">Event Gallery</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(0)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/group_photo.jpg" alt="Chas Hack Group Photo"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(1)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/winner_1.jpg" alt="Winners - Creativity & Technical Excellence"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(2)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/winner_2.jpg" alt="Winners - Innovation"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(3)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/anton_theo.jpg" alt="Anton & Theo"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(4)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/anton_theo_2.jpg" alt="Anton & Theo"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
+                                onclick="openLightbox(5)">
+                                <div
+                                    class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100">
+                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                    </svg>
+                                </div>
+                                <img src="assets/chas_hack/Elivra_Johannes.jpg" alt="Johannes & Elvira looking dapper"
+                                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sidebar -->
+                <div class="space-y-8 animate-fade-in" style="animation-delay: 0.2s;">
+
+                    <!-- Event Logo -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10 flex justify-center">
+                        <img src="assets/chas_hack/chas_hack_logo.png" alt="Chas Hack Logo" class="max-w-[200px] h-auto">
+                    </div>
+
+                    <!-- Links Card -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
+                        <h3 class="text-lg font-bold text-white mb-4">Event Links</h3>
+                        <div class="space-y-3">
+                            <a href="https://www.linkedin.com/posts/anton-satterkvist_chasacademy-chashack-hackathon-activity-7423983610501910528-yqIe" target="_blank"
+                                class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-colors text-blue-400 hover:text-blue-300 border border-blue-500/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                    <rect x="2" y="9" width="4" height="12" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg>
+                                <span class="font-medium">LinkedIn Post</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/chas-hack" target="_blank"
+                                class="flex items-center gap-3 p-3 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors text-purple-400 hover:text-purple-300 border border-purple-500/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                <span class="font-medium">Chas Hack Company</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Event Info Card -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
+                        <h3 class="text-lg font-bold text-white mb-4">Event Details</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="text-purple-400 shrink-0 mt-0.5">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <div>
+                                    <p class="text-slate-300 font-medium">Date</p>
+                                    <p class="text-slate-400">Friday, January 30, 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="text-purple-400 shrink-0 mt-0.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <div>
+                                    <p class="text-slate-300 font-medium">Location</p>
+                                    <p class="text-slate-400">Chas Academy, Stockholm</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="text-purple-400 shrink-0 mt-0.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <div>
+                                    <p class="text-slate-300 font-medium">Duration</p>
+                                    <p class="text-slate-400">09:00 - 19:00 (+ LAN Party)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="text-purple-400 shrink-0 mt-0.5">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <div>
+                                    <p class="text-slate-300 font-medium">Theme</p>
+                                    <p class="text-slate-400">"Simplify" — From chaos to clarity</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Judging Categories -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
+                        <h3 class="text-lg font-bold text-white mb-4">Judging Categories</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                                <span class="text-xl">🔧</span>
+                                <span class="text-yellow-300 font-medium">Technical Excellence</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                                <span class="text-xl">💡</span>
+                                <span class="text-cyan-300 font-medium">Innovation</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-pink-500/10 border border-pink-500/20">
+                                <span class="text-xl">🎨</span>
+                                <span class="text-pink-300 font-medium">Creativity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Role -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
+                        <h3 class="text-lg font-bold text-white mb-4">My Role</h3>
+                        <ul class="space-y-3 text-slate-400 text-sm">
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Event planning & coordination
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Team formation & group management
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Discord community setup
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Mentoring participants
+                            </li>
+                            <li class="flex gap-3">
+                                <svg class="w-5 h-5 text-purple-400 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Judging & presenting awards
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Hashtags -->
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
+                        <h3 class="text-lg font-bold text-white mb-4">Tags</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">#ChasHack</span>
+                            <span class="px-3 py-1 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">#ChasAcademy</span>
+                            <span class="px-3 py-1 text-sm font-medium text-pink-300 bg-pink-950/30 border border-pink-500/20 rounded-full">#Hackathon</span>
+                            <span class="px-3 py-1 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">#StudentEvent</span>
+                            <span class="px-3 py-1 text-sm font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded-full">#Stockholm</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Anton Sätterkvist. Built with code & chaos.</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-slate-950/95 hidden flex items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <button onclick="closeLightbox()"
+            class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <button onclick="prevImage()"
+            class="absolute left-4 md:left-8 text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="relative max-w-7xl max-h-[90vh] p-4">
+            <img id="lightbox-img" src="" alt="Gallery Image"
+                class="max-h-[85vh] max-w-full rounded-lg shadow-2xl object-contain">
+            <div
+                class="absolute bottom-0 left-0 right-0 text-center pb-4 pt-8 bg-gradient-to-t from-slate-950/80 to-transparent">
+                <span id="current-index" class="text-white font-mono font-bold">1</span> <span
+                    class="text-slate-500 mx-2">/</span> <span id="total-images"
+                    class="text-slate-400 font-mono">6</span>
+            </div>
+        </div>
+
+        <button onclick="nextImage()"
+            class="absolute right-4 md:right-8 text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        const images = [
+            'assets/chas_hack/group_photo.jpg',
+            'assets/chas_hack/winner_1.jpg',
+            'assets/chas_hack/winner_2.jpg',
+            'assets/chas_hack/anton_theo.jpg',
+            'assets/chas_hack/anton_theo_2.jpg',
+            'assets/chas_hack/Elivra_Johannes.jpg'
+        ];
+        let currentIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const currentIndexSpan = document.getElementById('current-index');
+        const totalImagesSpan = document.getElementById('total-images');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateLightboxImage() {
+            lightboxImg.src = images[currentIndex];
+            currentIndexSpan.textContent = currentIndex + 1;
+            totalImagesSpan.textContent = images.length;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateLightboxImage();
+        }
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Project Slider Logic
+        let currentProjectSlide = 0;
+        const projectSlides = document.querySelectorAll('.project-slide');
+        const projectIndicators = document.querySelectorAll('.project-indicator');
+        let projectSliderInterval;
+
+        function showProjectSlide(index) {
+            if (projectSlides.length === 0) return;
+
+            projectSlides.forEach(slide => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+            });
+
+            projectIndicators.forEach(ind => {
+                ind.classList.remove('bg-white');
+                ind.classList.add('bg-white/50');
+            });
+
+            projectSlides[index].classList.remove('opacity-0');
+            projectSlides[index].classList.add('opacity-100');
+
+            projectIndicators[index].classList.remove('bg-white/50');
+            projectIndicators[index].classList.add('bg-white');
+
+            currentProjectSlide = index;
+        }
+
+        function nextProjectSlide() {
+            let next = (currentProjectSlide + 1) % projectSlides.length;
+            showProjectSlide(next);
+        }
+
+        function setProjectSlide(index) {
+            showProjectSlide(index);
+            resetProjectTimer();
+        }
+
+        function startProjectSlider() {
+            if (projectSlides.length > 0) {
+                projectSliderInterval = setInterval(nextProjectSlide, 5000);
+            }
+        }
+
+        function resetProjectTimer() {
+            clearInterval(projectSliderInterval);
+            startProjectSlider();
+        }
+
+        // Initialize slider
+        startProjectSlider();
+    </script>
+</body>
+
+</html>
