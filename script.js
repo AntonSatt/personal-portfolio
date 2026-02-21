@@ -289,3 +289,29 @@ function resetTimer() {
 // Initialize slider
 startSlider();
 
+// Timeline Accordion
+function toggleTimeline(button) {
+    const item = button.closest('.timeline-item');
+    const content = item.querySelector('.timeline-content');
+    const chevron = button.querySelector('svg');
+    const isExpanded = item.dataset.expanded === 'true';
+
+    if (isExpanded) {
+        content.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+        item.dataset.expanded = 'false';
+    } else {
+        content.classList.remove('hidden');
+        chevron.classList.add('rotate-180');
+        item.dataset.expanded = 'true';
+    }
+}
+
+// Set progress bar week variable
+document.addEventListener('DOMContentLoaded', function() {
+    const startDate = new Date('2025-09-01');
+    const today = new Date();
+    const weeks = Math.ceil(Math.abs(today - startDate) / (1000 * 60 * 60 * 24 * 7));
+    document.documentElement.style.setProperty('--week-progress', weeks);
+});
+
