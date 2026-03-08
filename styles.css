@@ -78,6 +78,34 @@ body {
     font-variant-numeric: tabular-nums;
 }
 
+/* Project description expand on hover */
+.desc-expand {
+    position: relative;
+    max-height: 4.5em;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.desc-expand::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2em;
+    background: linear-gradient(transparent, rgb(15 23 42));
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.desc-expand:hover {
+    max-height: 12em;
+}
+
+.desc-expand:hover::after {
+    opacity: 0;
+}
+
 /* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
