@@ -221,6 +221,36 @@
                             </div>
                         </div>
 
+                        <!-- Raspberry Pi -->
+                        <h3 class="text-2xl font-bold text-white mb-4">External Monitoring (Raspberry Pi)</h3>
+                        <p class="text-slate-400 mb-4">
+                            A Raspberry Pi 4 at home runs independently from the cluster, monitoring everything from the outside &mdash;
+                            because your monitoring shouldn't run on the same infrastructure it's watching.
+                        </p>
+                        <div class="space-y-3 mb-8">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-rose-500/10 to-pink-500/10 border border-rose-500/20">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-rose-400">are-we-up</h4>
+                                    <span class="text-xs text-slate-500 font-mono">Prometheus + Blackbox</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mt-1">Uptime monitoring with Prometheus, Blackbox Exporter, and Alertmanager. Sends Discord alerts when any site goes down.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-blue-400">Grafana Dashboards</h4>
+                                    <span class="text-xs text-slate-500 font-mono">grafana/grafana</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mt-1">Visualizes uptime, response times, and node metrics (CPU, memory, disk) across all servers via node-exporter and cAdvisor.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/20">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-lg font-bold text-teal-400">Nextcloud</h4>
+                                    <span class="text-xs text-slate-500 font-mono">linuxserver/nextcloud</span>
+                                </div>
+                                <p class="text-slate-400 text-sm mt-1">Self-hosted file storage and sync. Personal data stays at home, not on a cloud provider.</p>
+                            </div>
+                        </div>
+
                         <!-- Infrastructure layers -->
                         <h3 class="text-2xl font-bold text-white mb-4">Infrastructure Layers</h3>
                         <div class="space-y-6 mb-8">
