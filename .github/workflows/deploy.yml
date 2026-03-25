@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Deploy to K3s Cluster
 
 on:
   push:
@@ -12,20 +12,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to DigitalOcean
+      - name: Build Docker image
+        run: |
+          cat > Dockerfile <<'EOF'
+          FROM nginx:alpine
+          COPY . /usr/share/nginx/html/
+          EOF
+          docker build -t antonsatt-site:latest .
+
+      - name: Save and deploy image to K3s
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.DO_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.DO_HOST }}
-          REMOTE_USER: ${{ secrets.DO_USERNAME }}
-          TARGET: "/var/www/html" 
-          REMOTE_PORT: 33342
+          SSH_PRIVATE_KEY: ${{ secrets.ORACLE_SSH_KEY }}
+          ORACLE1_HOST: ${{ secrets.ORACLE1_HOST }}
+          ORACLE2_HOST: ${{ secrets.ORACLE2_HOST }}
+          SSH_USER: ubuntu
+          SSH_PORT: 33342
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p $REMOTE_PORT -H $REMOTE_HOST >> ~/.ssh/known_hosts
-          
-          # Sync files using rsync
-          # --delete: removes files on destination that are not in source
-          # --exclude: skips .git folder and github workflows
-          rsync -avz -e "ssh -p $REMOTE_PORT" --delete --exclude '.git*' --exclude '.github' ./ $REMOTE_USER@$REMOTE_HOST:$TARGET
+          ssh-keyscan -p $SSH_PORT -H $ORACLE1_HOST >> ~/.ssh/known_hosts
+          ssh-keyscan -p $SSH_PORT -H $ORACLE2_HOST >> ~/.ssh/known_hosts
+
+          # Save image and import into K3s on both nodes
+          docker save antonsatt-site:latest | ssh -p $SSH_PORT $SSH_USER@$ORACLE1_HOST "sudo k3s ctr images import -"
+          docker save antonsatt-site:latest | ssh -p $SSH_PORT $SSH_USER@$ORACLE2_HOST "sudo k3s ctr images import -"
+
+      - name: Restart deployment
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ORACLE_SSH_KEY }}
+          ORACLE1_HOST: ${{ secrets.ORACLE1_HOST }}
+          SSH_USER: ubuntu
+          SSH_PORT: 33342
+        run: |
+          ssh -p $SSH_PORT $SSH_USER@$ORACLE1_HOST "sudo k3s kubectl -n apps rollout restart deployment antonsatt"
