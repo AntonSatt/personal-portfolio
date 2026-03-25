@@ -147,9 +147,9 @@
                             class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img2"
                             onclick="openLightbox('assets/k3s-cluster.svg')">
                             <img src="assets/k3s-cluster.svg" alt="Infrastructure Architecture Diagram"
-                                class="w-full object-contain p-2">
-                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img2:bg-slate-950/30 transition-colors flex items-center justify-center">
-                                <span class="opacity-0 group-hover/img2:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
+                                class="w-full object-contain p-2 pointer-events-none">
+                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img2:bg-slate-950/30 transition-colors flex items-center justify-center z-10">
+                                <span class="opacity-0 group-hover/img2:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2 pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="15 3 21 3 21 9"></polyline>
                                         <polyline points="9 21 3 21 3 15"></polyline>
