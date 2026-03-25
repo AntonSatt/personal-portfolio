@@ -105,8 +105,8 @@
                     <!-- Main Image -->
                     <div
                         class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video cursor-pointer group/img"
-                        onclick="openLightbox()">
-                        <img src="assets/k3s-cluster.svg" alt="K3s Cluster Architecture"
+                        onclick="openLightbox('assets/argocd.png')">
+                        <img src="assets/argocd.png" alt="ArgoCD Dashboard — Cluster Health"
                             class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/30 transition-colors flex items-center justify-center">
                             <span class="opacity-0 group-hover/img:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
@@ -140,6 +140,26 @@
                             Consolidated everything into a 2-node K3s Kubernetes cluster on Oracle Cloud's
                             always-free ARM64 VMs (24GB RAM total), with a full GitOps pipeline.
                         </p>
+
+                        <!-- Architecture Diagram -->
+                        <h3 class="text-2xl font-bold text-white mb-4">Architecture Overview</h3>
+                        <div
+                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img2"
+                            onclick="openLightbox('assets/k3s-cluster.svg')">
+                            <img src="assets/k3s-cluster.svg" alt="Infrastructure Architecture Diagram"
+                                class="w-full object-contain p-2">
+                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img2:bg-slate-950/30 transition-colors flex items-center justify-center">
+                                <span class="opacity-0 group-hover/img2:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <polyline points="9 21 3 21 3 15"></polyline>
+                                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                                        <line x1="3" y1="21" x2="10" y2="14"></line>
+                                    </svg>
+                                    Click to enlarge
+                                </span>
+                            </div>
+                        </div>
 
                         <!-- Workflow -->
                         <h3 class="text-2xl font-bold text-white mb-4">How Deployments Work</h3>
@@ -453,7 +473,7 @@
             </svg>
         </button>
         <div class="relative max-w-7xl max-h-[90vh] p-4" onclick="event.stopPropagation()">
-            <img src="assets/k3s-cluster.svg" alt="K3s Cluster Architecture"
+            <img id="lightbox-img" src="" alt="Enlarged image"
                 class="max-h-[85vh] max-w-full rounded-lg shadow-2xl object-contain bg-slate-900 border border-white/10 p-4">
         </div>
     </div>
@@ -461,7 +481,8 @@
     <script>
         const lightbox = document.getElementById('lightbox');
 
-        function openLightbox() {
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
             lightbox.classList.remove('hidden');
             requestAnimationFrame(() => {
                 lightbox.classList.remove('opacity-0');
