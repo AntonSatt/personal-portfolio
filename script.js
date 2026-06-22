@@ -1,9 +1,10 @@
 // Typewriter Effect
 const typeWriterElement = document.getElementById('typewriter');
 const texts = [
+    "Platform Engineer",
     "DevOps Engineer",
+    "GitOps Practitioner",
     "Cloud Architect",
-    "Automation Expert",
     "Linux Enthusiast"
 ];
 let textIndex = 0;
@@ -58,20 +59,6 @@ const observer = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
     observer.observe(el);
 });
-
-// Calculate current week number (started Sept 1, 2025)
-function updateWeekNumber() {
-    const startDate = new Date('2025-09-01');
-    const today = new Date();
-    // Calculate difference in milliseconds
-    const diffTime = Math.abs(today - startDate);
-    // Calculate difference in weeks
-    const weeks = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7)); 
-    const remaining = 104 - weeks;
-    
-document.querySelectorAll('.week-number').forEach(el => el.textContent = weeks);
-    document.querySelectorAll('.weeks-remaining').forEach(el => el.textContent = remaining);
-}
 
 // Smooth scroll to projects section
 function scrollToProjects() {
@@ -129,9 +116,6 @@ function showToast(message, type = 'success') {
         toast.classList.add('translate-y-full', 'opacity-0');
     }, 4000);
 }
-
-// Update week numbers on page load
-updateWeekNumber();
 
 // Contact form handling with Formspree
 const contactForm = document.getElementById('contactForm');
@@ -307,11 +291,19 @@ function toggleTimeline(button) {
     }
 }
 
-// Set progress bar week variable
+// Program progress bar: fraction of the 2-year program elapsed (Sept 2025 to Sept 2027)
 document.addEventListener('DOMContentLoaded', function() {
-    const startDate = new Date('2025-09-01');
-    const today = new Date();
-    const weeks = Math.ceil(Math.abs(today - startDate) / (1000 * 60 * 60 * 24 * 7));
-    document.documentElement.style.setProperty('--week-progress', weeks);
+    const bar = document.getElementById('program-progress');
+    if (!bar) return;
+    const start = new Date('2025-09-01').getTime();
+    const end = new Date('2027-09-01').getTime();
+    const now = Date.now();
+    const pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
+    bar.style.width = pct.toFixed(1) + '%';
+    const weekEl = document.getElementById('program-week');
+    if (weekEl) {
+        const week = Math.min(104, Math.max(1, Math.ceil((now - start) / (1000 * 60 * 60 * 24 * 7))));
+        weekEl.textContent = week;
+    }
 });
 

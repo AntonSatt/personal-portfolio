@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Cloud Infrastructure Audit &amp; Migration Strategy | Project Details</title>
+    <title>AWS Cost &amp; Architecture Review | Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -51,7 +51,7 @@
                 </svg>
                 Back to Portfolio
             </a>
-            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;CloudMigration /&gt;</span>
+            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;AWSReview /&gt;</span>
         </div>
     </nav>
 
@@ -70,19 +70,18 @@
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
-                        Consulting / Cloud Infrastructure
+                        Informal Infrastructure Work
                     </span>
                     <span
-                        class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-mono">March 2026 - Ongoing</span>
+                        class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-mono">Early 2026</span>
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    Cloud Infrastructure Audit &amp; <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Migration Strategy</span>
+                    AWS Cost &amp; <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Architecture Review</span>
                 </h1>
                 <p class="text-xl text-slate-400 leading-relaxed">
-                    Helping a mid-sized Swedish publishing house evaluate their AWS infrastructure,
-                    reduce costs, regain control over their cloud setup, and address data sovereignty
-                    and compliance concerns.
+                    Informal infrastructure work helping a small dev team get a handle on their AWS
+                    setup: cost drivers, transparency, and data-sovereignty options.
                 </p>
             </div>
 
@@ -96,7 +95,7 @@
                     <div
                         class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video cursor-pointer group/img"
                         onclick="openLightbox()">
-                        <img src="assets/cloud-migration.svg" alt="Cloud Migration Strategy"
+                        <img src="assets/cloud-migration.svg" alt="AWS Cost and Architecture Review"
                             class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/30 transition-colors flex items-center justify-center">
                             <span class="opacity-0 group-hover/img:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
@@ -115,22 +114,22 @@
                     <div class="prose prose-invert prose-lg max-w-none">
                         <h3 class="text-2xl font-bold text-white mb-4">The Background</h3>
                         <p class="text-slate-400 mb-8">
-                            A mid-sized Swedish publishing house with a small development team was facing
-                            a six-figure monthly AWS bill. But cost was only part of the problem. The team had
-                            limited visibility into how their infrastructure actually worked, and relying entirely
-                            on a US-based cloud provider raised concerns around data sovereignty and compliance.
-                            I stepped in to audit the full stack, identify waste, and map out realistic alternatives
-                            that would give the company back control over their infrastructure.
+                            A small dev team was facing a growing AWS bill they did not fully understand. But
+                            cost was only part of the problem. They had limited visibility into how their
+                            infrastructure actually worked, and relying entirely on a US-based cloud provider
+                            raised questions around data sovereignty. I helped out informally: looking over the
+                            full stack, spotting waste, and mapping out realistic alternatives that would give
+                            them more control over their setup.
                         </p>
                         <p class="text-slate-400 mb-8 border-l-4 border-amber-500 pl-4 italic">
-                            "This wasn't just about cutting costs. It was about understanding the infrastructure,
-                            owning the decisions, and making sure the setup meets Swedish compliance requirements
-                            &mdash; not just trusting a US provider to handle it."
+                            "This wasn't just about cutting costs. It was about understanding the
+                            infrastructure, owning the decisions, and knowing where the data actually lives,
+                            not just trusting a US provider to handle it."
                         </p>
 
                         <h3 class="text-2xl font-bold text-white mb-4">The Approach</h3>
                         <p class="text-slate-400 mb-6">
-                            The work followed a structured consulting approach across multiple sessions:
+                            The work was informal and hands-on, spread across a few sessions:
                         </p>
 
                         <!-- Phase Timeline -->
@@ -149,15 +148,15 @@
                             </div>
                             <div class="p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20">
                                 <h4 class="text-lg font-bold text-red-400 mb-2">Phase 3: Strategic Recommendations</h4>
-                                <p class="text-slate-400 text-sm">Evaluated three paths: optimize on AWS (20&ndash;30% savings), migrate to a Swedish managed
-                                    provider (40&ndash;50% savings), or full self-hosting at a Swedish datacenter (60&ndash;70% savings).
+                                <p class="text-slate-400 text-sm">Evaluated three paths: optimize on AWS (20 to 30% savings), migrate to a Swedish managed
+                                    provider (40 to 50% savings), or full self-hosting at a Swedish datacenter (60 to 70% savings).
                                     Each option came with honest trade-offs around risk, team skill requirements, and operational burden.</p>
                             </div>
                             <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
                                 <h4 class="text-lg font-bold text-cyan-400 mb-2">Phase 4: Migration Planning (Proposed)</h4>
                                 <p class="text-slate-400 text-sm">Proposed a migration roadmap with service-by-service equivalents: Kubernetes for ECS,
                                     self-hosted PostgreSQL for RDS, MinIO for S3, Cloudflare for CloudFront, and Grafana + Prometheus
-                                    replacing CloudWatch. The plan is currently with the company for review and decision.</p>
+                                    replacing CloudWatch. I left the plan with the team to take or leave.</p>
                             </div>
                         </div>
 
@@ -174,14 +173,14 @@
                                 <span class="text-3xl font-bold text-orange-400 font-mono shrink-0">~50%</span>
                                 <div>
                                     <p class="text-white font-medium">potential monthly cost reduction</p>
-                                    <p class="text-slate-400 text-sm">By migrating to a Swedish managed provider &mdash; the recommended option balancing savings with operational simplicity.</p>
+                                    <p class="text-slate-400 text-sm">By migrating to a Swedish managed provider, the option I recommended for balancing savings with operational simplicity.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
                                 <span class="text-3xl font-bold text-red-400 font-mono shrink-0">10%</span>
                                 <div>
                                     <p class="text-white font-medium">of spend on managed Redis</p>
-                                    <p class="text-slate-400 text-sm">ElastiCache was one of the easiest quick wins &mdash; self-hosted Redis is trivial to run and nearly free.</p>
+                                    <p class="text-slate-400 text-sm">ElastiCache was one of the easiest quick wins: self-hosted Redis is trivial to run and nearly free.</p>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +235,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-slate-300 font-medium">Type</p>
-                                    <p class="text-slate-400">Consulting / Cloud Infrastructure</p>
+                                    <p class="text-slate-400">Informal / Cloud Infrastructure</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -248,7 +247,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-slate-300 font-medium">Status</p>
-                                    <p class="text-slate-400">Ongoing</p>
+                                    <p class="text-slate-400">Wrapped up</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -259,8 +258,8 @@
                                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                                 </svg>
                                 <div>
-                                    <p class="text-slate-300 font-medium">Client</p>
-                                    <p class="text-slate-400">Swedish Publishing House</p>
+                                    <p class="text-slate-300 font-medium">Context</p>
+                                    <p class="text-slate-400">Small dev team</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -272,7 +271,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-slate-300 font-medium">Scope</p>
-                                    <p class="text-slate-400">Cost Audit, Infrastructure Mapping, Migration Strategy, Compliance</p>
+                                    <p class="text-slate-400">Cost review, architecture mapping, data-sovereignty options</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -283,8 +282,8 @@
                                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                 </svg>
                                 <div>
-                                    <p class="text-slate-300 font-medium">Monthly AWS Spend</p>
-                                    <p class="text-slate-400">Six-figure SEK</p>
+                                    <p class="text-slate-300 font-medium">Main cost driver</p>
+                                    <p class="text-slate-400">Databases (RDS)</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
@@ -295,8 +294,8 @@
                                     <polyline points="17 6 23 6 23 12"></polyline>
                                 </svg>
                                 <div>
-                                    <p class="text-slate-300 font-medium">Projected Savings</p>
-                                    <p class="text-slate-400">Up to 50%</p>
+                                    <p class="text-slate-300 font-medium">Estimated Savings</p>
+                                    <p class="text-slate-400">Up to ~50%</p>
                                 </div>
                             </div>
                         </div>
@@ -306,10 +305,10 @@
                     <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
                         <h3 class="text-lg font-bold text-white mb-4">Tags</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">#Consulting</span>
+                            <span class="px-3 py-1 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">#Informal</span>
                             <span class="px-3 py-1 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">#AWS</span>
                             <span class="px-3 py-1 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">#CostOptimization</span>
-                            <span class="px-3 py-1 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">#CloudMigration</span>
+                            <span class="px-3 py-1 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">#ArchitectureReview</span>
                             <span class="px-3 py-1 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">#Infrastructure</span>
                             <span class="px-3 py-1 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">#DevOps</span>
                             <span class="px-3 py-1 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">#Kubernetes</span>
@@ -341,7 +340,7 @@
             </svg>
         </button>
         <div class="relative max-w-7xl max-h-[90vh] p-4">
-            <img src="assets/cloud-migration.svg" alt="Cloud Migration Strategy"
+            <img src="assets/cloud-migration.svg" alt="AWS Cost and Architecture Review"
                 class="max-h-[85vh] max-w-full rounded-lg shadow-2xl object-contain">
         </div>
     </div>
