@@ -20,7 +20,6 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p 33342 -H ${{ secrets.ORACLE1_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
-          ssh-keyscan -p 33342 -H ${{ secrets.ORACLE2_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Test SSH connection
         run: |
@@ -40,10 +39,6 @@ jobs:
             sudo docker save antonsatt-site:latest | sudo k3s ctr images import - &&
             rm -rf /tmp/antonsatt-build
           "
-
-          # Push image to oracle-2
-          ssh -p 33342 ubuntu@${{ secrets.ORACLE1_HOST }} "sudo docker save antonsatt-site:latest" | \
-            ssh -p 33342 ubuntu@${{ secrets.ORACLE2_HOST }} "sudo k3s ctr images import -"
 
           # Restart deployment
           ssh -p 33342 ubuntu@${{ secrets.ORACLE1_HOST }} "sudo k3s kubectl -n apps rollout restart deployment antonsatt"
