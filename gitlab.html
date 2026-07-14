@@ -1,317 +1,247 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>GitLab Self-Hosted | Project Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-orange-500/30">
+<body>
+    <a class="skip-link" href="#main">skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
-        <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <a href="index.html"
-                class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="group-hover:-translate-x-1 transition-transform">
-                    <path d="m15 18-6-6 6-6" />
-                </svg>
-                Back to Portfolio
-            </a>
-            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;GitLab /&gt;</span>
+    <!-- console rail (desktop) -->
+    <aside class="rail">
+        <img class="rail-avatar" src="assets/me.png" alt="Anton Sätterkvist">
+        <a class="rail-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <span class="rail-sub">platform · devops · gitops</span>
+        <nav class="rail-nav" aria-label="Sections">
+            <a href="index.html#about">~/about</a>
+            <a href="index.html#journey">~/journey</a>
+            <a href="index.html#projects" class="active">~/projects</a>
+            <a href="index.html#contact">~/contact</a>
+        </nav>
+        <div class="rail-status">
+            <span class="statusline"><span class="led" aria-hidden="true"></span> operational</span>
+            <span>stockholm <span class="clock">--:--:--</span></span>
+            <span>3 nodes · 6 services</span>
         </div>
+        <div class="rail-social">
+            <a href="https://github.com/antonsatt" target="_blank" rel="noopener">github ↗</a>
+            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" rel="noopener">linkedin ↗</a>
+            <a href="mailto:anton@antonsatt.com">anton@antonsatt.com</a>
+        </div>
+        <span class="rail-meta">v2 · self-hosted on K3s</span>
+    </aside>
+
+    <!-- topbar (mobile) -->
+    <header class="topbar">
+        <a class="topbar-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu">menu</button>
+    </header>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Sections">
+        <a href="index.html#about">~/about</a>
+        <a href="index.html#journey">~/journey</a>
+        <a href="index.html#projects">~/projects</a>
+        <a href="index.html#contact">~/contact</a>
+        <span class="statusline"><span class="led" aria-hidden="true"></span> operational · stockholm <span
+                class="clock">--:--:--</span></span>
     </nav>
 
-    <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6">
+    <main class="main" id="main">
 
-            <!-- Header -->
-            <div class="max-w-4xl mx-auto mb-16 animate-fade-in">
-                <div class="flex flex-wrap items-center gap-4 mb-6">
-                    <span
-                        class="px-4 py-1.5 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full text-sm font-bold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                        Infrastructure / DevOps
-                    </span>
-                    <span
-                        class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-mono">Mar 2026</span>
+        <header class="case-header">
+            <div class="section-inner">
+                <span class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / <span
+                        class="here">gitlab</span></span>
+                <div class="chips">
+                    <span class="chip"><span class="k">type:</span> Infrastructure / DevOps</span>
+                    <span class="chip"><span class="k">when:</span> Mar 2026</span>
+                    <span class="chip chip--jade"><span class="k">status:</span> Live &amp; Running</span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    GitLab Self-Hosted: <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Full DevOps Platform</span>
-                </h1>
-                <p class="text-xl text-slate-400 leading-relaxed">
+                <h1>GitLab Self-Hosted</h1>
+                <p class="case-sub">Full DevOps Platform</p>
+                <p class="lede">
                     A self-hosted GitLab CE instance running on a cloud VPS, replacing a previous Forgejo setup.
-                    Built to gain hands-on experience with production-grade DevOps tooling and infrastructure management.
+                    Built to gain hands-on experience with production-grade DevOps tooling and infrastructure
+                    management.
                 </p>
             </div>
+        </header>
 
-            <!-- Main Content Grid -->
-            <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto mb-24">
+        <div class="case-body">
+            <div class="case-grid">
+                <div class="case-main">
 
-                <!-- Left Column: Details -->
-                <div class="lg:col-span-2 space-y-12 animate-fade-in" style="animation-delay: 0.1s;">
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/gitlab.png"
+                            aria-label="Enlarge: GitLab Self-Hosted">
+                            <img src="assets/gitlab.png" alt="GitLab Self-Hosted">
+                        </button>
+                        <figcaption>GitLab Self-Hosted — click to enlarge</figcaption>
+                    </figure>
 
-                    <!-- Main Image -->
-                    <div
-                        class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video">
-                        <img src="assets/gitlab.png" alt="GitLab Self-Hosted"
-                            class="w-full h-full object-cover">
-                    </div>
+                    <h2>Why I Built This</h2>
+                    <p>
+                        I was running Forgejo as my self-hosted Git platform &mdash; it worked great, but as a DevOps
+                        student I wanted to learn the tooling that's actually used in the industry. GitLab is one of
+                        the most widely adopted DevOps platforms, offering built-in CI/CD, issue tracking, container
+                        registries, and more &mdash; all in one place. So I decided to migrate.
+                    </p>
+                    <blockquote>
+                        "The goal wasn't just to swap one Git UI for another. GitLab CE gives me a full DevOps
+                        platform to experiment with &mdash; pipelines, runners, environments, and deployment workflows.
+                        Running it self-hosted means I own the entire stack and get hands-on experience managing a
+                        production-grade application with real resource constraints."
+                    </blockquote>
 
-                    <!-- The Story -->
-                    <div class="prose prose-invert prose-lg max-w-none">
-                        <h3 class="text-2xl font-bold text-white mb-4">Why I Built This</h3>
-                        <p class="text-slate-400 mb-8">
-                            I was running Forgejo as my self-hosted Git platform &mdash; it worked great, but as a DevOps
-                            student I wanted to learn the tooling that's actually used in the industry. GitLab is one of
-                            the most widely adopted DevOps platforms, offering built-in CI/CD, issue tracking, container
-                            registries, and more &mdash; all in one place. So I decided to migrate.
-                        </p>
-                        <p class="text-slate-400 mb-8 border-l-4 border-orange-500 pl-4 italic">
-                            "The goal wasn't just to swap one Git UI for another. GitLab CE gives me a full DevOps
-                            platform to experiment with &mdash; pipelines, runners, environments, and deployment workflows.
-                            Running it self-hosted means I own the entire stack and get hands-on experience managing a
-                            production-grade application with real resource constraints."
-                        </p>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Key Features</h3>
-                        <div class="space-y-6 mb-8">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20">
-                                <h4 class="text-lg font-bold text-orange-400 mb-2">Dockerized Deployment</h4>
-                                <p class="text-slate-400 text-sm">GitLab CE running in Docker Compose for easy management, backups, and reproducibility.</p>
+                    <h2>Key Features</h2>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Dockerized Deployment</h4>
                             </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20">
-                                <h4 class="text-lg font-bold text-red-400 mb-2">Resource-Optimized Configuration</h4>
-                                <p class="text-slate-400 text-sm">Tuned for a lightweight cloud server by disabling unnecessary services (monitoring, container registry, exporters) and optimizing the web server for minimal resource usage.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
-                                <h4 class="text-lg font-bold text-green-400 mb-2">HTTPS with Auto-Renewed Certificates</h4>
-                                <p class="text-slate-400 text-sm">Secured with Let's Encrypt via Certbot, with Nginx as a reverse proxy handling SSL termination.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-                                <h4 class="text-lg font-bold text-cyan-400 mb-2">SSH Git Access</h4>
-                                <p class="text-slate-400 text-sm">Configured for SSH-based Git operations on a custom port, with clone URLs automatically reflecting the correct connection details.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-violet-500/10 border border-purple-500/20">
-                                <h4 class="text-lg font-bold text-purple-400 mb-2">Swap Memory</h4>
-                                <p class="text-slate-400 text-sm">Added swap space as a safety net for a memory-intensive application running on a budget server.</p>
-                            </div>
+                            <p>GitLab CE running in Docker Compose for easy management, backups, and reproducibility.
+                            </p>
                         </div>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Architecture</h3>
-                        <div class="space-y-2 mb-8 font-mono text-sm">
-                            <div class="p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <p class="text-orange-400 mb-2">User &rarr; HTTPS</p>
-                                <p class="text-slate-400 pl-4">&rarr; Nginx (SSL termination via Let's Encrypt)</p>
-                                <p class="text-red-400 pl-8">&rarr; GitLab CE (Docker) :80</p>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Resource-Optimized Configuration</h4>
                             </div>
-                            <div class="p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <p class="text-cyan-400 mb-2">User &rarr; SSH</p>
-                                <p class="text-slate-400 pl-4">&rarr; GitLab SSH (Docker)</p>
+                            <p>Tuned for a lightweight cloud server by disabling unnecessary services (monitoring,
+                                container registry, exporters) and optimizing the web server for minimal resource
+                                usage.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>HTTPS with Auto-Renewed Certificates</h4>
                             </div>
+                            <p>Secured with Let's Encrypt via Certbot, with Nginx as a reverse proxy handling SSL
+                                termination.</p>
                         </div>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Tech Stack</h3>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1.5 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">GitLab CE</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">Docker Compose</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">Nginx</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded-full">Let's Encrypt</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">PostgreSQL</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">Redis</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">Ubuntu 24.04 LTS</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-slate-300 bg-slate-800/30 border border-slate-500/20 rounded-full">Certbot</span>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>SSH Git Access</h4>
+                            </div>
+                            <p>Configured for SSH-based Git operations on a custom port, with clone URLs automatically
+                                reflecting the correct connection details.</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Sidebar -->
-                <div class="space-y-8 animate-fade-in" style="animation-delay: 0.2s;">
-
-                    <!-- Links Card -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Project Links</h3>
-                        <div class="space-y-3">
-                            <a href="https://git.antonsatt.com/Kaffe" target="_blank"
-                                class="flex items-center gap-3 p-3 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 transition-colors text-orange-400 hover:text-orange-300 border border-orange-500/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                                <span class="font-medium">Live Instance</span>
-                            </a>
-                            <a href="https://git.antonsatt.com/Kaffe/gitlab-self-hosted" target="_blank"
-                                class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/30 hover:bg-slate-700/50 transition-colors text-slate-300 hover:text-white border border-slate-600/30">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.1 3.26a.42.42 0 0 0-.1-.18.38.38 0 0 0-.26-.08.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18L2 13.29a.74.74 0 0 0 .27.83L12 21l9.69-6.88a.71.71 0 0 0 .31-.83Z" />
-                                </svg>
-                                <span class="font-medium">Source Code (GitLab)</span>
-                            </a>
-                            <a href="https://github.com/AntonSatt/gitlab-self-host" target="_blank"
-                                class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/30 hover:bg-slate-700/50 transition-colors text-slate-300 hover:text-white border border-slate-600/30">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                <span class="font-medium">Source Code (GitHub)</span>
-                            </a>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Swap Memory</h4>
+                            </div>
+                            <p>Added swap space as a safety net for a memory-intensive application running on a budget
+                                server.</p>
                         </div>
                     </div>
 
-                    <!-- Project Details Card -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Project Details</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Type</p>
-                                    <p class="text-slate-400">Infrastructure / DevOps</p>
-                                </div>
+                    <h2>Architecture</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-n step-n--num">1</span>
+                            <div>
+                                <p class="step-t">User &rarr; HTTPS</p>
+                                <p>&rarr; Nginx (SSL termination via Let's Encrypt)</p>
+                                <p>&rarr; GitLab CE (Docker) :80</p>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Status</p>
-                                    <p class="text-slate-400">Live & Running</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M22 12H2"></path>
-                                    <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
-                                    <line x1="6" y1="16" x2="6.01" y2="16"></line>
-                                    <line x1="10" y1="16" x2="10.01" y2="16"></line>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Hosting</p>
-                                    <p class="text-slate-400">Cloud VPS</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Stack</p>
-                                    <p class="text-slate-400">GitLab CE, Docker, Nginx, Let's Encrypt</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                                    <line x1="4" y1="22" x2="4" y2="15"></line>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Replaces</p>
-                                    <p class="text-slate-400">Previous Forgejo instance</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Access</p>
-                                    <p class="text-slate-400">HTTPS + SSH</p>
-                                </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">2</span>
+                            <div>
+                                <p class="step-t">User &rarr; SSH</p>
+                                <p>&rarr; GitLab SSH (Docker)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tags -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Tags</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">#GitLab</span>
-                            <span class="px-3 py-1 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">#SelfHosted</span>
-                            <span class="px-3 py-1 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">#Docker</span>
-                            <span class="px-3 py-1 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">#DevOps</span>
-                            <span class="px-3 py-1 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">#CI/CD</span>
-                            <span class="px-3 py-1 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">#Nginx</span>
-                            <span class="px-3 py-1 text-sm font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded-full">#LetsEncrypt</span>
-                            <span class="px-3 py-1 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">#Linux</span>
-                        </div>
+                    <h2>Tech Stack</h2>
+                    <div class="tags">
+                        <span class="tag">GitLab CE</span>
+                        <span class="tag">Docker Compose</span>
+                        <span class="tag">Nginx</span>
+                        <span class="tag">Let's Encrypt</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">Ubuntu 24.04 LTS</span>
+                        <span class="tag">Certbot</span>
                     </div>
 
                 </div>
+
+                <aside class="case-aside">
+                    <div class="aside-card">
+                        <h3>$ kubectl describe project</h3>
+                        <dl>
+                            <dt>Type</dt>
+                            <dd>Infrastructure / DevOps</dd>
+                            <dt>Status</dt>
+                            <dd>Live &amp; Running</dd>
+                            <dt>Hosting</dt>
+                            <dd>Cloud VPS</dd>
+                            <dt>Stack</dt>
+                            <dd>GitLab CE, Docker, Nginx, Let's Encrypt</dd>
+                            <dt>Replaces</dt>
+                            <dd>Previous Forgejo instance</dd>
+                            <dt>Access</dt>
+                            <dd>HTTPS + SSH</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h3>links</h3>
+                        <ul class="link-list">
+                            <li><a href="https://git.antonsatt.com/Kaffe" target="_blank" rel="noopener">Live Instance
+                                    ↗</a></li>
+                            <li><a href="https://git.antonsatt.com/Kaffe/gitlab-self-hosted" target="_blank"
+                                    rel="noopener">Source Code (GitLab) ↗</a></li>
+                            <li><a href="https://github.com/AntonSatt/gitlab-self-host" target="_blank"
+                                    rel="noopener">Source Code (GitHub) ↗</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h3>tags</h3>
+                        <div class="tags">
+                            <span class="tag">#GitLab</span>
+                            <span class="tag">#SelfHosted</span>
+                            <span class="tag">#Docker</span>
+                            <span class="tag">#DevOps</span>
+                            <span class="tag">#CI/CD</span>
+                            <span class="tag">#Nginx</span>
+                            <span class="tag">#LetsEncrypt</span>
+                            <span class="tag">#Linux</span>
+                        </div>
+                    </div>
+                </aside>
             </div>
-
         </div>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <p class="deploy-note statusline">
+                    <span class="led" aria-hidden="true"></span>
+                    <span>desired state: <a href="https://github.com/AntonSatt/personal-portfolio" target="_blank"
+                            rel="noopener">this repo</a> · running state: this page — deployed to my own HA K3s cluster
+                        via <a href="https://github.com/AntonSatt/personal-portfolio/blob/main/.github/workflows/deploy.yml"
+                            target="_blank" rel="noopener">GitHub Actions</a>.</span>
+                </p>
+                <p>&copy; 2026 Anton Sätterkvist. Built with code &amp; chaos.</p>
+            </div>
+        </footer>
+
     </main>
 
-    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Anton S&auml;tterkvist. Built with code & chaos.</p>
-    </footer>
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+        <button class="lightbox-close" type="button">close ✕</button>
+        <img src="" alt="">
+    </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

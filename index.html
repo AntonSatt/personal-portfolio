@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>Anton Sätterkvist | Platform & DevOps Engineer</title>
@@ -22,1716 +21,902 @@
         content="Platform-focused DevOps engineer running real GitOps infrastructure. Based in Stockholm, Sweden." />
     <meta property="og:type" content="website" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 12s linear infinite',
-                        'spin-reverse-slow': 'spin 15s linear infinite reverse',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/30">
+<body>
+    <a class="skip-link" href="#main">skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
-        <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <a href="#"
-                class="text-xl font-bold tracking-tight text-white hover:text-cyan-400 transition-colors font-mono">&lt;AntonS
-                /&gt;</a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
-                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-            </div>
-            <a href="#contact"
-                class="hidden md:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-slate-950 bg-white rounded-full hover:bg-cyan-50 transition-colors">
-                Let's Talk
-            </a>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white" id="mobile-menu-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+    <!-- console rail (desktop) -->
+    <aside class="rail">
+        <img class="rail-avatar" src="assets/me.png" alt="Anton Sätterkvist">
+        <a class="rail-brand" href="#top"><span class="tilde">~</span> anton@antonsatt</a>
+        <span class="rail-sub">platform · devops · gitops</span>
+        <nav class="rail-nav" aria-label="Sections">
+            <a href="#about">~/about</a>
+            <a href="#journey">~/journey</a>
+            <a href="#projects">~/projects</a>
+            <a href="#contact">~/contact</a>
+        </nav>
+        <div class="rail-status">
+            <span class="statusline"><span class="led" aria-hidden="true"></span> operational</span>
+            <span>stockholm <span class="clock">--:--:--</span></span>
+            <span>3 nodes · 6 services</span>
         </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-slate-950 border-b border-white/5 absolute top-full left-0 w-full"
-            id="mobile-menu">
-            <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-slate-400">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
-                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-            </div>
+        <div class="rail-social">
+            <a href="https://github.com/antonsatt" target="_blank" rel="noopener">github ↗</a>
+            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" rel="noopener">linkedin ↗</a>
+            <a href="mailto:anton@antonsatt.com">anton@antonsatt.com</a>
         </div>
+        <span class="rail-meta">v2 · self-hosted on K3s</span>
+    </aside>
+
+    <!-- topbar (mobile) -->
+    <header class="topbar">
+        <a class="topbar-brand" href="#top"><span class="tilde">~</span> anton@antonsatt</a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu">menu</button>
+    </header>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Sections">
+        <a href="#about">~/about</a>
+        <a href="#journey">~/journey</a>
+        <a href="#projects">~/projects</a>
+        <a href="#contact">~/contact</a>
+        <span class="statusline"><span class="led" aria-hidden="true"></span> operational · stockholm <span
+                class="clock">--:--:--</span></span>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 overflow-hidden">
-        <!-- Background Elements -->
-        <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px] -z-10 opacity-50">
-        </div>
-        <div
-            class="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] -z-10 opacity-30">
-        </div>
+    <main class="main" id="main">
 
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8 fade-in-up">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-sm flex-wrap justify-center">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    <span class="text-xs font-medium text-slate-300 text-center">Incoming Platform Engineer, LIA at Samhall AB (Nov 2026)</span>
-                    <span class="hidden sm:inline text-slate-600">|</span>
-                    <span class="text-xs font-medium text-slate-300 text-center">Open to 2027 graduate roles</span>
-                    <span class="hidden sm:inline text-slate-600">|</span>
-                    <span class="text-xs font-medium text-slate-300">Stockholm, SE 🇸🇪</span>
-                </div>
+        <!-- ~/ hero -->
+        <section class="hero" id="top">
+            <div class="hero-grid">
+                <div>
+                    <p class="term">
+                        <span class="prompt">$ </span><span class="cmd" id="type-cmd">kubectl apply -f anton.yaml</span><span
+                            class="caret" id="type-caret" hidden></span>
+                        <span class="term-response" id="type-resp">platformengineer.antonsatt.com/anton-satterkvist configured</span>
+                    </p>
 
-                <div class="space-y-4">
-                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
-                        Anton <br />
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Sätterkvist</span>
-                    </h1>
-                    <div class="h-8 md:h-10">
-                        <p class="text-xl md:text-2xl text-slate-400 font-mono" id="typewriter"></p>
+                    <h1 id="hero-name">Anton<br>Sätterkvist</h1>
+                    <span class="accent-serif tagline">Running real infrastructure, not just studying it.</span>
+
+                    <p class="intro">
+                        Platform-focused DevOps engineer running real GitOps infrastructure. I build resilient
+                        platforms, automate the chaos, and keep delivery pipelines fast and boring.
+                    </p>
+
+                    <div class="chips">
+                        <span class="chip chip--jade"><span class="k">role:</span> devops-developer @ samhall-ab</span>
+                        <span class="chip chip--amber"><span class="k">lia:</span> platform-engineering · nov 2026</span>
+                        <span class="chip"><span class="k">open-to:</span> 2027 graduate roles</span>
+                        <span class="chip"><span class="k">loc:</span> stockholm-se 🇸🇪</span>
+                    </div>
+
+                    <div class="cta-row">
+                        <a class="btn btn--solid" href="#projects">view projects</a>
+                        <a class="btn btn--ghost" href="#contact">contact me</a>
                     </div>
                 </div>
 
-                <p class="text-lg text-slate-400 max-w-lg leading-relaxed">
-                    Platform-focused DevOps engineer running real GitOps infrastructure. I build resilient platforms,
-                    automate the chaos, and keep delivery pipelines fast and boring.
-                </p>
-
-                <div class="flex flex-wrap gap-4">
-                    <button onclick="scrollToProjects()"
-                        class="px-8 py-3 bg-white text-slate-950 rounded-full font-semibold hover:bg-cyan-50 transition-all transform hover:scale-105 flex items-center gap-2">
-                        View Projects
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m6 9 6 6 6-6" />
-                        </svg>
-                    </button>
-                    <a href="#contact"
-                        class="px-8 py-3 bg-transparent border border-white/20 text-white rounded-full font-semibold hover:bg-white/5 transition-all flex items-center gap-2">
-                        Contact Me
-                    </a>
-                </div>
-
-                <div class="flex gap-6 pt-4">
-                    <a href="https://github.com/antonsatt" target="_blank"
-                        class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                            <path d="M9 18c-4.51 2-5-2-7-2" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
-                        class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                            <rect x="2" y="9" width="4" height="12" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
-                    <a href="mailto:anton@antonsatt.com" class="text-slate-400 hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                    </a>
+                <div class="manifest" aria-label="anton.yaml — a Kubernetes-style manifest of Anton">
+                    <div class="manifest-bar">
+                        <span>anton.yaml</span>
+                        <span class="applied">✓ applied</span>
+                    </div>
+                    <pre><code><span class="y-key">apiVersion</span>: <span class="y-str">antonsatt.com/v2</span>
+<span class="y-key">kind</span>: <span class="y-str">PlatformEngineer</span>
+<span class="y-key">metadata</span>:
+  <span class="y-key">name</span>: <span class="y-str">anton-satterkvist</span>
+  <span class="y-key">namespace</span>: <span class="y-str">stockholm-se</span>
+  <span class="y-key">labels</span>:
+    <span class="y-key">program</span>: <span class="y-str">chas-academy/devops-25-27</span>
+    <span class="y-key">role</span>: <span class="y-str">devops-developer</span>
+    <span class="y-key">employer</span>: <span class="y-str">samhall-ab</span>
+<span class="y-key">spec</span>:
+  <span class="y-key">certifications</span>:
+    <span class="y-dash">-</span> <span class="y-str">aws-certified-cloud-practitioner</span>
+    <span class="y-dash">-</span> <span class="y-str">kubernetes-exam</span>  <span class="y-comment"># june 2026</span>
+  <span class="y-key">lia</span>:
+    <span class="y-key">team</span>: <span class="y-str">platform-engineering</span>
+    <span class="y-key">company</span>: <span class="y-str">samhall-ab</span>
+    <span class="y-key">starts</span>: <span class="y-num">2026-11</span>
+  <span class="y-key">openTo</span>: <span class="y-str">2027-graduate-roles</span>
+<span class="y-key">status</span>:
+  <span class="y-key">phase</span>: <span class="y-phase">Running</span>
+  <span class="y-key">nodes</span>: <span class="y-num">3</span>
+  <span class="y-key">servicesInProd</span>: <span class="y-num">6</span>
+  <span class="y-key">hackathonPodiums</span>: <span class="y-num">2</span></code></pre>
                 </div>
             </div>
+        </section>
 
-            <div class="relative flex justify-center fade-in-up delay-200">
-                <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <div
-                        class="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-spin-slow">
-                    </div>
-                    <div
-                        class="absolute inset-4 rounded-full border-2 border-dashed border-blue-500/30 animate-spin-reverse-slow">
-                    </div>
-                    <div
-                        class="absolute inset-0 rounded-full bg-gradient-to-b from-slate-800 to-slate-950 p-2 shadow-2xl">
-                        <img src="assets/me.png" alt="Anton Sätterkvist"
-                            class="w-full h-full object-cover rounded-full border-4 border-slate-900">
-                    </div>
-                    <!-- Floating Tech Icons -->
-                    <div
-                        class="absolute -top-4 -right-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float">
-                        <svg class="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-                        </svg>
-                    </div>
-                    <div
-                        class="absolute -bottom-4 -left-4 p-3 bg-slate-900 rounded-xl border border-white/10 shadow-xl animate-float delay-1000">
-                        <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                            <line x1="12" y1="22.08" x2="12" y2="12" />
-                        </svg>
-                    </div>
-                </div>
+        <!-- stats strip -->
+        <div class="stats-wrap">
+            <div class="stats reveal">
+                <div class="stat"><span class="n">3</span><span class="l">bare-metal nodes</span></div>
+                <div class="stat"><span class="n">6</span><span class="l">services in prod</span></div>
+                <div class="stat"><span class="n">2</span><span class="l">hackathon podiums</span></div>
+                <div class="stat"><span class="n"><em id="stat-week">46</em>/104</span><span class="l">program
+                        weeks</span></div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 relative">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative group fade-in-on-scroll" id="about-slider">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
-                    </div>
-                    <div
-                        class="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900 h-64 md:h-96 lg:h-[500px]">
-                        <!-- Slide 1 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100"
-                            data-duration="7000">
-                            <img src="assets/winning-grafana.png" alt="Hackathon Winner"
-                                class="w-full h-full object-cover object-top">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
-                                <p class="text-white font-medium">🏆 Grafana Hackathon Winner at HiQ HQ</p>
-                                <p class="text-slate-300 text-sm mt-1">December 2025</p>
-                            </div>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0"
-                            data-duration="5000">
-                            <img src="assets/chas_hack/group_photo.jpg" alt="Chas Hack Event"
-                                class="w-full h-full object-contain">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
-                                <p class="text-white font-medium">🎉 Chas Hack - Event Organizer</p>
-                                <p class="text-slate-300 text-sm mt-1">January 2026</p>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0"
-                            data-duration="4000">
-                            <img src="assets/me-google.png" alt="Anton at Google"
-                                class="w-full h-full object-cover object-top">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
-                                <p class="text-white font-medium">📍 Google Office Visit</p>
-                                <p class="text-slate-300 text-sm mt-1">November 2025</p>
-                            </div>
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0"
-                            data-duration="4000">
-                            <img src="assets/me_at_AWS_HQ_small.jpg" alt="Anton at AWS HQ"
-                                class="w-full h-full object-cover object-top">
-                            <div
-                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
-                                <p class="text-white font-medium">📍 AWS HQ Visit</p>
-                                <p class="text-slate-300 text-sm mt-1">November 2025</p>
-                            </div>
-                        </div>
-
-                        <!-- Indicators -->
-                        <div class="absolute bottom-4 right-4 flex gap-2 z-10">
-                            <button class="w-2 h-2 rounded-full bg-white transition-all indicator"
-                                onclick="setSlide(0)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator"
-                                onclick="setSlide(1)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator"
-                                onclick="setSlide(2)"></button>
-                            <button class="w-2 h-2 rounded-full bg-white/50 transition-all indicator"
-                                onclick="setSlide(3)"></button>
-                        </div>
-                    </div>
+        <!-- ~/about -->
+        <section class="section" id="about">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow"><span class="prompt">$</span> cat ~/about.md</span>
+                    <h2>About Me</h2>
                 </div>
 
-                <div class="space-y-8 fade-in-on-scroll">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
-                        <div class="h-1 w-20 bg-cyan-500 rounded-full"></div>
-                    </div>
-
-                    <div class="prose prose-invert text-slate-400">
-                        <p class="text-lg">
-                            I'm <span class="text-white font-semibold">Anton Sätterkvist</span>, a platform-focused
-                            DevOps engineer in the <span class="text-white font-semibold">second year of a two-year DevOps program (2025 to 2027)</span>
-                            at <a href="https://chasacademy.se/program/devops-engineer" target="_blank"
-                                class="text-cyan-400 hover:underline">Chas Academy</a>, and a firm believer in learning by doing.
+                <div class="about-grid">
+                    <div class="reveal">
+                        <p>
+                            I'm <strong>Anton Sätterkvist</strong>, a platform-focused DevOps engineer in the
+                            <strong>second year of a two-year DevOps program (2025 to 2027)</strong> at
+                            <a href="https://chasacademy.se/program/devops-engineer" target="_blank"
+                                rel="noopener">Chas Academy</a>, and a firm believer in learning by doing.
                         </p>
                         <p>
                             These days that means running real infrastructure, not just studying it. I have passed my
-                            <span class="text-white font-semibold">Kubernetes exam</span>, hold the
-                            <span class="text-white font-semibold">AWS Certified Cloud Practitioner</span>, and I am building
-                            <a href="#projects" class="text-cyan-400 hover:text-cyan-300 transition-colors"><strong>Platform Lab</strong></a>,
-                            a homelab Kubernetes platform with GitOps end to end (in build, kept private for now). Along the
-                            way I picked up <strong>two hackathon podium finishes</strong>
-                            (<a href="carbon-shift.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">1st</a> and 3rd place).
+                            <strong>Kubernetes exam</strong>, hold the <strong>AWS Certified Cloud
+                                Practitioner</strong>, and I am building <a href="#projects"><strong>Platform
+                                    Lab</strong></a>, a homelab Kubernetes platform with GitOps end to end (in build,
+                            kept private for now). Along the way I picked up <strong>two hackathon podium
+                                finishes</strong> (<a href="carbon-shift.html">1st</a> and 3rd place).
                         </p>
                         <p>
-                            I am already working with <span class="text-white font-semibold">Samhall AB</span> as a
-                            <span class="text-white font-semibold">DevOps developer</span> through autumn 2026, then start my
-                            <span class="text-white font-semibold">platform-engineer LIA</span> there in November, helping build
-                            an internal developer platform on managed Kubernetes. I am also <strong>open to 2027 graduate roles</strong>
-                            in platform and cloud infrastructure.
+                            I am already working with <strong>Samhall AB</strong> as a <strong>DevOps
+                                developer</strong> through autumn 2026, then start my <strong>platform-engineer
+                                LIA</strong> there in November, helping build an internal developer platform on managed
+                            Kubernetes. I am also <strong>open to 2027 graduate roles</strong> in platform and cloud
+                            infrastructure.
                         </p>
-                        <p class="text-sm text-slate-500">
+                        <p>
                             Active in Stockholm's cloud-native and AI community: Cloud Native Stockholm, AI Engineering
                             Stockholm, and AWS Summit Stockholm 2026. Co-organized Chas Hack 2026, the first student
                             hackathon at Chas Academy.
                         </p>
+
+                        <table class="stack-table">
+                            <caption>$ kubectl get stack</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">orchestration &amp; gitops</th>
+                                    <td>Kubernetes (K3s), Flux, ArgoCD, Helm, Cilium</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">infrastructure as code</th>
+                                    <td>OpenTofu, Terraform, Ansible</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ci/cd</th>
+                                    <td>GitLab CI, GitHub Actions</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">cloud</th>
+                                    <td>AWS, Oracle Cloud, Azure</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">observability</th>
+                                    <td>Grafana, Prometheus, Loki</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">platform services</th>
+                                    <td>cert-manager, Traefik</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">languages &amp; tooling</th>
+                                    <td>Python, Bash, Docker, Linux, Git, Neovim, Claude Code</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                                </svg>
-                                Orchestration &amp; GitOps
-                            </h3>
-                            <p class="text-sm text-slate-400">Kubernetes (K3s), Flux, ArgoCD, Helm, Cilium</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                </svg>
-                                Infrastructure as Code
-                            </h3>
-                            <p class="text-sm text-slate-400">OpenTofu, Terraform, Ansible</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                                </svg>
-                                CI/CD
-                            </h3>
-                            <p class="text-sm text-slate-400">GitLab CI, GitHub Actions</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                                </svg>
-                                Cloud
-                            </h3>
-                            <p class="text-sm text-slate-400">AWS, Oracle Cloud, Azure</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                </svg>
-                                Observability
-                            </h3>
-                            <p class="text-sm text-slate-400">Grafana, Prometheus, Loki</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 11H5m14 0a2 2 0 0 0-2-2v6a2 2 0 0 0 2-2m0 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                </svg>
-                                Platform services
-                            </h3>
-                            <p class="text-sm text-slate-400">cert-manager, Traefik</p>
-                        </div>
-                        <div class="sm:col-span-2 p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                                </svg>
-                                Languages &amp; tooling
-                            </h3>
-                            <p class="text-sm text-slate-400">Python, Bash, Docker, Linux, Git, Neovim, Claude Code</p>
-                        </div>
+                    <div class="evidence reveal" role="group" aria-label="Photo evidence">
+                        <figure>
+                            <button class="zoomable" data-full="assets/winning-grafana.png"
+                                aria-label="Enlarge: Grafana hackathon win">
+                                <img src="assets/winning-grafana.png"
+                                    alt="Anton's team winning the Grafana hackathon at HiQ HQ">
+                            </button>
+                            <figcaption>🏆 Grafana hackathon winner · HiQ HQ <span class="when">· dec 2025</span>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <button class="zoomable" data-full="assets/chas_hack/group_photo.jpg"
+                                aria-label="Enlarge: Chas Hack group photo">
+                                <img src="assets/chas_hack/group_photo.jpg" alt="Group photo at Chas Hack">
+                            </button>
+                            <figcaption>🎉 Chas Hack — event organizer <span class="when">· jan 2026</span>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <button class="zoomable" data-full="assets/me-google.png"
+                                aria-label="Enlarge: Google office visit">
+                                <img src="assets/me-google.png" alt="Anton at the Google office">
+                            </button>
+                            <figcaption>📍 Google office visit <span class="when">· nov 2025</span></figcaption>
+                        </figure>
+                        <figure>
+                            <button class="zoomable" data-full="assets/me_at_AWS_HQ_small.jpg"
+                                aria-label="Enlarge: AWS HQ visit">
+                                <img src="assets/me_at_AWS_HQ_small.jpg" alt="Anton at AWS HQ">
+                            </button>
+                            <figcaption>📍 AWS HQ visit <span class="when">· nov 2025</span></figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Timeline Section -->
-    <section id="timeline" class="py-24 bg-slate-900/30 relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12 fade-in-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">My Journey</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    My path through a two-year DevOps program.
-                </p>
-                <!-- Program Progress (2025 to 2027) -->
-                <div class="max-w-md mx-auto mt-6">
-                    <div class="flex justify-between text-xs font-mono mb-2">
-                        <span class="text-cyan-400">2025</span>
-                        <span class="text-slate-500">2027</span>
-                    </div>
-                    <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
-                        <div id="program-progress" class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-1000" style="width: 40%"></div>
-                    </div>
-                    <p class="text-xs text-slate-500 mt-2">Second year &middot; week <span id="program-week" class="text-slate-400 font-mono">43</span> of 104 &middot; graduating 2027</p>
-                </div>
-            </div>
-
-            <div class="max-w-3xl mx-auto space-y-3 fade-in-on-scroll">
-
-                <!-- Incoming: Platform Engineering LIA at Samhall AB -->
-                <div class="timeline-item rounded-xl border border-blue-500/30 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Platform Engineering - LIA at Samhall AB</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">Incoming</span>
-                                <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">Nov 2026 - Apr 2027</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Joining a greenfield platform team at <span class="text-white font-semibold">Samhall AB</span> to help build an internal developer platform on managed Kubernetes, with GitOps, infrastructure as code, and full observability. Focused on the platform foundation: orchestration, delivery pipelines, and developer experience. Already on board as a DevOps developer through autumn 2026, working with the team ahead of the platform placement.
-                        </p>
-                    </div>
+        <!-- ~/journey -->
+        <section class="section" id="journey">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow"><span class="prompt">$</span> git log ~/journey --oneline</span>
+                    <h2>Release Log</h2>
+                    <p class="lede">My path through a two-year DevOps program, versioned like everything else I ship.
+                    </p>
                 </div>
 
-                <!-- Current Focus (expanded by default) -->
-                <div class="timeline-item rounded-xl border border-green-500/30 bg-slate-900 overflow-hidden" data-expanded="true">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="relative shrink-0">
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="animate-ping absolute inset-0 rounded-full bg-green-400 opacity-75"></span>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Platform Lab + Kubernetes Exam</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 text-xs font-mono border border-green-500/20">Current</span>
-                                <span class="px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 text-xs font-mono border border-green-500/20">Jun - Nov 2026</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Passed my <span class="text-white font-semibold">Kubernetes exam</span> (June 2026) and started <span class="text-white font-semibold">Platform Lab</span>: HA K3s across three bare-metal nodes, GitOps with Flux from a self-hosted GitLab, and cert-manager plus Traefik as version-pinned Helm releases. The roadmap continues through DORA metrics and an internal developer platform.
-                        </p>
+                <div class="rollout">
+                    <div class="rollout-labels">
+                        <span>sep 2025</span>
+                        <span class="now">rollout: week <span id="program-week">46</span> of 104</span>
+                        <span>sep 2027</span>
                     </div>
+                    <div class="rollout-track">
+                        <div class="rollout-fill" id="program-progress" style="width: 43%"></div>
+                    </div>
+                    <p class="rollout-note">second year · graduating 2027</p>
                 </div>
 
-                <!-- DevOps & Agile Project Management -->
-                <div class="timeline-item rounded-xl border border-white/5 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-teal-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">DevOps & Agile Project Management</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono border border-teal-500/20">Mar - Jun 2026</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Ran two courses in parallel. <span class="text-white font-semibold">DevOps</span>: the full lifecycle from requirements and testing to packaging, deployment, monitoring, and container orchestration with <span class="text-white font-semibold">Kubernetes</span>. <span class="text-white font-semibold">Agile Methods</span>: driving projects with Scrum and CI/CD, and leading DevOps processes in agile teams. For the <a href="https://chasacademy.se/chas-challenge-2026" target="_blank" class="text-white font-semibold hover:text-green-400 transition-colors">Chas Challenge 2026</a> capstone my team built <a href="mallo.html" class="text-white font-semibold hover:text-green-400 transition-colors">Mallo</a>, a Swedish community platform where I ran DevOps end-to-end on the school's Kubernetes cluster. I also competed in the <a href="https://2hero.dev/hackathons/gitlab-devsecops-flow-hackathon" target="_blank" class="text-white font-semibold hover:text-green-400 transition-colors">GitLab DevSecOps Flow Hackathon</a> with <a href="https://vincentborealis.dev/" target="_blank" class="text-white font-semibold hover:text-green-400 transition-colors">Vincent</a>.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Databases -->
-                <div class="timeline-item rounded-xl border border-white/5 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-orange-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Databases</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 text-xs font-mono border border-orange-500/20">Jan - Feb 2026</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Worked with relational databases including SQLite and MariaDB. Learned schema design, SQL queries, data modeling, and database administration. Built <span class="text-white font-semibold">SSH Radar</span>, a real-time SSH attack monitoring platform with PostgreSQL.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Linux, Bash & AWS -->
-                <div class="timeline-item rounded-xl border border-white/5 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-purple-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Linux, Bash & AWS Certification</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">Nov 2025 - Jan 2026</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Mastered Linux administration and Bash scripting. Earned <span class="text-white font-semibold">AWS Certified Cloud Practitioner</span> certification. Rebuilt CarbonShift as a full-stack application with React and Python, deployed live on Digital Ocean. Organized <span class="text-white font-semibold">Chas Hack</span>, the first student hackathon at Chas Academy.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Cloud, Automation & Hackathon -->
-                <div class="timeline-item rounded-xl border border-white/5 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-cyan-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Cloud, Automation & Hackathon Win</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono border border-cyan-500/20">Oct - Nov 2025</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Deep dive into Python scripting for automation. Explored AWS core services and set up monitoring stacks with Grafana & Prometheus. Built my first CI/CD pipelines. <span class="text-white font-semibold">Won 1st place</span> at AWS, HiQ, and Grafana hosted hackathon with CarbonShift.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Foundations -->
-                <div class="timeline-item rounded-xl border border-white/5 bg-slate-900 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-white">Foundations & Containerization</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-mono border border-blue-500/20">Sep - Oct 2025</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Started the journey with Git/GitHub mastery and Linux fundamentals. Quickly moved into containerization with Docker, learning to build, ship, and run applications consistently across environments.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Future -->
-                <div class="timeline-item rounded-xl border border-dashed border-white/10 bg-slate-900/50 overflow-hidden" data-expanded="false">
-                    <button onclick="toggleTimeline(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-white/[0.02] transition-colors">
-                        <div class="w-3 h-3 rounded-full bg-slate-700 shrink-0"></div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h3 class="text-base font-bold text-slate-300">The Road Ahead</h3>
-                                <span class="px-2 py-0.5 rounded-full bg-slate-700/30 text-slate-400 text-xs font-mono border border-slate-700/50">Future</span>
-                            </div>
-                        </div>
-                        <svg class="w-5 h-5 text-slate-500 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="timeline-content px-5 pb-5 pl-12 hidden">
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Deepening the platform: DORA metrics with <span class="text-slate-300 font-semibold">Apache DevLake</span>, an internal developer platform (<span class="text-slate-300 font-semibold">Backstage</span>), and my LIA at <span class="text-slate-300 font-semibold">Samhall AB</span> from November 2026.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Applying theory to practice. Here are some of the things I've built.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project: Mallo (Chas Challenge 2026) -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="mallo.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/mallo/mallo-wave.webp" alt="Mallo - Chas Challenge 2026 community platform"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-orange-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M12 22s-8-4.5-8-11.8A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 8 3.2C20 17.5 12 22 12 22z"></path>
-                                </svg>
-                                Chas Challenge
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="mallo.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">
-                                    Mallo</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">March - June 2026</p>
-                            </a>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Chas Challenge 2026.</strong> A Swedish community platform built by a 9-person cross-functional team for the "Tech for Good" theme. I owned DevOps: the Kubernetes deployment, GitLab CI/CD pipeline, and observability.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Kubernetes</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">GitLab CI</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded">Helm</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-rose-300 bg-rose-950/30 border border-rose-500/20 rounded">Observability</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="mallo.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-orange-400 hover:text-orange-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Platform Lab (private homelab) -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-indigo-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div
-                        class="aspect-video overflow-hidden relative bg-gradient-to-br from-indigo-950/50 via-slate-900 to-slate-950 flex items-center justify-center">
-                        <!-- Private project: no screenshots by design -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="text-indigo-400/50">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                        <div class="absolute top-4 right-4 flex gap-2 z-20">
-                            <div
-                                class="bg-amber-500/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
-                                </svg>
-                                In Build
-                            </div>
-                            <div
-                                class="bg-slate-700/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg>
-                                Private
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
-                                    Platform Lab</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">June 2026 - Ongoing</p>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Homelab Kubernetes Platform.</strong> An internal platform on three bare-metal nodes: HA K3s with embedded etcd, GitOps via Flux from a self-hosted GitLab, and cert-manager plus Traefik as version-pinned Helm releases. A sanitized public showcase repo is coming once secrets management is in place.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-indigo-300 bg-indigo-950/30 border border-indigo-500/20 rounded">K3s</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-violet-300 bg-violet-950/30 border border-violet-500/20 rounded">Flux</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded">Helm</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">GitLab</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-emerald-300 bg-emerald-950/30 border border-emerald-500/20 rounded">cert-manager</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Traefik</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">GitOps</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <span class="inline-flex items-center gap-2 text-sm font-medium text-slate-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg>
-                                Private - public showcase coming soon
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: K3s Kubernetes Cluster -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="k3s-cluster.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/argocd.png" alt="K3s Kubernetes Cluster - ArgoCD Dashboard"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-emerald-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polygon points="10 8 16 12 10 16 10 8" />
-                                </svg>
-                                Live
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="k3s-cluster.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                    K3s Kubernetes Cluster</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">March 2026 - Ongoing</p>
-                            </a>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Personal Project.</strong> Production K3s cluster on Oracle Cloud (within Oracle's always-free resource limits) with ArgoCD GitOps, automatic SSL, and Ansible provisioning. Hosts 6 services.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">K3s</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">ArgoCD</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded">Ansible</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">GitOps</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="k3s-cluster.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: AWS Cost & Architecture Review (informal) -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="cloud-migration.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/cloud-migration.svg" alt="AWS Cost &amp; Architecture Review"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-amber-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                                </svg>
-                                Informal
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="cloud-migration.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                                    AWS Cost &amp; Architecture Review</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">Early 2026</p>
-                            </a>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Informal.</strong> Infrastructure work helping a small dev team get a handle on their AWS setup: cost drivers, transparency, and data-sovereignty options.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded">AWS</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Cost Optimization</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">Architecture Review</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">Data Sovereignty</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="cloud-migration.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: GitLab Self-Hosted -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="gitlab.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Project
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/gitlab.png" alt="GitLab Self-Hosted"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-emerald-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polygon points="10 8 16 12 10 16 10 8" />
-                                </svg>
-                                Live
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="gitlab.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">
-                                    GitLab Self-Hosted</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">March 2026</p>
-                            </a>
-                            <div class="flex gap-3">
-                                <a href="https://git.antonsatt.com/Kaffe" target="_blank"
-                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Visit Live Instance">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                        <polyline points="15 3 21 3 21 9" />
-                                        <line x1="10" y1="14" x2="21" y2="3" />
-                                    </svg>
-                                </a>
-                                <a href="https://git.antonsatt.com/Kaffe/gitlab-self-hosted" target="_blank"
-                                    class="text-slate-400 hover:text-orange-400 transition-colors" title="GitLab Repo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.1 3.26a.42.42 0 0 0-.1-.18.38.38 0 0 0-.26-.08.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18L2 13.29a.74.74 0 0 0 .27.83L12 21l9.69-6.88a.71.71 0 0 0 .31-.83Z" />
-                                    </svg>
-                                </a>
-                                <a href="https://github.com/AntonSatt/gitlab-self-host" target="_blank"
-                                    class="text-slate-400 hover:text-white transition-colors" title="GitHub Repo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Personal Project.</strong> Self-hosted GitLab CE instance running in Docker on a cloud VPS. Features resource-optimized configuration, HTTPS via Let's Encrypt, and Nginx reverse proxy.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">GitLab CE</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Docker</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">Nginx</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">Self-Hosted</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded">Linux</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="gitlab.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-orange-400 hover:text-orange-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Are We Up -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="https://github.com/AntonSatt/are-we-up" target="_blank" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View on GitHub
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                        <polyline points="15 3 21 3 21 9" />
-                                        <line x1="10" y1="14" x2="21" y2="3" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/are-we-up.png" alt="Are We Up"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-teal-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                                </svg>
-                                Open Source
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">
-                                    Are We Up</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">March 2026</p>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="https://github.com/AntonSatt/are-we-up" target="_blank"
-                                    class="text-slate-400 hover:text-white transition-colors" title="View Code">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Personal Project.</strong> Self-hostable uptime monitoring tool to make sure your projects stay online. Open-source and easy to deploy.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Prometheus</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Grafana</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded">Docker</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded">Alertmanager</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">Open Source</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: SSH Radar -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="ssh-radar.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/ssh_radar/frontpage-1.png" alt="SSH Radar"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-4 right-4 flex gap-2 z-20">
-                                <div class="bg-emerald-500/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <polygon points="10 8 16 12 10 16 10 8" />
-                                    </svg>
-                                    Live
-                                </div>
-                                <div class="bg-teal-500/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                    Open Source
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="ssh-radar.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-                                    SSH Radar</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">February 2026</p>
-                            </a>
-                            <div class="flex gap-3">
-                                <a href="https://ssh-radar.antonsatt.com" target="_blank"
-                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Visit Live Site">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                </a>
-                                <a href="https://github.com/AntonSatt/SSH-Radar" target="_blank"
-                                    class="text-slate-400 hover:text-white transition-colors" title="View Code">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Personal Project.</strong> Real-time monitoring platform that tracks failed SSH brute-force
-                            login attempts on a Linux server. Features live feed, Grafana dashboards, and geolocation data from real attacks.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Python</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">PostgreSQL</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Grafana</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">React</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded">Docker</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded">Open Source</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded">Linux</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="ssh-radar.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project: Chas Hack Event -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="chas-hack.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/chas_hack/group_photo.jpg" alt="Chas Hack"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-purple-500/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                                Event Organizer
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="chas-hack.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                                    Chas Hack</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">January 2026</p>
-                            </a>
-                            <div class="flex gap-3">
-                                <a href="https://www.chashack.se/" target="_blank"
-                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Chas Hack Website">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                </a>
-                                <a href="https://www.linkedin.com/posts/anton-satterkvist_chasacademy-chashack-hackathon-activity-7423983610501910528-yqIe"
-                                    target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors"
-                                    title="View Post">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Event Organizer.</strong> Co-organized the first student hackathon at Chas Academy with the theme "Simplify".
-                            Managed planning, team formation, Discord setup, and mentored participants throughout the event.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">Hackathon</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-pink-300 bg-pink-950/30 border border-pink-500/20 rounded">Event</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">Leadership</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="chas-hack.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors group/link">
-                                View Event
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: CarbonShift v2 - Live Demo -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-green-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="https://carbonshift.antonsatt.com/" target="_blank"
-                            class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-green-500/20 backdrop-blur-md border border-green-500/30 rounded-full text-green-400 text-sm font-medium flex items-center gap-2">
-                                    Try Live Demo
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <polygon points="10 8 16 12 10 16 10 8" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/carbonshift.png" alt="CarbonShift v2"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-4 right-4 flex gap-2 z-20">
-                                <div class="bg-emerald-500/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <polygon points="10 8 16 12 10 16 10 8" />
-                                    </svg>
-                                    Live
-                                </div>
-                                <div class="bg-teal-500/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                    Open Source
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
-                                    CarbonShift Live Website</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">December 2025</p>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="https://carbonshift.antonsatt.com/" target="_blank"
-                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Visit Live Site">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                        <polyline points="15 3 21 3 21 9" />
-                                        <line x1="10" y1="14" x2="21" y2="3" />
-                                    </svg>
-                                </a>
-                                <a href="https://github.com/AntonSatt/carbon_shift_website" target="_blank"
-                                    class="text-slate-400 hover:text-white transition-colors" title="View Code">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            Full-stack rebuild of the hackathon winner. Built with a Next.js frontend and a FastAPI
-                            backend, with AWS Bedrock powering the AI features, hosted on Digital Ocean.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-slate-200 bg-slate-800/50 border border-white/10 rounded">Next.js</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-emerald-300 bg-emerald-950/30 border border-emerald-500/20 rounded">FastAPI</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">AWS Bedrock</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">Digital Ocean</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: CarbonShift Hackathon (Winner) -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-100">
-                    <div class="aspect-video overflow-hidden relative">
-                        <a href="carbon-shift.html" class="block w-full h-full cursor-pointer">
-                            <div
-                                class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors z-10 flex items-center justify-center">
-                                <span
-                                    class="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                    View Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <img src="assets/carbon-shift-1.jpeg" alt="CarbonShift"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                            <div
-                                class="absolute top-4 right-4 bg-yellow-500/90 text-slate-900 text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="8" r="7" />
-                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                </svg>
-                                1st Place Winner
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <a href="carbon-shift.html" class="block">
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                    CarbonShift</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">November 2025</p>
-                            </a>
-                            <div class="flex gap-3">
-                                <a href="https://carbonshift.antonsatt.com/" target="_blank"
-                                    class="text-slate-400 hover:text-green-500 transition-colors" title="Try Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                </a>
-                                <a href="https://github.com/AntonSatt/carbonswift" target="_blank"
-                                    class="text-slate-400 hover:text-white transition-colors" title="View Code">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                                <a href="https://www.youtube.com/watch?v=okWQFswGp1A" target="_blank"
-                                    class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <polygon points="23 7 16 12 23 17 23 7" />
-                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                                    </svg>
-                                </a>
-                                <a href="https://www.linkedin.com/posts/anton-satterkvist_grafana-aws-stockholm-activity-7397530767989305344-KSw9"
-                                    target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors"
-                                    title="View Post">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Team Chaos (1st Place).</strong> A Grafana Dashboard that tracks CO2 emissions and
-                            electricity costs for cloud servers. Helps companies identify cheaper and more
-                            emission-efficient regions to save money and the planet.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded">Grafana</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded">AWS
-                                Bedrock</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">Terraform</span>
-                        </div>
-
-                        <div class="pt-4 mt-2 border-t border-white/5">
-                            <a href="carbon-shift.html"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/link">
-                                View Project
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="group-hover/link:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Theodor AI -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-100">
-                    <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
-                        </div>
-                        <img src="assets/hackathon-start.png" alt="Theodor AI"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                        <div
-                            class="absolute top-4 right-4 bg-amber-700/90 text-white text-xs font-bold px-3 py-1 rounded-full z-20 flex items-center gap-1 shadow-lg backdrop-blur-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7" />
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                            </svg>
-                            3rd Place Winner
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                    Theodor - AI Onboarding</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">October 2025</p>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="https://www.youtube.com/watch?v=1GaqWt-A5fk" target="_blank"
-                                    class="text-slate-400 hover:text-red-500 transition-colors" title="Watch Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <polygon points="23 7 16 12 23 17 23 7" />
-                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                                    </svg>
-                                </a>
-                                <a href="https://www.linkedin.com/posts/anton-satterkvist_hackathon-teamchaos-chasacademy-activity-7385940401699913729-muiW"
-                                    target="_blank" class="text-slate-400 hover:text-blue-500 transition-colors"
-                                    title="View Post">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            <strong>Team Chaos (3rd Place).</strong> Chat-based AI assistant designed to onboard new
-                            employees. Built at the Cillers Hackathon (AWS HQ).
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded">AI</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded">Team
-                                Chaos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-200">
-                    <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
-                        </div>
-                        <img src="assets/discord-bot.png" alt="Discord Bot CI/CD"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                    CI/CD Discord Bot</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">October 2025 - Present</p>
-                            </div>
-                            <a href="https://github.com/AntonSatt/discord-botty-doe25" target="_blank"
-                                class="text-slate-400 hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            Full DevOps pipeline implementation for a Discord bot. Automated testing, building, and
-                            deployment using GitHub Actions.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">GitHub
-                                Actions</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div
-                    class="group relative bg-slate-900 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-on-scroll delay-300">
-                    <div class="aspect-video overflow-hidden relative">
-                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors z-10">
-                        </div>
-                        <img src="assets/NextCloud.jpg" alt="NextCloud Docker"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                    NextCloud Docker</h3>
-                                <p class="text-xs text-slate-500 font-mono mt-1">October 2025</p>
-                            </div>
-                            <a href="https://github.com/AntonSatt/nextcloud-guide" target="_blank"
-                                class="text-slate-400 hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="desc-expand"><p class="text-slate-400 text-sm">
-                            Self-hosted cloud storage solution using Docker Compose. Focus on data persistence,
-                            networking, and ease of deployment.
-                        </p></div>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Docker</span>
-                            <span
-                                class="px-2 py-1 text-xs font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded">Compose</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-slate-900/30">
-        <div class="container mx-auto px-6">
-            <div
-                class="max-w-4xl mx-auto bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl fade-in-on-scroll">
-                <div class="grid md:grid-cols-2">
-                    <div class="p-10 space-y-8">
-                        <div>
-                            <h2 class="text-3xl font-bold text-white mb-2">Let's Connect</h2>
-                            <p class="text-slate-400">
-                                Have a question or want to discuss a project? I'm always open to new opportunities.
+                <div class="releases">
+                    <details class="release release--planned">
+                        <summary>
+                            <span class="ver">v2.0.0</span>
+                            <span class="rel-title">The Road Ahead</span>
+                            <span class="rel-flag rel-flag--dim">planned</span>
+                            <span class="rel-date">future</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Deepening the platform: DORA metrics with <strong>Apache DevLake</strong>, an internal
+                                developer platform (<strong>Backstage</strong>), and my LIA at <strong>Samhall
+                                    AB</strong> from November 2026.
                             </p>
                         </div>
+                    </details>
 
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-slate-500">Location</p>
-                                    <p class="text-white font-medium">Stockholm, Sweden</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-slate-500">Email</p>
-                                    <a href="mailto:anton@antonsatt.com"
-                                        class="text-white font-medium hover:text-cyan-400 transition-colors">anton@antonsatt.com</a>
-                                </div>
-                            </div>
+                    <details class="release release--incoming">
+                        <summary>
+                            <span class="ver">v1.0.0</span>
+                            <span class="rel-title">Platform Engineering — LIA at Samhall AB</span>
+                            <span class="rel-flag rel-flag--amber">incoming</span>
+                            <span class="rel-date">nov 2026 – apr 2027</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Joining a greenfield platform team at <strong>Samhall AB</strong> to help build an
+                                internal developer platform on managed Kubernetes, with GitOps, infrastructure as code,
+                                and full observability. Focused on the platform foundation: orchestration, delivery
+                                pipelines, and developer experience. Already on board as a DevOps developer through
+                                autumn 2026, working with the team ahead of the platform placement.
+                            </p>
                         </div>
+                    </details>
 
-                        <div class="pt-8 border-t border-white/5">
-                            <p class="text-sm text-slate-500 mb-4">Connect with me</p>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/antonsatt" target="_blank"
-                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                                <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
-                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </a>
-                            </div>
+                    <details class="release release--current" open>
+                        <summary>
+                            <span class="ver">v0.9.0</span>
+                            <span class="rel-title">Platform Lab + Kubernetes Exam</span>
+                            <span class="rel-flag rel-flag--jade">current</span>
+                            <span class="rel-date">jun – nov 2026</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Passed my <strong>Kubernetes exam</strong> (June 2026) and started <strong>Platform
+                                    Lab</strong>: HA K3s across three bare-metal nodes, GitOps with Flux from a
+                                self-hosted GitLab, and cert-manager plus Traefik as version-pinned Helm releases. The
+                                roadmap continues through DORA metrics and an internal developer platform.
+                            </p>
                         </div>
-                    </div>
+                    </details>
 
-                    <div class="bg-slate-800/50 p-10">
-                        <form id="contactForm" class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-400 mb-1">Name</label>
-                                <input type="text" name="name" required
-                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors"
-                                    placeholder="Your Name">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-400 mb-1">Email</label>
-                                <input type="email" name="email" required
-                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors"
-                                    placeholder="your.email@example.com">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-400 mb-1">Message</label>
-                                <textarea name="message" required rows="4"
-                                    class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-colors resize-y"
-                                    placeholder="What would you like to discuss?"></textarea>
-                            </div>
-                            <button type="submit"
-                                class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
+                    <details class="release">
+                        <summary>
+                            <span class="ver">v0.5.0</span>
+                            <span class="rel-title">DevOps &amp; Agile Project Management</span>
+                            <span class="rel-date">mar – jun 2026</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Ran two courses in parallel. <strong>DevOps</strong>: the full lifecycle from
+                                requirements and testing to packaging, deployment, monitoring, and container
+                                orchestration with <strong>Kubernetes</strong>. <strong>Agile Methods</strong>: driving
+                                projects with Scrum and CI/CD, and leading DevOps processes in agile teams. For the
+                                <a href="https://chasacademy.se/chas-challenge-2026" target="_blank"
+                                    rel="noopener">Chas Challenge 2026</a> capstone my team built
+                                <a href="mallo.html">Mallo</a>, a Swedish community platform where I ran DevOps
+                                end-to-end on the school's Kubernetes cluster. I also competed in the
+                                <a href="https://2hero.dev/hackathons/gitlab-devsecops-flow-hackathon" target="_blank"
+                                    rel="noopener">GitLab DevSecOps Flow Hackathon</a> with
+                                <a href="https://vincentborealis.dev/" target="_blank" rel="noopener">Vincent</a>.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="release">
+                        <summary>
+                            <span class="ver">v0.4.0</span>
+                            <span class="rel-title">Databases</span>
+                            <span class="rel-date">jan – feb 2026</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Worked with relational databases including SQLite and MariaDB. Learned schema design,
+                                SQL queries, data modeling, and database administration. Built <strong>SSH
+                                    Radar</strong>, a real-time SSH attack monitoring platform with PostgreSQL.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="release">
+                        <summary>
+                            <span class="ver">v0.3.0</span>
+                            <span class="rel-title">Linux, Bash &amp; AWS Certification</span>
+                            <span class="rel-date">nov 2025 – jan 2026</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Mastered Linux administration and Bash scripting. Earned <strong>AWS Certified Cloud
+                                    Practitioner</strong> certification. Rebuilt CarbonShift as a full-stack
+                                application with React and Python, deployed live on Digital Ocean. Organized
+                                <strong>Chas Hack</strong>, the first student hackathon at Chas Academy.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="release">
+                        <summary>
+                            <span class="ver">v0.2.0</span>
+                            <span class="rel-title">Cloud, Automation &amp; Hackathon Win</span>
+                            <span class="rel-date">oct – nov 2025</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Deep dive into Python scripting for automation. Explored AWS core services and set up
+                                monitoring stacks with Grafana &amp; Prometheus. Built my first CI/CD pipelines.
+                                <strong>Won 1st place</strong> at AWS, HiQ, and Grafana hosted hackathon with
+                                CarbonShift.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="release">
+                        <summary>
+                            <span class="ver">v0.1.0</span>
+                            <span class="rel-title">Foundations &amp; Containerization</span>
+                            <span class="rel-date">sep – oct 2025</span>
+                            <span class="chev">▸</span>
+                        </summary>
+                        <div class="rel-body">
+                            <p>
+                                Started the journey with Git/GitHub mastery and Linux fundamentals. Quickly moved into
+                                containerization with Docker, learning to build, ship, and run applications
+                                consistently across environments.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Anton Sätterkvist. Built with code & chaos.</p>
-    </footer>
+        <!-- ~/projects -->
+        <section class="section" id="projects">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow"><span class="prompt">$</span> kubectl get workloads -n projects</span>
+                    <h2>Workloads</h2>
+                    <p class="lede">Applying theory to practice. Here are some of the things I've built.</p>
+                </div>
 
-    <div id="toast"
-        class="fixed bottom-8 right-8 px-6 py-4 bg-slate-800 border border-cyan-500/50 text-white rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
-        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span id="toast-message">Message sent successfully!</span>
+                <div class="workloads">
+
+                    <!-- Mallo -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="mallo.html" aria-label="Mallo case study">
+                            <img src="assets/mallo/mallo-wave.webp" alt="Mallo - Chas Challenge 2026 community platform">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3><a href="mallo.html">Mallo</a></h3>
+                                <span class="workload-date">mar – jun 2026</span>
+                            </div>
+                            <span class="workload-status">status: complete · chas-challenge-2026</span>
+                            <p class="desc">
+                                <strong>Chas Challenge 2026.</strong> A Swedish community platform built by a 9-person
+                                cross-functional team for the "Tech for Good" theme. I owned DevOps: the Kubernetes
+                                deployment, GitLab CI/CD pipeline, and observability.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Kubernetes</span>
+                                <span class="tag">GitLab CI</span>
+                                <span class="tag">Helm</span>
+                                <span class="tag">Observability</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="mallo.html">case study →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Platform Lab (private) -->
+                    <article class="workload reveal">
+                        <div class="workload-shot workload-shot--placeholder">[ private — no public screenshots ]</div>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--off" aria-hidden="true"></span>
+                                <h3>Platform Lab</h3>
+                                <span class="workload-date">jun 2026 – ongoing</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-award">in build</span> · <span
+                                    class="s-dim">🔒 private</span></span>
+                            <p class="desc">
+                                <strong>Homelab Kubernetes Platform.</strong> An internal platform on three bare-metal
+                                nodes: HA K3s with embedded etcd, GitOps via Flux from a self-hosted GitLab, and
+                                cert-manager plus Traefik as version-pinned Helm releases. A sanitized public showcase
+                                repo is coming once secrets management is in place.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">K3s</span>
+                                <span class="tag">Flux</span>
+                                <span class="tag">Helm</span>
+                                <span class="tag">GitLab</span>
+                                <span class="tag">cert-manager</span>
+                                <span class="tag">Traefik</span>
+                                <span class="tag">GitOps</span>
+                            </div>
+                            <div class="workload-links">
+                                <span class="locked">private — public showcase coming soon</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- K3s Cluster -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="k3s-cluster.html" aria-label="K3s Kubernetes Cluster case study">
+                            <img src="assets/argocd.png" alt="K3s Kubernetes Cluster - ArgoCD Dashboard">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led" aria-hidden="true"></span>
+                                <h3><a href="k3s-cluster.html">K3s Kubernetes Cluster</a></h3>
+                                <span class="workload-date">mar 2026 – ongoing</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-run">running</span> · 6 services</span>
+                            <p class="desc">
+                                <strong>Personal Project.</strong> Production K3s cluster on Oracle Cloud (within
+                                Oracle's always-free resource limits) with ArgoCD GitOps, automatic SSL, and Ansible
+                                provisioning. Hosts 6 services.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">K3s</span>
+                                <span class="tag">ArgoCD</span>
+                                <span class="tag">Ansible</span>
+                                <span class="tag">GitOps</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="k3s-cluster.html">case study →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- AWS Cost & Architecture Review -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="cloud-migration.html"
+                            aria-label="AWS Cost and Architecture Review case study">
+                            <img src="assets/cloud-migration.svg" alt="AWS Cost &amp; Architecture Review">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3><a href="cloud-migration.html">AWS Cost &amp; Architecture Review</a></h3>
+                                <span class="workload-date">early 2026</span>
+                            </div>
+                            <span class="workload-status">status: complete · informal</span>
+                            <p class="desc">
+                                <strong>Informal.</strong> Infrastructure work helping a small dev team get a handle on
+                                their AWS setup: cost drivers, transparency, and data-sovereignty options.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">AWS</span>
+                                <span class="tag">Cost Optimization</span>
+                                <span class="tag">Architecture Review</span>
+                                <span class="tag">Data Sovereignty</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="cloud-migration.html">case study →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- GitLab Self-Hosted -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="gitlab.html" aria-label="GitLab Self-Hosted case study">
+                            <img src="assets/gitlab.png" alt="GitLab Self-Hosted">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led" aria-hidden="true"></span>
+                                <h3><a href="gitlab.html">GitLab Self-Hosted</a></h3>
+                                <span class="workload-date">mar 2026</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-run">running</span></span>
+                            <p class="desc">
+                                <strong>Personal Project.</strong> Self-hosted GitLab CE instance running in Docker on
+                                a cloud VPS. Features resource-optimized configuration, HTTPS via Let's Encrypt, and
+                                Nginx reverse proxy.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">GitLab CE</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Nginx</span>
+                                <span class="tag">Self-Hosted</span>
+                                <span class="tag">Linux</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="gitlab.html">case study →</a>
+                                <a href="https://git.antonsatt.com/Kaffe" target="_blank" rel="noopener"
+                                    title="Visit Live Instance">live ↗</a>
+                                <a href="https://git.antonsatt.com/Kaffe/gitlab-self-hosted" target="_blank"
+                                    rel="noopener" title="GitLab Repo">gitlab ↗</a>
+                                <a href="https://github.com/AntonSatt/gitlab-self-host" target="_blank" rel="noopener"
+                                    title="GitHub Repo">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Are We Up -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="https://github.com/AntonSatt/are-we-up" target="_blank"
+                            rel="noopener" aria-label="Are We Up on GitHub">
+                            <img src="assets/are-we-up.png" alt="Are We Up">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3>Are We Up</h3>
+                                <span class="workload-date">mar 2026</span>
+                            </div>
+                            <span class="workload-status">status: open source</span>
+                            <p class="desc">
+                                <strong>Personal Project.</strong> Self-hostable uptime monitoring tool to make sure
+                                your projects stay online. Open-source and easy to deploy.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Prometheus</span>
+                                <span class="tag">Grafana</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Alertmanager</span>
+                                <span class="tag">Open Source</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="https://github.com/AntonSatt/are-we-up" target="_blank" rel="noopener"
+                                    title="View Code">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- SSH Radar -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="ssh-radar.html" aria-label="SSH Radar case study">
+                            <img src="assets/ssh_radar/frontpage-1.png" alt="SSH Radar">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led" aria-hidden="true"></span>
+                                <h3><a href="ssh-radar.html">SSH Radar</a></h3>
+                                <span class="workload-date">feb 2026</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-run">running</span> · open
+                                source</span>
+                            <p class="desc">
+                                <strong>Personal Project.</strong> Real-time monitoring platform that tracks failed SSH
+                                brute-force login attempts on a Linux server. Features live feed, Grafana dashboards,
+                                and geolocation data from real attacks.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Grafana</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Open Source</span>
+                                <span class="tag">Linux</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="ssh-radar.html">case study →</a>
+                                <a href="https://ssh-radar.antonsatt.com" target="_blank" rel="noopener"
+                                    title="Visit Live Site">live ↗</a>
+                                <a href="https://github.com/AntonSatt/SSH-Radar" target="_blank" rel="noopener"
+                                    title="View Code">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chas Hack -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="chas-hack.html" aria-label="Chas Hack case study">
+                            <img src="assets/chas_hack/group_photo.jpg" alt="Chas Hack">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3><a href="chas-hack.html">Chas Hack</a></h3>
+                                <span class="workload-date">jan 2026</span>
+                            </div>
+                            <span class="workload-status">status: complete · event organizer</span>
+                            <p class="desc">
+                                <strong>Event Organizer.</strong> Co-organized the first student hackathon at Chas
+                                Academy with the theme "Simplify". Managed planning, team formation, Discord setup, and
+                                mentored participants throughout the event.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Hackathon</span>
+                                <span class="tag">Event</span>
+                                <span class="tag">Leadership</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="chas-hack.html">case study →</a>
+                                <a href="https://www.chashack.se/" target="_blank" rel="noopener"
+                                    title="Chas Hack Website">site ↗</a>
+                                <a href="https://www.linkedin.com/posts/anton-satterkvist_chasacademy-chashack-hackathon-activity-7423983610501910528-yqIe"
+                                    target="_blank" rel="noopener" title="View Post">post ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CarbonShift Live Website -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="https://carbonshift.antonsatt.com/" target="_blank"
+                            rel="noopener" aria-label="CarbonShift live demo">
+                            <img src="assets/carbonshift.png" alt="CarbonShift v2">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led" aria-hidden="true"></span>
+                                <h3>CarbonShift Live Website</h3>
+                                <span class="workload-date">dec 2025</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-run">running</span> · open
+                                source</span>
+                            <p class="desc">
+                                Full-stack rebuild of the hackathon winner. Built with a Next.js frontend and a FastAPI
+                                backend, with AWS Bedrock powering the AI features, hosted on Digital Ocean.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">AWS Bedrock</span>
+                                <span class="tag">Digital Ocean</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="https://carbonshift.antonsatt.com/" target="_blank" rel="noopener"
+                                    title="Visit Live Site">live ↗</a>
+                                <a href="https://github.com/AntonSatt/carbon_shift_website" target="_blank"
+                                    rel="noopener" title="View Code">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CarbonShift (hackathon, 1st place) -->
+                    <article class="workload reveal">
+                        <a class="workload-shot" href="carbon-shift.html" aria-label="CarbonShift case study">
+                            <img src="assets/carbon-shift-1.jpeg" alt="CarbonShift">
+                        </a>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--amber" aria-hidden="true"></span>
+                                <h3><a href="carbon-shift.html">CarbonShift</a></h3>
+                                <span class="workload-date">nov 2025</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-award">🏆 1st place</span> · aws ×
+                                hiq × grafana</span>
+                            <p class="desc">
+                                <strong>Team Chaos (1st Place).</strong> A Grafana Dashboard that tracks CO2 emissions
+                                and electricity costs for cloud servers. Helps companies identify cheaper and more
+                                emission-efficient regions to save money and the planet.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Grafana</span>
+                                <span class="tag">AWS Bedrock</span>
+                                <span class="tag">Terraform</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="carbon-shift.html">case study →</a>
+                                <a href="https://carbonshift.antonsatt.com/" target="_blank" rel="noopener"
+                                    title="Try Live Demo">live ↗</a>
+                                <a href="https://github.com/AntonSatt/carbonswift" target="_blank" rel="noopener"
+                                    title="View Code">github ↗</a>
+                                <a href="https://www.youtube.com/watch?v=okWQFswGp1A" target="_blank" rel="noopener"
+                                    title="Watch Demo">demo ↗</a>
+                                <a href="https://www.linkedin.com/posts/anton-satterkvist_grafana-aws-stockholm-activity-7397530767989305344-KSw9"
+                                    target="_blank" rel="noopener" title="View Post">post ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Theodor AI (3rd place) -->
+                    <article class="workload reveal">
+                        <div class="workload-shot">
+                            <img src="assets/hackathon-start.png" alt="Theodor AI">
+                        </div>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--amber" aria-hidden="true"></span>
+                                <h3>Theodor — AI Onboarding</h3>
+                                <span class="workload-date">oct 2025</span>
+                            </div>
+                            <span class="workload-status">status: <span class="s-award">🏆 3rd place</span> · cillers
+                                hackathon @ aws hq</span>
+                            <p class="desc">
+                                <strong>Team Chaos (3rd Place).</strong> Chat-based AI assistant designed to onboard
+                                new employees. Built at the Cillers Hackathon (AWS HQ).
+                            </p>
+                            <div class="tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">Team Chaos</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="https://www.youtube.com/watch?v=1GaqWt-A5fk" target="_blank" rel="noopener"
+                                    title="Watch Demo">demo ↗</a>
+                                <a href="https://www.linkedin.com/posts/anton-satterkvist_hackathon-teamchaos-chasacademy-activity-7385940401699913729-muiW"
+                                    target="_blank" rel="noopener" title="View Post">post ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CI/CD Discord Bot -->
+                    <article class="workload reveal">
+                        <div class="workload-shot">
+                            <img src="assets/discord-bot.png" alt="Discord Bot CI/CD">
+                        </div>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3>CI/CD Discord Bot</h3>
+                                <span class="workload-date">oct 2025 – present</span>
+                            </div>
+                            <span class="workload-status">status: maintained</span>
+                            <p class="desc">
+                                Full DevOps pipeline implementation for a Discord bot. Automated testing, building, and
+                                deployment using GitHub Actions.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">GitHub Actions</span>
+                                <span class="tag">Python</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="https://github.com/AntonSatt/discord-botty-doe25" target="_blank"
+                                    rel="noopener" title="View Code">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- NextCloud Docker -->
+                    <article class="workload reveal">
+                        <div class="workload-shot">
+                            <img src="assets/NextCloud.jpg" alt="NextCloud Docker">
+                        </div>
+                        <div class="workload-body">
+                            <div class="workload-head">
+                                <span class="led led--muted" aria-hidden="true"></span>
+                                <h3>NextCloud Docker</h3>
+                                <span class="workload-date">oct 2025</span>
+                            </div>
+                            <span class="workload-status">status: complete · guide</span>
+                            <p class="desc">
+                                Self-hosted cloud storage solution using Docker Compose. Focus on data persistence,
+                                networking, and ease of deployment.
+                            </p>
+                            <div class="tags">
+                                <span class="tag">Docker</span>
+                                <span class="tag">Compose</span>
+                            </div>
+                            <div class="workload-links">
+                                <a href="https://github.com/AntonSatt/nextcloud-guide" target="_blank" rel="noopener"
+                                    title="View Code">github ↗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ~/contact -->
+        <section class="section" id="contact">
+            <div class="section-inner">
+                <div class="section-head">
+                    <span class="eyebrow"><span class="prompt">$</span> mail -s "hello" anton@antonsatt.com</span>
+                    <h2>Let's Connect</h2>
+                    <p class="lede">Have a question or want to discuss a project? I'm always open to new
+                        opportunities.</p>
+                </div>
+
+                <div class="contact-grid reveal">
+                    <div class="contact-info">
+                        <dl>
+                            <dt>location</dt>
+                            <dd>Stockholm, Sweden</dd>
+                            <dt>email</dt>
+                            <dd><a href="mailto:anton@antonsatt.com">anton@antonsatt.com</a></dd>
+                            <dt>github</dt>
+                            <dd><a href="https://github.com/antonsatt" target="_blank"
+                                    rel="noopener">github.com/antonsatt</a></dd>
+                            <dt>linkedin</dt>
+                            <dd><a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
+                                    rel="noopener">in/anton-satterkvist</a></dd>
+                            <dt>response</dt>
+                            <dd>usually within a day</dd>
+                        </dl>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="field">
+                            <label for="cf-name">name:</label>
+                            <input type="text" id="cf-name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="field">
+                            <label for="cf-email">email:</label>
+                            <input type="email" id="cf-email" name="email" required
+                                placeholder="your.email@example.com">
+                        </div>
+                        <div class="field">
+                            <label for="cf-message">message:</label>
+                            <textarea id="cf-message" name="message" required rows="4"
+                                placeholder="What would you like to discuss?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--solid">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <p class="deploy-note statusline">
+                    <span class="led" aria-hidden="true"></span>
+                    <span>desired state: <a href="https://github.com/AntonSatt/personal-portfolio" target="_blank"
+                            rel="noopener">this repo</a> · running state: this page — deployed to my own HA K3s cluster
+                        via <a href="https://github.com/AntonSatt/personal-portfolio/blob/main/.github/workflows/deploy.yml"
+                            target="_blank" rel="noopener">GitHub Actions</a>.</span>
+                </p>
+                <p>&copy; 2026 Anton Sätterkvist. Built with code &amp; chaos.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <span class="t-mark" aria-hidden="true">✓</span>
+        <span id="toast-message"></span>
+    </div>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+        <button class="lightbox-close" type="button">close ✕</button>
+        <img src="" alt="">
     </div>
 
     <script src="script.js"></script>

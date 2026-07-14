@@ -1,508 +1,391 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>K3s Kubernetes Homelab | Project Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/30">
+<body>
+    <a class="skip-link" href="#main">skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
-        <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <a href="index.html"
-                class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="group-hover:-translate-x-1 transition-transform">
-                    <path d="m15 18-6-6 6-6" />
-                </svg>
-                Back to Portfolio
-            </a>
-            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;K3sCluster /&gt;</span>
+    <!-- console rail (desktop) -->
+    <aside class="rail">
+        <img class="rail-avatar" src="assets/me.png" alt="Anton Sätterkvist">
+        <a class="rail-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <span class="rail-sub">platform · devops · gitops</span>
+        <nav class="rail-nav" aria-label="Sections">
+            <a href="index.html#about">~/about</a>
+            <a href="index.html#journey">~/journey</a>
+            <a href="index.html#projects" class="active">~/projects</a>
+            <a href="index.html#contact">~/contact</a>
+        </nav>
+        <div class="rail-status">
+            <span class="statusline"><span class="led" aria-hidden="true"></span> operational</span>
+            <span>stockholm <span class="clock">--:--:--</span></span>
+            <span>3 nodes · 6 services</span>
         </div>
+        <div class="rail-social">
+            <a href="https://github.com/antonsatt" target="_blank" rel="noopener">github ↗</a>
+            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" rel="noopener">linkedin ↗</a>
+            <a href="mailto:anton@antonsatt.com">anton@antonsatt.com</a>
+        </div>
+        <span class="rail-meta">v2 · self-hosted on K3s</span>
+    </aside>
+
+    <!-- topbar (mobile) -->
+    <header class="topbar">
+        <a class="topbar-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu">menu</button>
+    </header>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Sections">
+        <a href="index.html#about">~/about</a>
+        <a href="index.html#journey">~/journey</a>
+        <a href="index.html#projects">~/projects</a>
+        <a href="index.html#contact">~/contact</a>
+        <span class="statusline"><span class="led" aria-hidden="true"></span> operational · stockholm <span
+                class="clock">--:--:--</span></span>
     </nav>
 
-    <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6">
+    <main class="main" id="main">
 
-            <!-- Header -->
-            <div class="max-w-4xl mx-auto mb-16 animate-fade-in">
-                <div class="flex flex-wrap items-center gap-4 mb-6">
-                    <span
-                        class="px-4 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-sm font-bold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                        Infrastructure / Kubernetes
-                    </span>
-                    <span
-                        class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-sm font-mono">March 2026 - Ongoing</span>
-                    <span
-                        class="px-3 py-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-sm font-bold flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <polygon points="10 8 16 12 10 16 10 8" />
-                        </svg>
-                        Live
-                    </span>
+        <header class="case-header">
+            <div class="section-inner">
+                <span class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / <span
+                        class="here">k3s-cluster</span></span>
+                <div class="chips">
+                    <span class="chip"><span class="k">type:</span> Infrastructure / Kubernetes</span>
+                    <span class="chip"><span class="k">when:</span> March 2026 - Ongoing</span>
+                    <span class="chip chip--jade"><span class="k">status:</span> Live</span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    K3s Kubernetes Cluster<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">with GitOps &amp; Zero Cost</span>
-                </h1>
-                <p class="text-xl text-slate-400 leading-relaxed">
+                <h1>K3s Kubernetes Cluster</h1>
+                <p class="case-sub">with GitOps &amp; Zero Cost</p>
+                <p class="lede">
                     Consolidated 7 scattered servers into a production-grade Kubernetes cluster
                     running on Oracle Cloud's free tier. Fully automated deployments with ArgoCD,
                     automatic SSL, and Infrastructure as Code with Ansible. Monthly cost: $0.
                 </p>
             </div>
+        </header>
 
-            <!-- Main Content Grid -->
-            <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto mb-24">
+        <div class="case-body">
+            <div class="case-grid">
+                <div class="case-main">
 
-                <!-- Left Column: Details -->
-                <div class="lg:col-span-2 space-y-12 animate-fade-in" style="animation-delay: 0.1s;">
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/argocd.png"
+                            aria-label="Enlarge: ArgoCD Dashboard — Cluster Health">
+                            <img src="assets/argocd.png" alt="ArgoCD Dashboard — Cluster Health">
+                        </button>
+                        <figcaption>ArgoCD Dashboard — Cluster Health · click to enlarge</figcaption>
+                    </figure>
 
-                    <!-- Main Image -->
-                    <div
-                        class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 aspect-video cursor-pointer group/img"
-                        onclick="openLightbox('assets/argocd.png')">
-                        <img src="assets/argocd.png" alt="ArgoCD Dashboard — Cluster Health"
-                            class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/30 transition-colors flex items-center justify-center">
-                            <span class="opacity-0 group-hover/img:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <polyline points="9 21 3 21 3 15"></polyline>
-                                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                                </svg>
-                                Click to enlarge
-                            </span>
-                        </div>
-                    </div>
+                    <h2>The Problem</h2>
+                    <p>
+                        I had 7 different servers spread across DigitalOcean, Oracle Cloud, AWS, a Raspberry Pi,
+                        and a homelab &mdash; each configured manually with no standardization. Websites ran via PM2
+                        and nginx, a Discord bot ran as a systemd service, and a Bitcoin payment server ate 40GB of
+                        disk space. No backups. No orchestration. If any server died, I'd have to rebuild from memory.
+                    </p>
+                    <blockquote>
+                        "I'm a DevOps student &mdash; my own infrastructure should reflect what I'm learning.
+                        Kubernetes, GitOps, Infrastructure as Code. Not scattered VMs with manual nginx configs."
+                    </blockquote>
 
-                    <!-- The Story -->
-                    <div class="prose prose-invert prose-lg max-w-none">
-                        <h3 class="text-2xl font-bold text-white mb-4">The Problem</h3>
-                        <p class="text-slate-400 mb-8">
-                            I had 7 different servers spread across DigitalOcean, Oracle Cloud, AWS, a Raspberry Pi,
-                            and a homelab &mdash; each configured manually with no standardization. Websites ran via PM2
-                            and nginx, a Discord bot ran as a systemd service, and a Bitcoin payment server ate 40GB of
-                            disk space. No backups. No orchestration. If any server died, I'd have to rebuild from memory.
-                        </p>
-                        <p class="text-slate-400 mb-8 border-l-4 border-cyan-500 pl-4 italic">
-                            "I'm a DevOps student &mdash; my own infrastructure should reflect what I'm learning.
-                            Kubernetes, GitOps, Infrastructure as Code. Not scattered VMs with manual nginx configs."
-                        </p>
+                    <h2>The Solution</h2>
+                    <p>
+                        Consolidated everything into a 2-node K3s Kubernetes cluster on Oracle Cloud's
+                        always-free ARM64 VMs (24GB RAM total), with a full GitOps pipeline.
+                    </p>
 
-                        <h3 class="text-2xl font-bold text-white mb-4">The Solution</h3>
-                        <p class="text-slate-400 mb-6">
-                            Consolidated everything into a 2-node K3s Kubernetes cluster on Oracle Cloud's
-                            always-free ARM64 VMs (24GB RAM total), with a full GitOps pipeline.
-                        </p>
+                    <h2>Architecture Overview</h2>
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/k3s-cluster.svg"
+                            aria-label="Enlarge: Infrastructure Architecture Diagram">
+                            <img src="assets/k3s-cluster.svg" alt="Infrastructure Architecture Diagram">
+                        </button>
+                        <figcaption>Infrastructure Architecture Diagram · click to enlarge</figcaption>
+                    </figure>
 
-                        <!-- Architecture Diagram -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Architecture Overview</h3>
-                        <div
-                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img2"
-                            onclick="openLightbox('assets/k3s-cluster.svg')">
-                            <img src="assets/k3s-cluster.svg" alt="Infrastructure Architecture Diagram"
-                                class="w-full object-contain p-2 pointer-events-none">
-                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img2:bg-slate-950/30 transition-colors flex items-center justify-center z-10">
-                                <span class="opacity-0 group-hover/img2:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2 pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="15 3 21 3 21 9"></polyline>
-                                        <polyline points="9 21 3 21 3 15"></polyline>
-                                        <line x1="21" y1="3" x2="14" y2="10"></line>
-                                        <line x1="3" y1="21" x2="10" y2="14"></line>
-                                    </svg>
-                                    Click to enlarge
-                                </span>
+                    <h2>How Deployments Work</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-n step-n--num">1</span>
+                            <div>
+                                <p class="step-t">Push to GitHub</p>
+                                <p>Edit a Kubernetes manifest in the IaC repository and push. That's the only manual
+                                    step.</p>
                             </div>
                         </div>
-
-                        <!-- Workflow -->
-                        <h3 class="text-2xl font-bold text-white mb-4">How Deployments Work</h3>
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-cyan-400 font-mono shrink-0 w-8">1</span>
-                                <div>
-                                    <p class="text-white font-medium">Push to GitHub</p>
-                                    <p class="text-slate-400 text-sm">Edit a Kubernetes manifest in the IaC repository and push. That's the only manual step.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-cyan-400 font-mono shrink-0 w-8">2</span>
-                                <div>
-                                    <p class="text-white font-medium">ArgoCD detects the change</p>
-                                    <p class="text-slate-400 text-sm">ArgoCD polls the GitHub repo every 3 minutes. When it sees a diff, it calculates what needs to change on the cluster.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-cyan-400 font-mono shrink-0 w-8">3</span>
-                                <div>
-                                    <p class="text-white font-medium">Kubernetes applies the update</p>
-                                    <p class="text-slate-400 text-sm">ArgoCD runs <code class="text-cyan-300 bg-slate-800 px-1 rounded">kubectl apply</code> automatically. Old pods are replaced with new ones via rolling updates &mdash; zero downtime.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-cyan-400 font-mono shrink-0 w-8">4</span>
-                                <div>
-                                    <p class="text-white font-medium">Traefik routes traffic, cert-manager handles SSL</p>
-                                    <p class="text-slate-400 text-sm">Traefik reads Ingress rules and routes requests by hostname. cert-manager automatically issues and renews Let's Encrypt certificates.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-cyan-400 font-mono shrink-0 w-8">5</span>
-                                <div>
-                                    <p class="text-white font-medium">Self-healing</p>
-                                    <p class="text-slate-400 text-sm">If a pod crashes, Kubernetes restarts it. If someone manually changes something on the cluster, ArgoCD reverts it to match git. Git is the single source of truth.</p>
-                                </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">2</span>
+                            <div>
+                                <p class="step-t">ArgoCD detects the change</p>
+                                <p>ArgoCD polls the GitHub repo every 3 minutes. When it sees a diff, it calculates
+                                    what needs to change on the cluster.</p>
                             </div>
                         </div>
-
-                        <!-- What's running -->
-                        <h3 class="text-2xl font-bold text-white mb-4">What's Running</h3>
-                        <div class="space-y-3 mb-8">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-cyan-400">antonsatt.com</h4>
-                                    <span class="text-xs text-slate-500 font-mono">nginx:alpine</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Portfolio site. Static HTML served by nginx. Auto-deployed via GitHub Actions on every push.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-green-400">CarbonShift</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Next.js + FastAPI</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">CO2 emissions tracker with AI-powered reports via OpenRouter. Frontend and backend run as separate deployments.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-amber-400">SSH Radar</h4>
-                                    <span class="text-xs text-slate-500 font-mono">React + Grafana + PostgreSQL</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Real-time SSH attack monitoring with 280,000+ recorded login attempts. Grafana dashboards with world map visualization.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-orange-400">GitLab CE</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Docker (proxied via K3s)</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Self-hosted GitLab instance for private repositories. Runs in Docker, proxied through K3s Traefik ingress with auto-SSL.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-purple-400">Sattbot</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Python + discord.py</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Custom Discord bot with moderation, RSS feeds, and fun commands. Runs as a headless pod with no web UI.</p>
+                        <div class="step">
+                            <span class="step-n step-n--num">3</span>
+                            <div>
+                                <p class="step-t">Kubernetes applies the update</p>
+                                <p>ArgoCD runs <code>kubectl apply</code> automatically. Old pods are replaced with new
+                                    ones via rolling updates &mdash; zero downtime.</p>
                             </div>
                         </div>
-
-                        <!-- Raspberry Pi -->
-                        <h3 class="text-2xl font-bold text-white mb-4">External Monitoring (Raspberry Pi)</h3>
-                        <p class="text-slate-400 mb-4">
-                            A Raspberry Pi 4 at home runs independently from the cluster, monitoring everything from the outside &mdash;
-                            because your monitoring shouldn't run on the same infrastructure it's watching.
-                        </p>
-                        <div class="space-y-3 mb-8">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-rose-500/10 to-pink-500/10 border border-rose-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-rose-400">are-we-up</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Prometheus + Blackbox</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Uptime monitoring with Prometheus, Blackbox Exporter, and Alertmanager. Sends Discord alerts when any site goes down.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-blue-400">Grafana Dashboards</h4>
-                                    <span class="text-xs text-slate-500 font-mono">grafana/grafana</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Visualizes uptime, response times, and node metrics (CPU, memory, disk) across all servers via node-exporter and cAdvisor.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-teal-400">Nextcloud</h4>
-                                    <span class="text-xs text-slate-500 font-mono">linuxserver/nextcloud</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Self-hosted file storage and sync. Personal data stays at home, not on a cloud provider.</p>
+                        <div class="step">
+                            <span class="step-n step-n--num">4</span>
+                            <div>
+                                <p class="step-t">Traefik routes traffic, cert-manager handles SSL</p>
+                                <p>Traefik reads Ingress rules and routes requests by hostname. cert-manager
+                                    automatically issues and renews Let's Encrypt certificates.</p>
                             </div>
                         </div>
-
-                        <!-- Infrastructure layers -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Infrastructure Layers</h3>
-                        <div class="space-y-6 mb-8">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Layer 1: Server Provisioning (Ansible)</h4>
-                                <p class="text-slate-400 text-sm">Ansible playbooks handle SSH hardening, fail2ban, Docker, and iptables configuration. If a server dies, one command rebuilds it: <code class="text-cyan-300 bg-slate-800 px-1 rounded">ansible-playbook site.yml</code></p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Layer 2: Container Orchestration (K3s)</h4>
-                                <p class="text-slate-400 text-sm">K3s is a lightweight, production-grade Kubernetes distribution. Two ARM64 nodes connected via VXLAN overlay network. Comes with Traefik for ingress and CoreDNS for service discovery.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Layer 3: GitOps (ArgoCD)</h4>
-                                <p class="text-slate-400 text-sm">ArgoCD watches the GitHub repository and automatically syncs Kubernetes manifests to the cluster. Every change is tracked in git history. Self-healing ensures the cluster always matches the desired state.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Layer 4: SSL (cert-manager + Let's Encrypt)</h4>
-                                <p class="text-slate-400 text-sm">Fully automated certificate lifecycle. Add an annotation to an Ingress resource and cert-manager handles issuance, validation, and renewal. Zero manual certificate management.</p>
-                            </div>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Key Decisions</h3>
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-3xl font-bold text-emerald-400 font-mono shrink-0">$0</span>
-                                <div>
-                                    <p class="text-white font-medium">Monthly infrastructure cost</p>
-                                    <p class="text-slate-400 text-sm">Oracle Cloud Always Free tier provides 2 ARM64 VMs with 12GB RAM each &mdash; enough for all services with room to grow.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-3xl font-bold text-cyan-400 font-mono shrink-0">7&rarr;2</span>
-                                <div>
-                                    <p class="text-white font-medium">Servers consolidated</p>
-                                    <p class="text-slate-400 text-sm">From 7 manually configured servers across 4 providers down to 2 nodes in a single K3s cluster with full IaC.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-3xl font-bold text-purple-400 font-mono shrink-0">0</span>
-                                <div>
-                                    <p class="text-white font-medium">Manual deployment steps</p>
-                                    <p class="text-slate-400 text-sm">Push to git and ArgoCD handles the rest. GitHub Actions builds container images on push for the portfolio site.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Tech Stack</h3>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1.5 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">K3s</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">ArgoCD</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">Traefik</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">cert-manager</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">Ansible</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">Docker</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">Let's Encrypt</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">GitHub Actions</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-slate-300 bg-slate-800/30 border border-slate-500/20 rounded-full">Oracle Cloud</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded-full">ARM64 (Ampere)</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-pink-300 bg-pink-950/30 border border-pink-500/20 rounded-full">Grafana</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-emerald-300 bg-emerald-950/30 border border-emerald-500/20 rounded-full">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Sidebar -->
-                <div class="space-y-8 animate-fade-in" style="animation-delay: 0.2s;">
-
-                    <!-- Project Details Card -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Project Details</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-cyan-400 shrink-0 mt-0.5">
-                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Type</p>
-                                    <p class="text-slate-400">Infrastructure / Kubernetes / GitOps</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-cyan-400 shrink-0 mt-0.5">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Status</p>
-                                    <p class="text-slate-400">Live &amp; Running</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-cyan-400 shrink-0 mt-0.5">
-                                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Monthly Cost</p>
-                                    <p class="text-slate-400">$0 (Oracle Cloud Free Tier)</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-cyan-400 shrink-0 mt-0.5">
-                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Compute</p>
-                                    <p class="text-slate-400">2x ARM64 VMs (4 CPU, 24GB RAM total)</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-cyan-400 shrink-0 mt-0.5">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Services Hosted</p>
-                                    <p class="text-slate-400">6 apps + ArgoCD + cert-manager</p>
-                                </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">5</span>
+                            <div>
+                                <p class="step-t">Self-healing</p>
+                                <p>If a pod crashes, Kubernetes restarts it. If someone manually changes something on
+                                    the cluster, ArgoCD reverts it to match git. Git is the single source of truth.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Live Links -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Live Services</h3>
-                        <div class="space-y-3 text-sm">
-                            <a href="https://antonsatt.com" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                antonsatt.com
-                            </a>
-                            <a href="https://carbonshift.antonsatt.com" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                carbonshift.antonsatt.com
-                            </a>
-                            <a href="https://ssh-radar.antonsatt.com" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                ssh-radar.antonsatt.com
-                            </a>
-                            <a href="https://git.antonsatt.com" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                git.antonsatt.com (GitLab)
-                            </a>
-                            <a href="https://argocd.antonsatt.com" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                argocd.antonsatt.com
-                            </a>
+                    <h2>What's Running</h2>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>antonsatt.com</h4>
+                                <span class="feature-meta">nginx:alpine</span>
+                            </div>
+                            <p>Portfolio site. Static HTML served by nginx. Auto-deployed via GitHub Actions on every
+                                push.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>CarbonShift</h4>
+                                <span class="feature-meta">Next.js + FastAPI</span>
+                            </div>
+                            <p>CO2 emissions tracker with AI-powered reports via OpenRouter. Frontend and backend run
+                                as separate deployments.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>SSH Radar</h4>
+                                <span class="feature-meta">React + Grafana + PostgreSQL</span>
+                            </div>
+                            <p>Real-time SSH attack monitoring with 280,000+ recorded login attempts. Grafana
+                                dashboards with world map visualization.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>GitLab CE</h4>
+                                <span class="feature-meta">Docker (proxied via K3s)</span>
+                            </div>
+                            <p>Self-hosted GitLab instance for private repositories. Runs in Docker, proxied through
+                                K3s Traefik ingress with auto-SSL.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Sattbot</h4>
+                                <span class="feature-meta">Python + discord.py</span>
+                            </div>
+                            <p>Custom Discord bot with moderation, RSS feeds, and fun commands. Runs as a headless pod
+                                with no web UI.</p>
                         </div>
                     </div>
 
-                    <!-- Tags -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Tags</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">#Kubernetes</span>
-                            <span class="px-3 py-1 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">#GitOps</span>
-                            <span class="px-3 py-1 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">#K3s</span>
-                            <span class="px-3 py-1 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">#ArgoCD</span>
-                            <span class="px-3 py-1 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">#Ansible</span>
-                            <span class="px-3 py-1 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">#IaC</span>
-                            <span class="px-3 py-1 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">#DevOps</span>
-                            <span class="px-3 py-1 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">#OracleCloud</span>
-                            <span class="px-3 py-1 text-sm font-medium text-pink-300 bg-pink-950/30 border border-pink-500/20 rounded-full">#Homelab</span>
+                    <h2>External Monitoring (Raspberry Pi)</h2>
+                    <p>
+                        A Raspberry Pi 4 at home runs independently from the cluster, monitoring everything from the
+                        outside &mdash; because your monitoring shouldn't run on the same infrastructure it's watching.
+                    </p>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>are-we-up</h4>
+                                <span class="feature-meta">Prometheus + Blackbox</span>
+                            </div>
+                            <p>Uptime monitoring with Prometheus, Blackbox Exporter, and Alertmanager. Sends Discord
+                                alerts when any site goes down.</p>
                         </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Grafana Dashboards</h4>
+                                <span class="feature-meta">grafana/grafana</span>
+                            </div>
+                            <p>Visualizes uptime, response times, and node metrics (CPU, memory, disk) across all
+                                servers via node-exporter and cAdvisor.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Nextcloud</h4>
+                                <span class="feature-meta">linuxserver/nextcloud</span>
+                            </div>
+                            <p>Self-hosted file storage and sync. Personal data stays at home, not on a cloud
+                                provider.</p>
+                        </div>
+                    </div>
+
+                    <h2>Infrastructure Layers</h2>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Layer 1: Server Provisioning (Ansible)</h4>
+                            </div>
+                            <p>Ansible playbooks handle SSH hardening, fail2ban, Docker, and iptables configuration. If
+                                a server dies, one command rebuilds it: <code>ansible-playbook site.yml</code></p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Layer 2: Container Orchestration (K3s)</h4>
+                            </div>
+                            <p>K3s is a lightweight, production-grade Kubernetes distribution. Two ARM64 nodes
+                                connected via VXLAN overlay network. Comes with Traefik for ingress and CoreDNS for
+                                service discovery.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Layer 3: GitOps (ArgoCD)</h4>
+                            </div>
+                            <p>ArgoCD watches the GitHub repository and automatically syncs Kubernetes manifests to the
+                                cluster. Every change is tracked in git history. Self-healing ensures the cluster
+                                always matches the desired state.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Layer 4: SSL (cert-manager + Let's Encrypt)</h4>
+                            </div>
+                            <p>Fully automated certificate lifecycle. Add an annotation to an Ingress resource and
+                                cert-manager handles issuance, validation, and renewal. Zero manual certificate
+                                management.</p>
+                        </div>
+                    </div>
+
+                    <h2>Key Decisions</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-n">$0</span>
+                            <div>
+                                <p class="step-t">Monthly infrastructure cost</p>
+                                <p>Oracle Cloud Always Free tier provides 2 ARM64 VMs with 12GB RAM each &mdash; enough
+                                    for all services with room to grow.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">7&rarr;2</span>
+                            <div>
+                                <p class="step-t">Servers consolidated</p>
+                                <p>From 7 manually configured servers across 4 providers down to 2 nodes in a single
+                                    K3s cluster with full IaC.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">0</span>
+                            <div>
+                                <p class="step-t">Manual deployment steps</p>
+                                <p>Push to git and ArgoCD handles the rest. GitHub Actions builds container images on
+                                    push for the portfolio site.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Tech Stack</h2>
+                    <div class="tags">
+                        <span class="tag">K3s</span>
+                        <span class="tag">ArgoCD</span>
+                        <span class="tag">Traefik</span>
+                        <span class="tag">cert-manager</span>
+                        <span class="tag">Ansible</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Let's Encrypt</span>
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Oracle Cloud</span>
+                        <span class="tag">ARM64 (Ampere)</span>
+                        <span class="tag">Grafana</span>
+                        <span class="tag">PostgreSQL</span>
                     </div>
 
                 </div>
+
+                <aside class="case-aside">
+                    <div class="aside-card">
+                        <h3>$ kubectl describe project</h3>
+                        <dl>
+                            <dt>type</dt>
+                            <dd>Infrastructure / Kubernetes / GitOps</dd>
+                            <dt>status</dt>
+                            <dd>Live &amp; Running</dd>
+                            <dt>monthly cost</dt>
+                            <dd>$0 (Oracle Cloud Free Tier)</dd>
+                            <dt>compute</dt>
+                            <dd>2x ARM64 VMs (4 CPU, 24GB RAM total)</dd>
+                            <dt>services hosted</dt>
+                            <dd>6 apps + ArgoCD + cert-manager</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h3>live services</h3>
+                        <ul class="link-list">
+                            <li><a href="https://antonsatt.com" target="_blank"
+                                    rel="noopener">antonsatt.com ↗</a></li>
+                            <li><a href="https://carbonshift.antonsatt.com" target="_blank"
+                                    rel="noopener">carbonshift.antonsatt.com ↗</a></li>
+                            <li><a href="https://ssh-radar.antonsatt.com" target="_blank"
+                                    rel="noopener">ssh-radar.antonsatt.com ↗</a></li>
+                            <li><a href="https://git.antonsatt.com" target="_blank"
+                                    rel="noopener">git.antonsatt.com (GitLab) ↗</a></li>
+                            <li><a href="https://argocd.antonsatt.com" target="_blank"
+                                    rel="noopener">argocd.antonsatt.com ↗</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h3>tags</h3>
+                        <div class="tags">
+                            <span class="tag">#Kubernetes</span>
+                            <span class="tag">#GitOps</span>
+                            <span class="tag">#K3s</span>
+                            <span class="tag">#ArgoCD</span>
+                            <span class="tag">#Ansible</span>
+                            <span class="tag">#IaC</span>
+                            <span class="tag">#DevOps</span>
+                            <span class="tag">#OracleCloud</span>
+                            <span class="tag">#Homelab</span>
+                        </div>
+                    </div>
+                </aside>
             </div>
-
         </div>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <p class="deploy-note statusline">
+                    <span class="led" aria-hidden="true"></span>
+                    <span>desired state: <a href="https://github.com/AntonSatt/personal-portfolio" target="_blank"
+                            rel="noopener">this repo</a> · running state: this page — deployed to my own HA K3s cluster
+                        via <a href="https://github.com/AntonSatt/personal-portfolio/blob/main/.github/workflows/deploy.yml"
+                            target="_blank" rel="noopener">GitHub Actions</a>.</span>
+                </p>
+                <p>&copy; 2026 Anton Sätterkvist. Built with code &amp; chaos.</p>
+            </div>
+        </footer>
+
     </main>
 
-    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Anton S&auml;tterkvist. Built with code &amp; chaos.</p>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox"
-        class="fixed inset-0 z-[100] bg-slate-950/95 hidden flex items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm cursor-pointer"
-        onclick="closeLightbox()">
-        <button onclick="closeLightbox()"
-            class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <div class="relative max-w-7xl max-h-[90vh] p-4" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Enlarged image"
-                class="max-h-[85vh] rounded-lg shadow-2xl object-contain bg-slate-900 border border-white/10 p-4" style="min-width: 60vw;">
-        </div>
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+        <button class="lightbox-close" type="button">close ✕</button>
+        <img src="" alt="">
     </div>
 
-    <script>
-        const lightbox = document.getElementById('lightbox');
-
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            lightbox.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                lightbox.classList.remove('opacity-0');
-            });
-        }
-
-        function closeLightbox() {
-            lightbox.classList.add('opacity-0');
-            setTimeout(() => {
-                lightbox.classList.add('hidden');
-            }, 300);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-                closeLightbox();
-            }
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

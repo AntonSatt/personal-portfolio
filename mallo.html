@@ -1,646 +1,524 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@1,400;1,500&display=swap"
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>Mallo — Chas Challenge 2026 | Project Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-orange-500/30">
+<body>
+    <a class="skip-link" href="#main">skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
-        <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <a href="index.html"
-                class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="group-hover:-translate-x-1 transition-transform">
-                    <path d="m15 18-6-6 6-6" />
-                </svg>
-                Back to Portfolio
-            </a>
-            <span class="text-xl font-bold tracking-tight text-white font-mono">&lt;Mallo /&gt;</span>
+    <!-- console rail (desktop) -->
+    <aside class="rail">
+        <img class="rail-avatar" src="assets/me.png" alt="Anton Sätterkvist">
+        <a class="rail-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <span class="rail-sub">platform · devops · gitops</span>
+        <nav class="rail-nav" aria-label="Sections">
+            <a href="index.html#about">~/about</a>
+            <a href="index.html#journey">~/journey</a>
+            <a href="index.html#projects" class="active">~/projects</a>
+            <a href="index.html#contact">~/contact</a>
+        </nav>
+        <div class="rail-status">
+            <span class="statusline"><span class="led" aria-hidden="true"></span> operational</span>
+            <span>stockholm <span class="clock">--:--:--</span></span>
+            <span>3 nodes · 6 services</span>
         </div>
+        <div class="rail-social">
+            <a href="https://github.com/antonsatt" target="_blank" rel="noopener">github ↗</a>
+            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" rel="noopener">linkedin ↗</a>
+            <a href="mailto:anton@antonsatt.com">anton@antonsatt.com</a>
+        </div>
+        <span class="rail-meta">v2 · self-hosted on K3s</span>
+    </aside>
+
+    <!-- topbar (mobile) -->
+    <header class="topbar">
+        <a class="topbar-brand" href="index.html"><span class="tilde">~</span> anton@antonsatt</a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu">menu</button>
+    </header>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Sections">
+        <a href="index.html#about">~/about</a>
+        <a href="index.html#journey">~/journey</a>
+        <a href="index.html#projects">~/projects</a>
+        <a href="index.html#contact">~/contact</a>
+        <span class="statusline"><span class="led" aria-hidden="true"></span> operational · stockholm <span
+                class="clock">--:--:--</span></span>
     </nav>
 
-    <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6">
+    <main class="main" id="main">
 
-            <!-- Header -->
-            <div class="max-w-4xl mx-auto mb-16 animate-fade-in">
-                <div class="flex flex-wrap items-center gap-4 mb-6">
-                    <span
-                        class="px-4 py-1.5 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full text-sm font-bold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        Group Project / Chas Challenge 2026
-                    </span>
-                    <span
-                        class="px-3 py-1.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full text-sm font-mono">March – June 2026</span>
-                    <span
-                        class="px-3 py-1.5 bg-pink-500/10 text-pink-400 border border-pink-500/20 rounded-full text-sm font-bold flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M12 22s-8-4.5-8-11.8A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 8 3.2C20 17.5 12 22 12 22z"></path>
-                        </svg>
-                        My role: DevOps
-                    </span>
+        <header class="case-header">
+            <div class="section-inner">
+                <span class="crumb"><a href="index.html">~</a> / <a href="index.html#projects">projects</a> / <span
+                        class="here">mallo</span></span>
+                <div class="chips">
+                    <span class="chip"><span class="k">type:</span> group project · chas-challenge-2026</span>
+                    <span class="chip"><span class="k">when:</span> march – june 2026</span>
+                    <span class="chip chip--jade"><span class="k">my-role:</span> devops</span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    Mallo<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-pink-500">Community, Conversation &amp; Connection</span>
-                </h1>
-                <p class="text-xl text-slate-400 leading-relaxed">
+                <h1>Mallo</h1>
+                <p class="case-sub">Community, Conversation &amp; Connection</p>
+                <p class="lede">
                     A Swedish-language community platform built by a 9-person cross-functional team for
-                    <strong class="text-slate-200">Chas Challenge 2026</strong> &mdash; the annual competition at Chas Academy.
+                    <strong>Chas Challenge 2026</strong> &mdash; the annual competition at Chas Academy.
                     Members share posts, find local activities on a map, and chat in real time.
-                    I owned <strong class="text-slate-200">DevOps</strong>: the Kubernetes deployment, the GitLab CI/CD
+                    I owned <strong>DevOps</strong>: the Kubernetes deployment, the GitLab CI/CD
                     pipeline, and the observability stack.
                 </p>
             </div>
+        </header>
 
-            <!-- Main Content Grid -->
-            <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto mb-24">
+        <div class="case-body">
+            <div class="case-grid">
+                <div class="case-main">
 
-                <!-- Left Column: Details -->
-                <div class="lg:col-span-2 space-y-12 animate-fade-in" style="animation-delay: 0.1s;">
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/mallo/mallo-wave.webp"
+                            aria-label="Enlarge: Mallo mascot">
+                            <img src="assets/mallo/mallo-wave.webp"
+                                alt="Mallo — the marshmallow mascot waving hello">
+                        </button>
+                        <figcaption>Mallo · the marshmallow mascot — click to enlarge</figcaption>
+                    </figure>
 
-                    <!-- Main Image (animated mascot) -->
-                    <div
-                        class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-br from-orange-50 to-rose-50 aspect-video cursor-pointer group/img"
-                        onclick="openLightbox('assets/mallo/mallo-wave.webp')">
-                        <img src="assets/mallo/mallo-wave.webp" alt="Mallo — the marshmallow mascot waving hello"
-                            class="w-full h-full object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950/70 to-transparent flex items-end justify-between">
-                            <span class="text-white text-sm font-semibold drop-shadow">Mallo · the marshmallow mascot</span>
-                        </div>
-                        <div class="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/20 transition-colors flex items-center justify-center">
-                            <span class="opacity-0 group-hover/img:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <polyline points="9 21 3 21 3 15"></polyline>
-                                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                                </svg>
-                                Click to enlarge
-                            </span>
-                        </div>
-                    </div>
+                    <h2>What is Mallo?</h2>
+                    <p>
+                        Mallo is a Swedish-language web community. Members write posts, react with
+                        <strong>"hugs"</strong>, comment, save favourites, and find real-world activities pinned to a
+                        map of Sweden. A built-in chat lets them message each other directly. It is built mobile-first,
+                        with a friendly marshmallow mascot tying the brand together.
+                    </p>
+                    <blockquote>
+                        "Chas Challenge 2026's theme was <strong>Tech for Good</strong> &mdash; build a product that
+                        creatively uses technology to generate clear and meaningful benefit for people, society, or the
+                        environment. We answered with a place for community, conversation and connection."
+                    </blockquote>
+                    <p>
+                        Eighteen cross-functional teams competed. Each team mirrors a real workplace &mdash; frontend,
+                        fullstack, DevOps, systems development, and UX/UI &mdash; and is judged by an external industry
+                        jury on how well it executes the theme. Our team, <strong>GR8</strong>, shipped Mallo
+                        end-to-end: a <strong>React 19</strong> SPA, a <strong>.NET 10</strong> API,
+                        <strong>MS SQL Server</strong>, and real-time chat over <strong>SignalR</strong>, all running
+                        on the school's <strong>Kubernetes</strong> cluster.
+                    </p>
 
-                    <!-- The Story -->
-                    <div class="prose prose-invert prose-lg max-w-none">
-                        <h3 class="text-2xl font-bold text-white mb-4">What is Mallo?</h3>
-                        <p class="text-slate-400 mb-8">
-                            Mallo is a Swedish-language web community. Members write posts, react with
-                            <span class="text-rose-400 font-semibold">"hugs"</span>, comment, save favourites, and find
-                            real-world activities pinned to a map of Sweden. A built-in chat lets them message each other
-                            directly. It is built mobile-first, with a friendly marshmallow mascot tying the brand together.
-                        </p>
-                        <p class="text-slate-400 mb-8 border-l-4 border-orange-500 pl-4 italic">
-                            "Chas Challenge 2026's theme was <span class="text-orange-300 not-italic font-semibold">Tech for Good</span>
-                            &mdash; build a product that creatively uses technology to generate clear and meaningful benefit
-                            for people, society, or the environment. We answered with a place for community, conversation
-                            and connection."
-                        </p>
-                        <p class="text-slate-400 mb-8">
-                            Eighteen cross-functional teams competed. Each team mirrors a real workplace &mdash; frontend,
-                            fullstack, DevOps, systems development, and UX/UI &mdash; and is judged by an external industry
-                            jury on how well it executes the theme. Our team, <span class="text-white font-semibold">GR8</span>,
-                            shipped Mallo end-to-end: a <span class="text-white font-semibold">React 19</span> SPA, a
-                            <span class="text-white font-semibold">.NET 10</span> API, <span class="text-white font-semibold">MS SQL Server</span>,
-                            and real-time chat over <span class="text-white font-semibold">SignalR</span>, all running on the
-                            school's <span class="text-white font-semibold">Kubernetes</span> cluster.
-                        </p>
-
-                        <!-- Product Gallery -->
-                        <h3 class="text-2xl font-bold text-white mb-4">The Product</h3>
-                        <p class="text-slate-400 mb-6">
-                            Mobile-first views. Tap any screen to enlarge.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 not-prose">
-                        <figure class="space-y-2">
-                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
-                                onclick="openLightbox('assets/mallo/landing-login.png')">
-                                <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10"></div>
-                                <img src="assets/mallo/landing-login.png" alt="Mallo welcome and login screen"
-                                    class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            </div>
-                            <figcaption class="text-center text-xs text-slate-500 font-medium">Welcome &amp; login</figcaption>
+                    <h2>The Product</h2>
+                    <p>Mobile-first views. Tap any screen to enlarge.</p>
+                    <div class="shot-grid">
+                        <figure>
+                            <button class="zoomable" data-full="assets/mallo/landing-login.png"
+                                aria-label="Enlarge: welcome and login screen">
+                                <img src="assets/mallo/landing-login.png" alt="Mallo welcome and login screen">
+                            </button>
+                            <figcaption>Welcome &amp; login</figcaption>
                         </figure>
-                        <figure class="space-y-2">
-                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
-                                onclick="openLightbox('assets/mallo/forum.png')">
-                                <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10"></div>
-                                <img src="assets/mallo/forum.png" alt="Mallo forum feed"
-                                    class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            </div>
-                            <figcaption class="text-center text-xs text-slate-500 font-medium">Forum feed</figcaption>
+                        <figure>
+                            <button class="zoomable" data-full="assets/mallo/forum.png"
+                                aria-label="Enlarge: forum feed">
+                                <img src="assets/mallo/forum.png" alt="Mallo forum feed">
+                            </button>
+                            <figcaption>Forum feed</figcaption>
                         </figure>
-                        <figure class="space-y-2">
-                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
-                                onclick="openLightbox('assets/mallo/activity-map.png')">
-                                <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10"></div>
-                                <img src="assets/mallo/activity-map.png" alt="Mallo activity map"
-                                    class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            </div>
-                            <figcaption class="text-center text-xs text-slate-500 font-medium">Activity map</figcaption>
+                        <figure>
+                            <button class="zoomable" data-full="assets/mallo/activity-map.png"
+                                aria-label="Enlarge: activity map">
+                                <img src="assets/mallo/activity-map.png" alt="Mallo activity map">
+                            </button>
+                            <figcaption>Activity map</figcaption>
                         </figure>
-                        <figure class="space-y-2">
-                            <div class="rounded-xl overflow-hidden border border-white/10 bg-slate-900 group cursor-pointer relative"
-                                onclick="openLightbox('assets/mallo/chat.png')">
-                                <div class="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors z-10"></div>
-                                <img src="assets/mallo/chat.png" alt="Mallo real-time chat"
-                                    class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            </div>
-                            <figcaption class="text-center text-xs text-slate-500 font-medium">Real-time chat</figcaption>
+                        <figure>
+                            <button class="zoomable" data-full="assets/mallo/chat.png"
+                                aria-label="Enlarge: real-time chat">
+                                <img src="assets/mallo/chat.png" alt="Mallo real-time chat">
+                            </button>
+                            <figcaption>Real-time chat</figcaption>
                         </figure>
                     </div>
 
-                    <div class="prose prose-invert prose-lg max-w-none">
-                        <!-- Features -->
-                        <h3 class="text-2xl font-bold text-white mb-4">What it does</h3>
-                        <div class="space-y-3 mb-8 not-prose">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-rose-500/10 border border-orange-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-orange-400">Forum</h4>
-                                    <span class="text-xs text-slate-500 font-mono">posts · hugs · comments</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Posts with titles, 13 categories and 20 tags, threaded comments, "hugs" reactions, bookmarks, and user-driven reports for moderation.</p>
+                    <h2>What it does</h2>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Forum</h4>
+                                <span class="feature-meta">posts · hugs · comments</span>
                             </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-rose-500/10 to-pink-500/10 border border-rose-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-rose-400">Activity map</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Mapbox · Turf.js</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Geo-tagged events with images, date ranges, and addresses on an interactive Mapbox map. Distance helpers power proximity filtering.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-pink-400">Real-time chat</h4>
-                                    <span class="text-xs text-slate-500 font-mono">SignalR WebSocket</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">One-to-one direct messages over a SignalR hub. Typing indicators, read-receipts, per-user soft-delete, and auto-reconnect.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-amber-400">Accounts &amp; auth</h4>
-                                    <span class="text-xs text-slate-500 font-mono">JWT · GDPR</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">Register with Swedish personnummer + 18+ check, JWT bearer tokens, email-based password reset, profile editing, and GDPR account deletion.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-fuchsia-500/10 to-rose-500/10 border border-fuchsia-500/20">
-                                <div class="flex justify-between items-center">
-                                    <h4 class="text-lg font-bold text-fuchsia-400">Push notifications</h4>
-                                    <span class="text-xs text-slate-500 font-mono">Firebase FCM</span>
-                                </div>
-                                <p class="text-slate-400 text-sm mt-1">A Firebase Cloud Messaging service worker in the browser delivers activity and chat alerts.</p>
-                            </div>
+                            <p>Posts with titles, 13 categories and 20 tags, threaded comments, "hugs" reactions,
+                                bookmarks, and user-driven reports for moderation.</p>
                         </div>
-
-                        <!-- My Role: DevOps -->
-                        <h3 class="text-2xl font-bold text-white mb-4">My Role &mdash; DevOps</h3>
-                        <p class="text-slate-400 mb-6">
-                            Two of us owned DevOps. My focus: getting the whole stack running reliably on the school's
-                            <span class="text-white font-semibold">k3s Kubernetes</span> cluster, wiring up a
-                            <span class="text-white font-semibold">GitLab CI/CD</span> pipeline that builds, deploys and
-                            smoke-tests every change, and standing up <span class="text-white font-semibold">Prometheus + Grafana</span>
-                            observability so we could see what the API was doing in production.
-                        </p>
-
-                        <!-- Architecture -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Architecture Overview</h3>
-                        <p class="text-slate-400 mb-6">
-                            The SPA and the API deploy separately so they can scale on their own. Everything lives in one
-                            Kubernetes namespace (<code class="text-orange-300 bg-slate-800 px-1 rounded">doe25-group-8</code>),
-                            behind a single Traefik ingress.
-                        </p>
-                        <div class="space-y-4 mb-8 not-prose">
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-orange-400 font-mono shrink-0 w-8">1</span>
-                                <div>
-                                    <p class="text-white font-medium">Browser → Traefik ingress</p>
-                                    <p class="text-slate-400 text-sm">The React SPA talks to the cluster over HTTPS. Traefik terminates TLS and routes by path: <code class="text-orange-300 bg-slate-800 px-1 rounded">/</code> to the frontend, <code class="text-orange-300 bg-slate-800 px-1 rounded">/api</code> and <code class="text-orange-300 bg-slate-800 px-1 rounded">/chat/hub</code> to the API.</p>
-                                </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Activity map</h4>
+                                <span class="feature-meta">Mapbox · Turf.js</span>
                             </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-orange-400 font-mono shrink-0 w-8">2</span>
-                                <div>
-                                    <p class="text-white font-medium">Frontend pod (nginx)</p>
-                                    <p class="text-slate-400 text-sm">The production React build is served by nginx with an SPA fallback (<code class="text-orange-300 bg-slate-800 px-1 rounded">try_files $uri /index.html</code>).</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-orange-400 font-mono shrink-0 w-8">3</span>
-                                <div>
-                                    <p class="text-white font-medium">API pod (.NET 10 + SignalR)</p>
-                                    <p class="text-slate-400 text-sm">REST endpoints plus the SignalR hub for chat. Auth is a stateless JWT, so the API can scale to more than one replica. SignalR connections are pinned to a single pod via a sticky cookie at the ingress, which keeps chat from dropping.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-orange-400 font-mono shrink-0 w-8">4</span>
-                                <div>
-                                    <p class="text-white font-medium">Durable state: MS SQL + Redis</p>
-                                    <p class="text-slate-400 text-sm">MSSQL is the only thing with durable state worth worrying about — it runs as a StatefulSet on a Longhorn PVC. Redis (a Bitnami Helm sub-chart) handles caching with a small PVC of its own.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-2xl font-bold text-orange-400 font-mono shrink-0 w-8">5</span>
-                                <div>
-                                    <p class="text-white font-medium">Observability: Prometheus → Grafana</p>
-                                    <p class="text-slate-400 text-sm">The API exposes <code class="text-orange-300 bg-slate-800 px-1 rounded">/metrics</code>. Prometheus scrapes it; Grafana visualises it; PrometheusRule fires alerts when something looks wrong.</p>
-                                </div>
-                            </div>
+                            <p>Geo-tagged events with images, date ranges, and addresses on an interactive Mapbox map.
+                                Distance helpers power proximity filtering.</p>
                         </div>
-
-                        <!-- Kubernetes -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Running on Kubernetes</h3>
-                        <p class="text-slate-400 mb-4">
-                            Everything ships to the school's k3s cluster (same APIs as upstream Kubernetes, smaller install).
-                            We split the deploy in two so it stays approachable for the whole team:
-                        </p>
-                        <div class="space-y-6 mb-8 not-prose">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Plain YAML for the app</h4>
-                                <p class="text-slate-400 text-sm">Frontend, API and MSSQL are plain Kubernetes manifests — anyone on the team can read a <code class="text-orange-300 bg-slate-800 px-1 rounded">Deployment</code> without learning Helm templating first. The manifests bake in a <code class="text-orange-300 bg-slate-800 px-1 rounded">gr8-plain</code> placeholder; CI rewrites it per environment (<code class="text-orange-300 bg-slate-800 px-1 rounded">sed -i 's|gr8-plain|gr8-&lt;env&gt;|g'</code>).</p>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Real-time chat</h4>
+                                <span class="feature-meta">SignalR WebSocket</span>
                             </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Helm for the versioned bits</h4>
-                                <p class="text-slate-400 text-sm">Redis (an upstream Bitnami sub-chart) and the observability glue — ServiceMonitor, PrometheusRule, and the Grafana dashboard ConfigMap — ride in a Helm chart, where templating earns its keep for release naming.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10">
-                                <h4 class="text-lg font-bold text-white mb-2">Secrets stay out of git</h4>
-                                <p class="text-slate-400 text-sm">Two plain Kubernetes <code class="text-orange-300 bg-slate-800 px-1 rounded">Secret</code> objects — one for app secrets, one for the image-pull credentials — are created once with <code class="text-orange-300 bg-slate-800 px-1 rounded">kubectl create secret</code> when a namespace is bootstrapped. CI never templates them and they never land in the repo.</p>
-                            </div>
+                            <p>One-to-one direct messages over a SignalR hub. Typing indicators, read-receipts,
+                                per-user soft-delete, and auto-reconnect.</p>
                         </div>
-                        <div
-                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img2"
-                            onclick="openLightbox('assets/mallo/kubectl-pods.png')">
-                            <img src="assets/mallo/kubectl-pods.png" alt="kubectl get pods — api, db and frontend pods running"
-                                class="w-full object-contain p-3 pointer-events-none bg-slate-950">
-                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img2:bg-slate-950/30 transition-colors flex items-center justify-center z-10">
-                                <span class="opacity-0 group-hover/img2:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2 pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="15 3 21 3 21 9"></polyline>
-                                        <polyline points="9 21 3 21 3 15"></polyline>
-                                        <line x1="21" y1="3" x2="14" y2="10"></line>
-                                        <line x1="3" y1="21" x2="10" y2="14"></line>
-                                    </svg>
-                                    Click to enlarge
-                                </span>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Accounts &amp; auth</h4>
+                                <span class="feature-meta">JWT · GDPR</span>
                             </div>
+                            <p>Register with Swedish personnummer + 18+ check, JWT bearer tokens, email-based password
+                                reset, profile editing, and GDPR account deletion.</p>
                         </div>
-
-                        <!-- CI/CD -->
-                        <h3 class="text-2xl font-bold text-white mb-4">CI/CD Pipeline (GitLab)</h3>
-                        <p class="text-slate-400 mb-6">
-                            Every push runs one pipeline; when a merge request is open, the MR pipeline gates the merge
-                            button so deploy and smoke-test have to pass before code reaches an environment.
-                        </p>
-                        <div
-                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img3"
-                            onclick="openLightbox('assets/mallo/ci-pipeline.png')">
-                            <img src="assets/mallo/ci-pipeline.png" alt="GitLab pipeline: test → build → deploy → smoke-test"
-                                class="w-full object-contain p-3 pointer-events-none bg-slate-950">
-                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img3:bg-slate-950/30 transition-colors flex items-center justify-center z-10">
-                                <span class="opacity-0 group-hover/img3:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2 pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="15 3 21 3 21 9"></polyline>
-                                        <polyline points="9 21 3 21 3 15"></polyline>
-                                        <line x1="21" y1="3" x2="14" y2="10"></line>
-                                        <line x1="3" y1="21" x2="10" y2="14"></line>
-                                    </svg>
-                                    Click to enlarge
-                                </span>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Push notifications</h4>
+                                <span class="feature-meta">Firebase FCM</span>
                             </div>
-                        </div>
-                        <div class="space-y-4 mb-8 not-prose">
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-sm font-bold text-orange-400 font-mono shrink-0 w-28">test</span>
-                                <p class="text-slate-400 text-sm"><code class="text-orange-300 bg-slate-800 px-1 rounded">check-merge-source</code> enforces that <span class="text-slate-200">only <code class="text-orange-300 bg-slate-800 px-1 rounded">develop</code> can merge into <code class="text-orange-300 bg-slate-800 px-1 rounded">main</code></span>, alongside the frontend/backend test jobs.</p>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-sm font-bold text-orange-400 font-mono shrink-0 w-28">secret-detection</span>
-                                <p class="text-slate-400 text-sm">GitLab's built-in secret scanning runs on every pipeline.</p>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-sm font-bold text-orange-400 font-mono shrink-0 w-28">build</span>
-                                <p class="text-slate-400 text-sm">Docker buildx with registry cache; images pushed to the school registry tagged per branch.</p>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-sm font-bold text-orange-400 font-mono shrink-0 w-28">deploy</span>
-                                <p class="text-slate-400 text-sm">Applies the rewritten manifests, then <code class="text-orange-300 bg-slate-800 px-1 rounded">kubectl rollout restart</code> to force a fresh pull even when the tag is unchanged; <code class="text-orange-300 bg-slate-800 px-1 rounded">helm upgrade --install</code> for Redis + observability.</p>
-                            </div>
-                            <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-900/50 border border-white/5">
-                                <span class="text-sm font-bold text-orange-400 font-mono shrink-0 w-28">smoke-test</span>
-                                <p class="text-slate-400 text-sm">Polls <code class="text-orange-300 bg-slate-800 px-1 rounded">/api/openapi/v1.json</code> every 5s for 5 minutes — long enough to cover a cold MSSQL pod re-applying 28 EF migrations (~3–4 min) after a fresh deploy. Only gateway errors and connection failures count as down.</p>
-                            </div>
-                        </div>
-
-                        <h4 class="text-xl font-bold text-white mb-4">Branches → environments</h4>
-                        <div class="overflow-x-auto mb-8 not-prose">
-                            <table class="w-full text-sm border border-white/10 rounded-lg overflow-hidden">
-                                <thead>
-                                    <tr class="bg-slate-800/60 text-left">
-                                        <th class="px-4 py-2 font-semibold text-slate-300">Branch</th>
-                                        <th class="px-4 py-2 font-semibold text-slate-300">Tag</th>
-                                        <th class="px-4 py-2 font-semibold text-slate-300">Deploy</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="font-mono text-xs">
-                                    <tr class="border-t border-white/5">
-                                        <td class="px-4 py-2 text-orange-300">main</td>
-                                        <td class="px-4 py-2 text-slate-400">:latest</td>
-                                        <td class="px-4 py-2 text-slate-400">Manual approval gate · persistent DB</td>
-                                    </tr>
-                                    <tr class="border-t border-white/5">
-                                        <td class="px-4 py-2 text-orange-300">develop</td>
-                                        <td class="px-4 py-2 text-slate-400">:develop</td>
-                                        <td class="px-4 py-2 text-slate-400">Auto-deploy on push · persistent DB</td>
-                                    </tr>
-                                    <tr class="border-t border-white/5">
-                                        <td class="px-4 py-2 text-orange-300">feature/*</td>
-                                        <td class="px-4 py-2 text-slate-400">:&lt;slug&gt;</td>
-                                        <td class="px-4 py-2 text-slate-400">Image built, not auto-deployed</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Observability -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Observability</h3>
-                        <p class="text-slate-400 mb-6">
-                            The school cluster already runs Prometheus + Grafana. Our Helm chart layers Mallo-specific
-                            pieces on top so the API isn't a black box in production.
-                        </p>
-                        <div
-                            class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 mb-8 cursor-pointer group/img4"
-                            onclick="openLightbox('assets/mallo/grafana.png')">
-                            <img src="assets/mallo/grafana.png" alt="Grafana dashboard — request rate, 5xx, p95 latency, requests by code"
-                                class="w-full object-contain p-3 pointer-events-none bg-slate-950">
-                            <div class="absolute inset-0 bg-slate-950/0 group-hover/img4:bg-slate-950/30 transition-colors flex items-center justify-center z-10">
-                                <span class="opacity-0 group-hover/img4:opacity-100 transition-opacity px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium flex items-center gap-2 pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="15 3 21 3 21 9"></polyline>
-                                        <polyline points="9 21 3 21 3 15"></polyline>
-                                        <line x1="21" y1="3" x2="14" y2="10"></line>
-                                        <line x1="3" y1="21" x2="10" y2="14"></line>
-                                    </svg>
-                                    Click to enlarge
-                                </span>
-                            </div>
-                        </div>
-                        <div class="space-y-3 mb-8 not-prose">
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20">
-                                <h4 class="text-lg font-bold text-orange-400 mb-1">ServiceMonitor</h4>
-                                <p class="text-slate-400 text-sm">Scrapes the API's <code class="text-orange-300 bg-slate-800 px-1 rounded">/metrics</code> endpoint every 15 seconds.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-rose-500/10 to-pink-500/10 border border-rose-500/20">
-                                <h4 class="text-lg font-bold text-rose-400 mb-1">PrometheusRule</h4>
-                                <p class="text-slate-400 text-sm">Two alerts: <code class="text-orange-300 bg-slate-800 px-1 rounded">Gr8ApiHighErrorRate</code> (5xx above 5% for 5 min) and <code class="text-orange-300 bg-slate-800 px-1 rounded">Gr8ApiNoTraffic</code> (0 req/s for 15 min).</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 to-fuchsia-500/10 border border-pink-500/20">
-                                <h4 class="text-lg font-bold text-pink-400 mb-1">Grafana dashboard</h4>
-                                <p class="text-slate-400 text-sm">Auto-provisioned by a ConfigMap. Four panels: request rate by endpoint, 5xx rate, p95 latency by endpoint, and request count by HTTP status code.</p>
-                            </div>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-white mb-4">Tech Stack</h3>
-                        <div class="flex flex-wrap gap-2 mb-8 not-prose">
-                            <span class="px-3 py-1.5 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">Kubernetes (k3s)</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">GitLab CI/CD</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">Helm</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">Prometheus</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">Grafana</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-indigo-300 bg-indigo-950/30 border border-indigo-500/20 rounded-full">Traefik</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-cyan-300 bg-cyan-950/30 border border-cyan-500/20 rounded-full">Docker</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-purple-300 bg-purple-950/30 border border-purple-500/20 rounded-full">.NET 10</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">React 19</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-rose-300 bg-rose-950/30 border border-rose-500/20 rounded-full">MS SQL Server</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-violet-300 bg-violet-950/30 border border-violet-500/20 rounded-full">SignalR</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-green-300 bg-green-950/30 border border-green-500/20 rounded-full">Redis</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-emerald-300 bg-emerald-950/30 border border-emerald-500/20 rounded-full">Mapbox</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-yellow-300 bg-yellow-950/30 border border-yellow-500/20 rounded-full">Firebase FCM</span>
-                            <span class="px-3 py-1.5 text-sm font-medium text-slate-300 bg-slate-800/30 border border-slate-500/20 rounded-full">Longhorn</span>
-                        </div>
-
-                        <!-- Team -->
-                        <h3 class="text-2xl font-bold text-white mb-4">Team GR8</h3>
-                        <p class="text-slate-400 mb-4">
-                            Nine people across five competencies. I handled DevOps alongside Reza.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mb-4 not-prose">
-                            <a href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank" class="px-4 py-2 bg-orange-500/10 text-orange-200 border border-orange-500/30 rounded-full text-sm font-semibold hover:bg-orange-500/20 transition-colors">Anton Sätterkvist · DevOps</a>
-                            <a href="https://www.linkedin.com/in/reza-damavandi/" target="_blank" class="px-4 py-2 bg-orange-500/10 text-orange-300 border border-orange-500/20 rounded-full text-sm font-medium hover:bg-orange-500/20 transition-colors">Reza Damavandi · DevOps</a>
-                            <a href="https://www.linkedin.com/in/daniel-hultmark-666b7113a/" target="_blank" class="px-4 py-2 bg-rose-500/10 text-rose-300 border border-rose-500/20 rounded-full text-sm font-medium hover:bg-rose-500/20 transition-colors">Daniel Hultmark · Fullstack</a>
-                            <a href="https://www.linkedin.com/in/elina-jonsson-904bba383/" target="_blank" class="px-4 py-2 bg-rose-500/10 text-rose-300 border border-rose-500/20 rounded-full text-sm font-medium hover:bg-rose-500/20 transition-colors">Elina Jonsson · Fullstack</a>
-                            <a href="https://www.linkedin.com/in/jonna-barvsten/" target="_blank" class="px-4 py-2 bg-rose-500/10 text-rose-300 border border-rose-500/20 rounded-full text-sm font-medium hover:bg-rose-500/20 transition-colors">Jonna Barvsten · Fullstack</a>
-                            <a href="https://www.linkedin.com/in/sebastian-enerstrand-393aba17b/" target="_blank" class="px-4 py-2 bg-rose-500/10 text-rose-300 border border-rose-500/20 rounded-full text-sm font-medium hover:bg-rose-500/20 transition-colors">Sebastian Enerstrand · Fullstack</a>
-                            <a href="https://www.linkedin.com/in/victoria-linden/" target="_blank" class="px-4 py-2 bg-rose-500/10 text-rose-300 border border-rose-500/20 rounded-full text-sm font-medium hover:bg-rose-500/20 transition-colors">Victoria Lindén · Fullstack</a>
-                            <span class="px-4 py-2 bg-pink-500/10 text-pink-300 border border-pink-500/20 rounded-full text-sm font-medium">Chipego Elikya Liambi · Frontend</span>
-                            <a href="https://www.linkedin.com/in/jennifer-gahne-797321382/" target="_blank" class="px-4 py-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full text-sm font-medium hover:bg-purple-500/20 transition-colors">Jennifer Gahne · UX</a>
+                            <p>A Firebase Cloud Messaging service worker in the browser delivers activity and chat
+                                alerts.</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Right Column: Sidebar -->
-                <div class="space-y-8 animate-fade-in" style="animation-delay: 0.2s;">
+                    <h2>My Role &mdash; DevOps</h2>
+                    <p>
+                        Two of us owned DevOps. My focus: getting the whole stack running reliably on the school's
+                        <strong>k3s Kubernetes</strong> cluster, wiring up a <strong>GitLab CI/CD</strong> pipeline
+                        that builds, deploys and smoke-tests every change, and standing up
+                        <strong>Prometheus + Grafana</strong> observability so we could see what the API was doing in
+                        production.
+                    </p>
 
-                    <!-- Project Details Card -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Project Details</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Type</p>
-                                    <p class="text-slate-400">Group Project · Chas Challenge 2026</p>
-                                </div>
+                    <h2>Architecture Overview</h2>
+                    <p>
+                        The SPA and the API deploy separately so they can scale on their own. Everything lives in one
+                        Kubernetes namespace (<code>doe25-group-8</code>), behind a single Traefik ingress.
+                    </p>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-n step-n--num">1</span>
+                            <div>
+                                <p class="step-t">Browser → Traefik ingress</p>
+                                <p>The React SPA talks to the cluster over HTTPS. Traefik terminates TLS and routes by
+                                    path: <code>/</code> to the frontend, <code>/api</code> and <code>/chat/hub</code>
+                                    to the API.</p>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">My Role</p>
-                                    <p class="text-slate-400">DevOps — Kubernetes, CI/CD, Observability</p>
-                                </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">2</span>
+                            <div>
+                                <p class="step-t">Frontend pod (nginx)</p>
+                                <p>The production React build is served by nginx with an SPA fallback
+                                    (<code>try_files $uri /index.html</code>).</p>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Timeline</p>
-                                    <p class="text-slate-400">March – June 2026 (spring semester)</p>
-                                </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">3</span>
+                            <div>
+                                <p class="step-t">API pod (.NET 10 + SignalR)</p>
+                                <p>REST endpoints plus the SignalR hub for chat. Auth is a stateless JWT, so the API
+                                    can scale to more than one replica. SignalR connections are pinned to a single pod
+                                    via a sticky cookie at the ingress, which keeps chat from dropping.</p>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <path d="M12 22s-8-4.5-8-11.8A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 8 3.2C20 17.5 12 22 12 22z"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Theme</p>
-                                    <p class="text-slate-400">Tech for Good</p>
-                                </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">4</span>
+                            <div>
+                                <p class="step-t">Durable state: MS SQL + Redis</p>
+                                <p>MSSQL is the only thing with durable state worth worrying about — it runs as a
+                                    StatefulSet on a Longhorn PVC. Redis (a Bitnami Helm sub-chart) handles caching
+                                    with a small PVC of its own.</p>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-orange-400 shrink-0 mt-0.5">
-                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                                </svg>
-                                <div>
-                                    <p class="text-slate-300 font-medium">Cluster</p>
-                                    <p class="text-slate-400">k3s · namespace <span class="font-mono text-xs">doe25-group-8</span></p>
-                                </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n step-n--num">5</span>
+                            <div>
+                                <p class="step-t">Observability: Prometheus → Grafana</p>
+                                <p>The API exposes <code>/metrics</code>. Prometheus scrapes it; Grafana visualises it;
+                                    PrometheusRule fires alerts when something looks wrong.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Links -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Links</h3>
-                        <div class="space-y-3 text-sm">
-                            <a href="https://gr8-main.cc.k3s.chas-lab.dev/" target="_blank" class="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                Live demo (school cluster)
-                            </a>
-                            <a href="https://github.com/AntonSatt/mallo" target="_blank" class="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                github.com/AntonSatt/mallo
-                            </a>
-                            <a href="https://chasacademy.se/chas-challenge-2026" target="_blank" class="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                Chas Challenge 2026
-                            </a>
+                    <h2>Running on Kubernetes</h2>
+                    <p>
+                        Everything ships to the school's k3s cluster (same APIs as upstream Kubernetes, smaller
+                        install). We split the deploy in two so it stays approachable for the whole team:
+                    </p>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Plain YAML for the app</h4>
+                            </div>
+                            <p>Frontend, API and MSSQL are plain Kubernetes manifests — anyone on the team can read a
+                                <code>Deployment</code> without learning Helm templating first. The manifests bake in a
+                                <code>gr8-plain</code> placeholder; CI rewrites it per environment
+                                (<code>sed -i 's|gr8-plain|gr8-&lt;env&gt;|g'</code>).</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Helm for the versioned bits</h4>
+                            </div>
+                            <p>Redis (an upstream Bitnami sub-chart) and the observability glue — ServiceMonitor,
+                                PrometheusRule, and the Grafana dashboard ConfigMap — ride in a Helm chart, where
+                                templating earns its keep for release naming.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Secrets stay out of git</h4>
+                            </div>
+                            <p>Two plain Kubernetes <code>Secret</code> objects — one for app secrets, one for the
+                                image-pull credentials — are created once with <code>kubectl create secret</code> when
+                                a namespace is bootstrapped. CI never templates them and they never land in the repo.
+                            </p>
+                        </div>
+                    </div>
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/mallo/kubectl-pods.png"
+                            aria-label="Enlarge: kubectl get pods output">
+                            <img src="assets/mallo/kubectl-pods.png"
+                                alt="kubectl get pods — api, db and frontend pods running">
+                        </button>
+                        <figcaption>$ kubectl get pods — api, db and frontend running · click to enlarge</figcaption>
+                    </figure>
+
+                    <h2>CI/CD Pipeline (GitLab)</h2>
+                    <p>
+                        Every push runs one pipeline; when a merge request is open, the MR pipeline gates the merge
+                        button so deploy and smoke-test have to pass before code reaches an environment.
+                    </p>
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/mallo/ci-pipeline.png"
+                            aria-label="Enlarge: GitLab pipeline">
+                            <img src="assets/mallo/ci-pipeline.png"
+                                alt="GitLab pipeline: test → build → deploy → smoke-test">
+                        </button>
+                        <figcaption>GitLab pipeline: test → build → deploy → smoke-test · click to enlarge
+                        </figcaption>
+                    </figure>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-n">test</span>
+                            <div>
+                                <p><code>check-merge-source</code> enforces that <strong>only <code>develop</code> can
+                                        merge into <code>main</code></strong>, alongside the frontend/backend test
+                                    jobs.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">secret-detection</span>
+                            <div>
+                                <p>GitLab's built-in secret scanning runs on every pipeline.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">build</span>
+                            <div>
+                                <p>Docker buildx with registry cache; images pushed to the school registry tagged per
+                                    branch.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">deploy</span>
+                            <div>
+                                <p>Applies the rewritten manifests, then <code>kubectl rollout restart</code> to force
+                                    a fresh pull even when the tag is unchanged; <code>helm upgrade --install</code>
+                                    for Redis + observability.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-n">smoke-test</span>
+                            <div>
+                                <p>Polls <code>/api/openapi/v1.json</code> every 5s for 5 minutes — long enough to
+                                    cover a cold MSSQL pod re-applying 28 EF migrations (~3–4 min) after a fresh
+                                    deploy. Only gateway errors and connection failures count as down.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Tags -->
-                    <div class="p-6 rounded-2xl bg-slate-900 border border-white/10">
-                        <h3 class="text-lg font-bold text-white mb-4">Tags</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm font-medium text-blue-300 bg-blue-950/30 border border-blue-500/20 rounded-full">#Kubernetes</span>
-                            <span class="px-3 py-1 text-sm font-medium text-orange-300 bg-orange-950/30 border border-orange-500/20 rounded-full">#GitLabCI</span>
-                            <span class="px-3 py-1 text-sm font-medium text-sky-300 bg-sky-950/30 border border-sky-500/20 rounded-full">#Helm</span>
-                            <span class="px-3 py-1 text-sm font-medium text-red-300 bg-red-950/30 border border-red-500/20 rounded-full">#Observability</span>
-                            <span class="px-3 py-1 text-sm font-medium text-rose-300 bg-rose-950/30 border border-rose-500/20 rounded-full">#DevOps</span>
-                            <span class="px-3 py-1 text-sm font-medium text-pink-300 bg-pink-950/30 border border-pink-500/20 rounded-full">#TechForGood</span>
-                            <span class="px-3 py-1 text-sm font-medium text-amber-300 bg-amber-950/30 border border-amber-500/20 rounded-full">#ChasChallenge</span>
+                    <h3>Branches → environments</h3>
+                    <div class="table-scroll">
+                        <table class="case-table">
+                            <thead>
+                                <tr>
+                                    <th>Branch</th>
+                                    <th>Tag</th>
+                                    <th>Deploy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>main</td>
+                                    <td>:latest</td>
+                                    <td>Manual approval gate · persistent DB</td>
+                                </tr>
+                                <tr>
+                                    <td>develop</td>
+                                    <td>:develop</td>
+                                    <td>Auto-deploy on push · persistent DB</td>
+                                </tr>
+                                <tr>
+                                    <td>feature/*</td>
+                                    <td>:&lt;slug&gt;</td>
+                                    <td>Image built, not auto-deployed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Observability</h2>
+                    <p>
+                        The school cluster already runs Prometheus + Grafana. Our Helm chart layers Mallo-specific
+                        pieces on top so the API isn't a black box in production.
+                    </p>
+                    <figure class="case-figure">
+                        <button class="zoomable" data-full="assets/mallo/grafana.png"
+                            aria-label="Enlarge: Grafana dashboard">
+                            <img src="assets/mallo/grafana.png"
+                                alt="Grafana dashboard — request rate, 5xx, p95 latency, requests by code">
+                        </button>
+                        <figcaption>Grafana — request rate, 5xx, p95 latency, requests by status code · click to
+                            enlarge</figcaption>
+                    </figure>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>ServiceMonitor</h4>
+                            </div>
+                            <p>Scrapes the API's <code>/metrics</code> endpoint every 15 seconds.</p>
                         </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>PrometheusRule</h4>
+                            </div>
+                            <p>Two alerts: <code>Gr8ApiHighErrorRate</code> (5xx above 5% for 5 min) and
+                                <code>Gr8ApiNoTraffic</code> (0 req/s for 15 min).</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-head">
+                                <h4>Grafana dashboard</h4>
+                            </div>
+                            <p>Auto-provisioned by a ConfigMap. Four panels: request rate by endpoint, 5xx rate, p95
+                                latency by endpoint, and request count by HTTP status code.</p>
+                        </div>
+                    </div>
+
+                    <h2>Tech Stack</h2>
+                    <div class="tags">
+                        <span class="tag">Kubernetes (k3s)</span>
+                        <span class="tag">GitLab CI/CD</span>
+                        <span class="tag">Helm</span>
+                        <span class="tag">Prometheus</span>
+                        <span class="tag">Grafana</span>
+                        <span class="tag">Traefik</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">.NET 10</span>
+                        <span class="tag">React 19</span>
+                        <span class="tag">MS SQL Server</span>
+                        <span class="tag">SignalR</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">Mapbox</span>
+                        <span class="tag">Firebase FCM</span>
+                        <span class="tag">Longhorn</span>
+                    </div>
+
+                    <h2>Team GR8</h2>
+                    <p>Nine people across five competencies. I handled DevOps alongside Reza.</p>
+                    <div class="people">
+                        <a class="person" href="https://www.linkedin.com/in/anton-satterkvist/" target="_blank"
+                            rel="noopener">Anton Sätterkvist · DevOps</a>
+                        <a class="person" href="https://www.linkedin.com/in/reza-damavandi/" target="_blank"
+                            rel="noopener">Reza Damavandi · DevOps</a>
+                        <a class="person" href="https://www.linkedin.com/in/daniel-hultmark-666b7113a/" target="_blank"
+                            rel="noopener">Daniel Hultmark · Fullstack</a>
+                        <a class="person" href="https://www.linkedin.com/in/elina-jonsson-904bba383/" target="_blank"
+                            rel="noopener">Elina Jonsson · Fullstack</a>
+                        <a class="person" href="https://www.linkedin.com/in/jonna-barvsten/" target="_blank"
+                            rel="noopener">Jonna Barvsten · Fullstack</a>
+                        <a class="person" href="https://www.linkedin.com/in/sebastian-enerstrand-393aba17b/"
+                            target="_blank" rel="noopener">Sebastian Enerstrand · Fullstack</a>
+                        <a class="person" href="https://www.linkedin.com/in/victoria-linden/" target="_blank"
+                            rel="noopener">Victoria Lindén · Fullstack</a>
+                        <span class="person">Chipego Elikya Liambi · Frontend</span>
+                        <a class="person" href="https://www.linkedin.com/in/jennifer-gahne-797321382/" target="_blank"
+                            rel="noopener">Jennifer Gahne · UX</a>
                     </div>
 
                 </div>
+
+                <aside class="case-aside">
+                    <div class="aside-card">
+                        <h3>$ kubectl describe project</h3>
+                        <dl>
+                            <dt>type</dt>
+                            <dd>Group Project · Chas Challenge 2026</dd>
+                            <dt>my role</dt>
+                            <dd>DevOps — Kubernetes, CI/CD, Observability</dd>
+                            <dt>timeline</dt>
+                            <dd>March – June 2026 (spring semester)</dd>
+                            <dt>theme</dt>
+                            <dd>Tech for Good</dd>
+                            <dt>cluster</dt>
+                            <dd>k3s · namespace <code>doe25-group-8</code></dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h3>links</h3>
+                        <ul class="link-list">
+                            <li><a href="https://gr8-main.cc.k3s.chas-lab.dev/" target="_blank" rel="noopener">live
+                                    demo (school cluster) ↗</a></li>
+                            <li><a href="https://github.com/AntonSatt/mallo" target="_blank"
+                                    rel="noopener">github.com/AntonSatt/mallo ↗</a></li>
+                            <li><a href="https://chasacademy.se/chas-challenge-2026" target="_blank"
+                                    rel="noopener">Chas Challenge 2026 ↗</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h3>tags</h3>
+                        <div class="tags">
+                            <span class="tag">#Kubernetes</span>
+                            <span class="tag">#GitLabCI</span>
+                            <span class="tag">#Helm</span>
+                            <span class="tag">#Observability</span>
+                            <span class="tag">#DevOps</span>
+                            <span class="tag">#TechForGood</span>
+                            <span class="tag">#ChasChallenge</span>
+                        </div>
+                    </div>
+                </aside>
             </div>
-
         </div>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <p class="deploy-note statusline">
+                    <span class="led" aria-hidden="true"></span>
+                    <span>desired state: <a href="https://github.com/AntonSatt/personal-portfolio" target="_blank"
+                            rel="noopener">this repo</a> · running state: this page — deployed to my own HA K3s cluster
+                        via <a href="https://github.com/AntonSatt/personal-portfolio/blob/main/.github/workflows/deploy.yml"
+                            target="_blank" rel="noopener">GitHub Actions</a>.</span>
+                </p>
+                <p>&copy; 2026 Anton Sätterkvist. Built with code &amp; chaos.</p>
+            </div>
+        </footer>
+
     </main>
 
-    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Anton S&auml;tterkvist. Built with code &amp; chaos.</p>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox"
-        class="fixed inset-0 z-[100] bg-slate-950/95 hidden flex items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm cursor-pointer"
-        onclick="closeLightbox()">
-        <button onclick="closeLightbox()"
-            class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <div class="relative max-w-7xl max-h-[90vh] p-4" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Enlarged image"
-                class="max-h-[85vh] rounded-lg shadow-2xl object-contain bg-slate-900 border border-white/10 p-4" style="min-width: 40vw;">
-        </div>
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+        <button class="lightbox-close" type="button">close ✕</button>
+        <img src="" alt="">
     </div>
 
-    <script>
-        const lightbox = document.getElementById('lightbox');
-
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            lightbox.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                lightbox.classList.remove('opacity-0');
-            });
-        }
-
-        function closeLightbox() {
-            lightbox.classList.add('opacity-0');
-            setTimeout(() => {
-                lightbox.classList.add('hidden');
-            }, 300);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-                closeLightbox();
-            }
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
