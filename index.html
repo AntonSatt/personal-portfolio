@@ -30,7 +30,10 @@
 
     <!-- console rail (desktop) -->
     <aside class="rail">
-        <img class="rail-avatar" src="assets/me.png" alt="Anton Sätterkvist">
+        <span class="rail-avatar-wrap">
+            <img class="rail-avatar" src="assets/me-96.png" srcset="assets/me-96.png 1x, assets/me-192.png 2x" width="96" height="96" alt="Anton Sätterkvist">
+            <span class="rail-avatar-led" aria-hidden="true"></span>
+        </span>
         <a class="rail-brand" href="#top"><span class="tilde">~</span> anton@antonsatt</a>
         <span class="rail-sub">platform · devops · gitops</span>
         <nav class="rail-nav" aria-label="Sections">
@@ -871,6 +874,18 @@
                             <dt>response</dt>
                             <dd>usually within a day</dd>
                         </dl>
+
+                        <div class="contact-probe">
+                            <p class="probe-cmd"><span class="prompt">$</span> kubectl get availability</p>
+                            <dl>
+                                <dt>status</dt>
+                                <dd class="probe-open"><span class="led" aria-hidden="true"></span> open</dd>
+                                <dt>lia</dt>
+                                <dd>platform-engineering · nov 2026</dd>
+                                <dt>open-to</dt>
+                                <dd>2027 graduate roles</dd>
+                            </dl>
+                        </div>
                     </div>
 
                     <form class="contact-form" id="contactForm">
