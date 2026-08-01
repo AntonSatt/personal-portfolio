@@ -27,7 +27,7 @@ spec:
       containers:
         - name: nginx
           # The workflow replaces this bootstrap tag with the full source commit SHA.
-          image: ghcr.io/antonsatt/personal-portfolio:bootstrap
+          image: ghcr.io/antonsatt/personal-portfolio:d9712bbd776b8fa724ee607518d7a395f3b37ac2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
