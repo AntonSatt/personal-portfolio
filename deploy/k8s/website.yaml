@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: antonsatt
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: antonsatt
+    app.kubernetes.io/part-of: personal-portfolio
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: antonsatt
+  template:
+    metadata:
+      labels:
+        app: antonsatt
+        app.kubernetes.io/name: antonsatt
+        app.kubernetes.io/part-of: personal-portfolio
+    spec:
+      containers:
+        - name: nginx
+          # The workflow replaces this bootstrap tag with the full source commit SHA.
+          image: ghcr.io/antonsatt/personal-portfolio:bootstrap
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: antonsatt
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: antonsatt
+    app.kubernetes.io/part-of: personal-portfolio
+spec:
+  selector:
+    app: antonsatt
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: antonsatt
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: antonsatt
+    app.kubernetes.io/part-of: personal-portfolio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - antonsatt.com
+      secretName: antonsatt-tls
+  rules:
+    - host: antonsatt.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: antonsatt
+                port:
+                  name: http

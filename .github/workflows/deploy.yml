@@ -1,44 +1,117 @@
-name: Deploy to K3s Cluster
+name: Build and publish website
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
+      - "deploy/**"
+  workflow_dispatch:
+
+concurrency:
+  group: personal-portfolio-production
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/antonsatt/personal-portfolio
+  MANIFEST_PATH: deploy/k8s/website.yaml
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build-publish-and-update:
+    name: Build, verify, publish, and update desired state
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Set up SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.ORACLE_SSH_KEY }}
+      - name: Build ARM64 image
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 33342 -H ${{ secrets.ORACLE1_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          set -euo pipefail
+          docker build \
+            --pull \
+            --build-arg VCS_REF="${GITHUB_SHA}" \
+            --tag "${IMAGE_NAME}:${GITHUB_SHA}" \
+            --tag "${IMAGE_NAME}:main" \
+            .
 
-      - name: Test SSH connection
+      - name: Smoke-test image
         run: |
-          ssh -p 33342 -o BatchMode=yes ubuntu@${{ secrets.ORACLE1_HOST }} "echo 'SSH OK'"
+          set -euo pipefail
+          container_id="$(docker run --detach --publish 127.0.0.1:8080:80 "${IMAGE_NAME}:${GITHUB_SHA}")"
+          cleanup() {
+            docker rm --force "${container_id}" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
 
-      - name: Build and deploy
+          for attempt in {1..20}; do
+            if curl --fail --silent --show-error http://127.0.0.1:8080/ >/tmp/portfolio-index.html; then
+              break
+            fi
+            if [ "${attempt}" -eq 20 ]; then
+              docker logs "${container_id}"
+              exit 1
+            fi
+            sleep 1
+          done
+
+          grep --fixed-strings --quiet "Anton" /tmp/portfolio-index.html
+
+      - name: Log in to GHCR
         run: |
-          # Build on oracle-1 directly (ARM64 native) instead of locally (x86)
-          rsync -avz -e "ssh -p 33342" --exclude '.git*' --exclude '.github' ./ ubuntu@${{ secrets.ORACLE1_HOST }}:/tmp/antonsatt-build/
+          printf '%s' "${{ secrets.GITHUB_TOKEN }}" | \
+            docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin
 
-          # Build image and import into K3s on oracle-1
-          ssh -p 33342 ubuntu@${{ secrets.ORACLE1_HOST }} "
-            cd /tmp/antonsatt-build &&
-            echo 'FROM nginx:alpine' > Dockerfile &&
-            echo 'COPY . /usr/share/nginx/html/' >> Dockerfile &&
-            sudo docker build -t antonsatt-site:latest . &&
-            sudo docker save antonsatt-site:latest | sudo k3s ctr images import - &&
-            rm -rf /tmp/antonsatt-build
-          "
+      - name: Publish immutable and branch tags
+        run: |
+          set -euo pipefail
+          docker push "${IMAGE_NAME}:${GITHUB_SHA}"
+          docker push "${IMAGE_NAME}:main"
 
-          # Restart deployment
-          ssh -p 33342 ubuntu@${{ secrets.ORACLE1_HOST }} "sudo k3s kubectl -n apps rollout restart deployment antonsatt"
+      - name: Record the immutable image in desired state
+        run: |
+          set -euo pipefail
+          match_count="$(grep --extended-regexp --count "image: ${IMAGE_NAME}:" "${MANIFEST_PATH}")"
+          if [ "${match_count}" -ne 1 ]; then
+            echo "Expected exactly one website image in ${MANIFEST_PATH}, found ${match_count}."
+            exit 1
+          fi
+
+          sed --in-place --regexp-extended \
+            "s#(image: ${IMAGE_NAME}:).*#\1${GITHUB_SHA}#" \
+            "${MANIFEST_PATH}"
+          grep --fixed-strings --quiet \
+            "image: ${IMAGE_NAME}:${GITHUB_SHA}" \
+            "${MANIFEST_PATH}"
+          git diff --check
+
+          if git diff --quiet -- "${MANIFEST_PATH}"; then
+            echo "Desired state already references ${GITHUB_SHA}."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${MANIFEST_PATH}"
+          git commit --message "chore(deploy): use image ${GITHUB_SHA} [skip ci]"
+          git push origin HEAD:main
+
+      - name: Write deployment summary
+        run: |
+          {
+            echo "## Website image published"
+            echo
+            echo "- Image: \`${IMAGE_NAME}:${GITHUB_SHA}\`"
+            echo "- Platform: \`linux/arm64\`"
+            echo "- Deployment: ArgoCD reads \`${MANIFEST_PATH}\`"
+            echo "- Oracle SSH used: no"
+          } >>"${GITHUB_STEP_SUMMARY}"
